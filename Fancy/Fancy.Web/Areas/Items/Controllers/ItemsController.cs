@@ -24,7 +24,7 @@ namespace Fancy.Web.Areas.Items.Controllers
             return View();
         }
 
-        public ActionResult AllItems()
+        public ActionResult NewItems()
         {
             return View();
         }

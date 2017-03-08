@@ -171,3 +171,8 @@ C:\Users\georgivelikov\Desktop\MVC\Project\Fancy\Fancy.Web\bin\Microsoft.Owin.Se
 C:\Users\georgivelikov\Desktop\MVC\Project\Fancy\Fancy.Web\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 C:\Users\georgivelikov\Desktop\MVC\Project\Fancy\Fancy.Web\obj\Debug\Fancy.Web.dll
 C:\Users\georgivelikov\Desktop\MVC\Project\Fancy\Fancy.Web\obj\Debug\Fancy.Web.pdb
+C:\Users\georgivelikov\Desktop\MVC\Project\Fancy\Fancy.Web\obj\Debug\Fancy.Web.csprojResolveAssemblyReference.cache
+C:\Users\georgivelikov\Desktop\MVC\Project\Fancy\Fancy.Web\bin\Fancy.Data.dll
+C:\Users\georgivelikov\Desktop\MVC\Project\Fancy\Fancy.Web\bin\Fancy.Data.Models.dll
+C:\Users\georgivelikov\Desktop\MVC\Project\Fancy\Fancy.Web\bin\Fancy.Data.Models.pdb
+C:\Users\georgivelikov\Desktop\MVC\Project\Fancy\Fancy.Web\bin\Fancy.Data.pdb

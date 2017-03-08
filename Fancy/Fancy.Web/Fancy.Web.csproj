@@ -215,8 +215,11 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Areas\Administration\AdministrationAreaRegistration.cs" />
     <Compile Include="Areas\Items\Controllers\ItemsController.cs" />
+    <Compile Include="Areas\Items\Controllers\PromotionsController.cs" />
     <Compile Include="Areas\Items\ItemsAreaRegistration.cs" />
+    <Compile Include="Areas\Profile\ProfileAreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -225,7 +228,6 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -247,8 +249,11 @@
     <Content Include="Areas\Items\Views\Items\Necklaces.cshtml" />
     <Content Include="Areas\Items\Views\Items\Earings.cshtml" />
     <Content Include="Areas\Items\Views\Items\Sets.cshtml" />
-    <Content Include="Areas\Items\Views\Items\AllItems.cshtml" />
     <Content Include="Areas\Items\Views\Items\Bracelets.cshtml" />
+    <Content Include="Areas\Items\Views\Items\NewItems.cshtml" />
+    <Content Include="Areas\Administration\Views\web.config" />
+    <Content Include="Areas\Profile\Views\web.config" />
+    <Content Include="Areas\Items\Views\Promotions\Promotions.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -295,9 +300,14 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
+    <Folder Include="Areas\Administration\Controllers\" />
+    <Folder Include="Areas\Administration\Models\" />
+    <Folder Include="Areas\Administration\Views\Shared\" />
     <Folder Include="Areas\Items\Models\" />
     <Folder Include="Areas\Items\Views\Shared\" />
+    <Folder Include="Areas\Profile\Controllers\" />
+    <Folder Include="Areas\Profile\Models\" />
+    <Folder Include="Areas\Profile\Views\Shared\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -305,6 +315,16 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Fancy.Data.Models\Fancy.Data.Models.csproj">
+      <Project>{d8ce7b15-357a-491a-a67d-f7b4285d3e69}</Project>
+      <Name>Fancy.Data.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Fancy.Data\Fancy.Data.csproj">
+      <Project>{f914fd15-203d-4e3a-9665-f4578e797cdf}</Project>
+      <Name>Fancy.Data</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
