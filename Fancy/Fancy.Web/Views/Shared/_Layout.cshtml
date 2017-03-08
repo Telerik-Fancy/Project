@@ -11,10 +11,10 @@
 <body>
     <header>
         <nav class="navbar navbar-default">
-            @Html.ActionLink("FANCY.COM", "Index", "Home", null, new { @class = "navbar-item", id = "navbar-home-id" })
-            @Html.ActionLink("Home", "Index", "Home", null, new { @class = "navbar-item", id = "navbar-home-id" })
-            @Html.ActionLink("Newest", "Index", "Home", null, new { @class = "navbar-item", id = "navbar-newest-id" })
-            @Html.ActionLink("Promotions", "Index", "Home", null, new { @class = "navbar-item", id = "navbar-promotions-id" })
+            @Html.ActionLink("FANCY.COM", "Index", "Home", new { area = "" }, new { @class = "navbar-item", id = "navbar-home-id" })
+            @Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "navbar-item", id = "navbar-home-id" })
+            @Html.ActionLink("Newest", "Index", "Home", new { area = "" }, new { @class = "navbar-item", id = "navbar-newest-id" })
+            @Html.ActionLink("Promotions", "Index", "Home", new { area = "" }, new { @class = "navbar-item", id = "navbar-promotions-id" })
             @Html.Partial("_LoginPartial")
         </nav>
     </header>
@@ -22,12 +22,12 @@
         <div class="row">
             <aside class="left">
                 <ul class="nav nav-pills nav-stacked">
-                    <li class="active">@Html.ActionLink("Our Jewellry", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Necklaces", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Earings", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Bracelets", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Sets", "Index", "Home")</li>
-                    <li>@Html.ActionLink("All", "Index", "Home")</li>
+                    <li class="active">@Html.ActionLink("Our Jewellry", "Index", "Home", new { area = "Items" }, null)</li>
+                    <li>@Html.ActionLink("Necklaces", "Necklaces", "Items", new { area = "Items" }, null)</li>
+                    <li>@Html.ActionLink("Earings", "Earings", "Items", new { area = "Items" }, null)</li>
+                    <li>@Html.ActionLink("Bracelets", "Bracelets", "Items", new { area = "Items" }, null)</li>
+                    <li>@Html.ActionLink("Sets", "Sets", "Items", new { area = "Items" }, null)</li>
+                    <li>@Html.ActionLink("All Items", "AllItems", "Items", new { area = "Items" }, null)</li>
                 </ul>
             </aside>
             <main class="left">

@@ -215,6 +215,8 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Areas\Items\Controllers\ItemsController.cs" />
+    <Compile Include="Areas\Items\ItemsAreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -241,6 +243,12 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Areas\Items\Views\web.config" />
+    <Content Include="Areas\Items\Views\Items\Necklaces.cshtml" />
+    <Content Include="Areas\Items\Views\Items\Earings.cshtml" />
+    <Content Include="Areas\Items\Views\Items\Sets.cshtml" />
+    <Content Include="Areas\Items\Views\Items\AllItems.cshtml" />
+    <Content Include="Areas\Items\Views\Items\Bracelets.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -288,6 +296,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Items\Models\" />
+    <Folder Include="Areas\Items\Views\Shared\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

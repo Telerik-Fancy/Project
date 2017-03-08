@@ -16,6 +16,6 @@
 }
 else
 {
-    @Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink", @class = "navbar-item navbar-right navbar-account-item" })
-    @Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink", @class = "navbar-item navbar-right navbar-account-item" })
+    @Html.ActionLink("Log in", "Login", "Account", new { area = "" }, new { id = "loginLink", @class = "navbar-item navbar-right navbar-account-item" })
+    @Html.ActionLink("Register", "Register", "Account", new { area = "" }, new { id = "registerLink", @class = "navbar-item navbar-right navbar-account-item" })
 }

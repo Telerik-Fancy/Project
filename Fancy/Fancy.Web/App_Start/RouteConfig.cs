@@ -15,15 +15,17 @@ namespace Fancy.Web
 
             routes.MapRoute(
                 name: "Home",
-                url: "Home/Index",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+                url: "{controller}/{action}",
+                defaults: new { controller = "Home", action = "Index" },
+                namespaces: new string[] { "Fancy.Web.Controllers" }
             );
 
-            routes.MapRoute(
-                name: "Default",
-                url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
-            );
+            //routes.MapRoute(
+            //    name: "Default",
+            //    url: "{controller}/{action}",
+            //    defaults: new { controller = "Home", action = "Index" },
+            //    namespaces: new string[] { "Fancy.Web.Controllers" }
+            //);
         }
     }
 }
