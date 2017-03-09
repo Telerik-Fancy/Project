@@ -1,5 +1,5 @@
 ﻿using Fancy.Data.Contexts;
-using Fancy.Data.Models;
+using Fancy.Data.Models.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System.Data.Entity.Migrations;

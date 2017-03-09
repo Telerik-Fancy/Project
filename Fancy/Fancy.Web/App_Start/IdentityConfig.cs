@@ -11,7 +11,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
 using Fancy.Web.Models;
-using Fancy.Data.Models;
+using Fancy.Data.Models.Models;
 using Fancy.Data.Contexts;
 
 namespace Fancy.Web

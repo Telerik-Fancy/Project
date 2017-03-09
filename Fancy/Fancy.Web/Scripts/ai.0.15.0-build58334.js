@@ -2173,7 +2173,7 @@ var Microsoft;
                 var configGetters = {
                     instrumentationKey: function () { return _this.config.instrumentationKey; },
                     accountId: function () { return _this.config.accountId; },
-                    appUserId: function () { return _this.config.appUserId; },
+                    UserId: function () { return _this.config.UserId; },
                     sessionRenewalMs: function () { return _this.config.sessionRenewalMs; },
                     sessionExpirationMs: function () { return _this.config.sessionExpirationMs; },
                     endpointUrl: function () { return _this.config.endpointUrl; },
@@ -2597,7 +2597,7 @@ var Microsoft;
                 }
                 config.endpointUrl = config.endpointUrl || "//dc.services.visualstudio.com/v2/track";
                 config.accountId = config.accountId;
-                config.appUserId = config.appUserId;
+                config.UserId = config.UserId;
                 config.sessionRenewalMs = 30 * 60 * 1000;
                 config.sessionExpirationMs = 24 * 60 * 60 * 1000;
                 config.maxBatchSizeInBytes = config.maxBatchSizeInBytes > 0 ? config.maxBatchSizeInBytes : 1000000;
