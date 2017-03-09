@@ -6,12 +6,14 @@
     {
     @Html.AntiForgeryToken()
 
-    <ul class="nav navbar-nav navbar-right">
-        <li>
-            @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
-        </li>
-        <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
-    </ul>
+    <div class="navbar-right">
+        @if (User.IsInRole("Administrator"))
+        {
+                @Html.ActionLink("Admin area", "Index", "Home", new { area = "" }, new { id = "adminAreaLink", @class = "navbar-item navbar-account-item" })
+        }
+        @Html.ActionLink(User.Identity.GetUserName(), "Index", "Home", new { area = "" }, new { id = "logoutLink", @class = "navbar-item navbar-account-item" })
+        <a href="javascript:document.getElementById('logoutForm').submit()" class="navbar-item navbar-account-item">Log off</a>
+    </div>
     }
 }
 else

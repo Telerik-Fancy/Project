@@ -4,7 +4,8 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - Fancy.com</title>
-    @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/silver-theme.css")
+    @Styles.Render("~/Content/shared.css")
     @Scripts.Render("~/bundles/modernizr")
 
 </head>
@@ -20,15 +21,7 @@
     </header>
     <div id="container">
         <div class="row">
-            <aside class="left">
-                <ul class="nav nav-pills nav-stacked">
-                    <li class="active">@Html.ActionLink("Our Jewellry", "Index", "Home", new { area = "Items" }, null)</li>
-                    <li>@Html.ActionLink("Necklaces", "Necklaces", "Items", new { area = "Items" }, null)</li>
-                    <li>@Html.ActionLink("Earings", "Earings", "Items", new { area = "Items" }, null)</li>
-                    <li>@Html.ActionLink("Bracelets", "Bracelets", "Items", new { area = "Items" }, null)</li>
-                    <li>@Html.ActionLink("Sets", "Sets", "Items", new { area = "Items" }, null)</li>
-                </ul>
-            </aside>
+            @Html.Partial("_AsideNavPartial")
             <main class="left">
                 @RenderBody()
                 <hr />

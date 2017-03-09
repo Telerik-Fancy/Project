@@ -1,5 +1,9 @@
 ﻿using Fancy.Data.Contexts;
+using Fancy.Data.Models;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 using System.Data.Entity.Migrations;
+using System.Linq;
 
 namespace Fancy.Data.Migrations
 {
@@ -19,32 +23,30 @@ namespace Fancy.Data.Migrations
 
         private void SeedRoles(FancyDbContext context)
         {
-            //if (context.Roles.Count() == 0)
-            //{
-            //    var roleStore = new RoleStore<IdentityRole>(context);
-            //    var roleManager = new RoleManager<IdentityRole>(roleStore);
-            //    var normalRole = new IdentityRole { Name = UserRole.Normal };
-            //    var moderatorRole = new IdentityRole { Name = UserRole.Moderator };
-            //    var adminRole = new IdentityRole { Name = UserRole.Administrator };
+            if (context.Roles.Count() == 0)
+            {
+                var roleStore = new RoleStore<IdentityRole>(context);
+                var roleManager = new RoleManager<IdentityRole>(roleStore);
+                var regularRole = new IdentityRole { Name = "Regular" };
+                var administratorRole = new IdentityRole { Name = "Administrator" };
 
-            //    roleManager.Create(normalRole);
-            //    roleManager.Create(moderatorRole);
-            //    roleManager.Create(adminRole);
-            //}
+                roleManager.Create(regularRole);
+                roleManager.Create(administratorRole);
+            }
         }
 
         private void SeedUsers(FancyDbContext context)
         {
-            //var userStore = new UserStore<User>(context);
-            //var userManager = new UserManager<User>(userStore);
+            var userStore = new UserStore<User>(context);
+            var userManager = new UserManager<User>(userStore);
 
-            //if (!context.Users.Any(u => u.UserName == "admin"))
-            //{
-            //    var adminUser = new User { UserName = "admin", Email = "admin@admin.com" };
+            if (!context.Users.Any(u => u.UserName == "admin@gmail.com"))
+            {
+                var adminUser = new User { UserName = "admin@gmail.com", Email = "admin@gmail.com" };
 
-            //    userManager.Create(adminUser, WebConfigurationManager.AppSettings["AdminPassword"]);
-            //    userManager.AddToRole(adminUser.Id, UserRole.Administrator);
-            //}
+                userManager.Create(adminUser, "123456");
+                userManager.AddToRole(adminUser.Id, "Administrator");
+            }
         }
     }
 }
