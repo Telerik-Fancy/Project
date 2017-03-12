@@ -1,0 +1,10 @@
+﻿img {
+    margin: 10px;
+    width:90%;
+    height: 450px;
+}
+
+#background-holder {
+    text-align: center;
+    display: inline-block;
+}

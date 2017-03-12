@@ -9,7 +9,7 @@
     <div class="navbar-right">
         @if (User.IsInRole("Administrator"))
         {
-                @Html.ActionLink("Admin area", "Index", "Home", new { area = "" }, new { id = "adminAreaLink", @class = "navbar-item navbar-account-item" })
+                @Html.ActionLink("Admin area", "Index", "Admin", new { area = "Admin" }, new { id = "adminAreaLink", @class = "navbar-item navbar-account-item" })
         }
         @Html.ActionLink(User.Identity.GetUserName(), "Index", "Home", new { area = "" }, new { id = "logoutLink", @class = "navbar-item navbar-account-item" })
         <a href="javascript:document.getElementById('logoutForm').submit()" class="navbar-item navbar-account-item">Log off</a>

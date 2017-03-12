@@ -176,3 +176,5 @@ C:\Users\georgivelikov\Desktop\MVC\Project\Fancy\Fancy.Web\bin\Fancy.Data.dll
 C:\Users\georgivelikov\Desktop\MVC\Project\Fancy\Fancy.Web\bin\Fancy.Data.Models.dll
 C:\Users\georgivelikov\Desktop\MVC\Project\Fancy\Fancy.Web\bin\Fancy.Data.Models.pdb
 C:\Users\georgivelikov\Desktop\MVC\Project\Fancy\Fancy.Web\bin\Fancy.Data.pdb
+C:\Users\georgivelikov\Desktop\MVC\Project\Fancy\Fancy.Web\bin\Fancy.Common.dll
+C:\Users\georgivelikov\Desktop\MVC\Project\Fancy\Fancy.Web\bin\Fancy.Common.pdb

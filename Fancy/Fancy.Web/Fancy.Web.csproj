@@ -44,6 +44,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=5.2.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.5.2.0\lib\net45\AutoMapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Glimpse.Ado, Version=1.7.3.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Glimpse.Ado.1.7.3\lib\net45\Glimpse.Ado.dll</HintPath>
       <Private>True</Private>
@@ -213,9 +217,14 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
+    <Compile Include="App_Start\Mappings\AutomapperConfig.cs" />
+    <Compile Include="App_Start\Mappings\Profiles\DataModelToViewModel.cs" />
+    <Compile Include="App_Start\Mappings\Profiles\ViewModelToDataModel.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
-    <Compile Include="Areas\Administration\AdministrationAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\AdminRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\AdminController.cs" />
+    <Compile Include="Areas\Admin\Models\AddItemViewModel.cs" />
     <Compile Include="Areas\Items\Controllers\ItemsController.cs" />
     <Compile Include="Areas\Items\Controllers\PromotionsController.cs" />
     <Compile Include="Areas\Items\ItemsAreaRegistration.cs" />
@@ -253,9 +262,10 @@
     <Content Include="Areas\Items\Views\Items\Sets.cshtml" />
     <Content Include="Areas\Items\Views\Items\Bracelets.cshtml" />
     <Content Include="Areas\Items\Views\Items\NewItems.cshtml" />
-    <Content Include="Areas\Administration\Views\web.config" />
+    <Content Include="Areas\Admin\Views\web.config" />
     <Content Include="Areas\Profile\Views\web.config" />
     <Content Include="Areas\Items\Views\Promotions\Promotions.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\Index.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -303,9 +313,7 @@
     <Content Include="Views\Shared\_AsideNavPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Areas\Administration\Controllers\" />
-    <Folder Include="Areas\Administration\Models\" />
-    <Folder Include="Areas\Administration\Views\Shared\" />
+    <Folder Include="Areas\Admin\Views\Shared\" />
     <Folder Include="Areas\Items\Models\" />
     <Folder Include="Areas\Items\Views\Shared\" />
     <Folder Include="Areas\Profile\Controllers\" />
@@ -320,6 +328,10 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Fancy.Common\Fancy.Common.csproj">
+      <Project>{b6a3113c-98a3-4dd8-8656-43ddef199879}</Project>
+      <Name>Fancy.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Fancy.Data.Models\Fancy.Data.Models.csproj">
       <Project>{d8ce7b15-357a-491a-a67d-f7b4285d3e69}</Project>
       <Name>Fancy.Data.Models</Name>

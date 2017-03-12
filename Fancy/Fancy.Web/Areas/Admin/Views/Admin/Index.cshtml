@@ -1,0 +1,71 @@
+﻿@model Fancy.Web.Areas.Admin.Models.AddItemViewModel
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>
+    Admin Area
+</h1>
+@*<hr />
+<a href="#" id="add-item-button" class="btn btn-primary">
+    Add new item
+</a>*@
+@using (Html.BeginForm("AddItem", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    <br />
+    <fieldset>
+        <legend>
+            Add new item
+        </legend>
+        <label>
+            Item Type:
+        </label>
+        @Html.EnumDropDownListFor(m => m.ItemType, "Select item type", new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.ItemType, string.Empty)
+        @*@Html.ValidationMessageFor(m => m.Category, string.Empty, new { @class = CssClass.ValidationErrorMessage })*@
+        <br />         
+        <label>
+            Material:
+        </label>
+        @Html.EnumDropDownListFor(m => m.MainMaterial, "Select material", new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.MainMaterial, string.Empty)
+        <br />  
+
+        <label>
+            Colour:
+        </label>
+        @Html.EnumDropDownListFor(m => m.MainColour, "Select colour", new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.MainColour, string.Empty)
+        <br />
+        <label>Image:</label>
+        @Html.TextBoxFor(m => m.Image, new { type = "file"})
+        <br />
+        <label>
+            Price:
+        </label>
+        <br />
+        @Html.EditorFor(m => m.Price, new { @type = "number", @class = "form-control", @min = "0" })
+        <br />
+        <br />
+        <label>
+            Quantity:
+        </label>
+        <br />
+        @Html.EditorFor(m => m.Quantity, new { @type = "number", @class = "form-control", @min = "0" })
+        <br />
+        <br />
+        <button type="submit" class="btn btn-success">
+            Add
+        </button>
+
+    </fieldset>
+    <hr />
+}
+
+<a href="#" id="add-promotion-button" class="btn btn-primary">
+    Create promotion
+</a> 
+
+
