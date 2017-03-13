@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Fancy.Common.Enums;
+using System;
 using System.Collections.Generic;
 
 namespace Fancy.Data.Models.Models
@@ -14,21 +15,28 @@ namespace Fancy.Data.Models.Models
 
         public int Id { get; set; }
 
-        public int ItemTypeId { get; set; }
+        public string ItemCode { get; set; }
 
-        public virtual ItemType ItemType { get; set; }
+        public ItemType ItemType { get; set; }
 
-        public int MainMaterialId { get; set; }
+        public MainColour MainColour { get; set; }
 
-        public virtual MainMaterial MainMaterial { get; set; }
-
-        public int MainColourId { get; set; }
-
-        public virtual MainColour MainColour { get; set; }
+        public MainMaterial MainMaterial { get; set; }
 
         public byte[] ImageBytes { get; set; }
 
-        public virtual ICollection<Order> Orders { get; set; }
+        public virtual ICollection<Order> Orders
+        {
+            get
+            {
+                return this.orders;
+            }
+
+            set
+            {
+                this.orders = value;
+            }
+        }
 
         public decimal Price { get; set; }
 

@@ -1,6 +1,6 @@
 ﻿namespace Fancy.Common.Enums
 {
-    public enum MainColourEnum
+    public enum MainColour
     {
         Red = 1,
         Blue = 2,

@@ -68,6 +68,9 @@
       <HintPath>..\packages\Glimpse.Mvc5.1.5.3\lib\net45\Glimpse.Mvc5.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Kendo.Mvc">
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Telerik\UI for ASP.NET MVC R1 2017\wrappers\aspnetmvc\Binaries\Mvc5\Kendo.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.AI.Agent.Intercept, Version=1.2.0.1011, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.1.2.0\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
       <Private>True</Private>
@@ -101,6 +104,22 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Ninject, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.3.2.2.0\lib\net45-full\Ninject.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Ninject.Extensions.Conventions, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.Extensions.Conventions.3.2.0.0\lib\net45-full\Ninject.Extensions.Conventions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Ninject.Web.Common, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.Web.Common.3.2.0.0\lib\net45-full\Ninject.Web.Common.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Ninject.Web.Mvc, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.MVC5.3.2.1.0\lib\net45-full\Ninject.Web.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -153,6 +172,10 @@
     <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="WebActivatorEx, Version=2.0.0.0, Culture=neutral, PublicKeyToken=7b26dc2a43f6a0d4, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebActivatorEx.2.0\lib\net40\WebActivatorEx.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="WebGrease">
       <Private>True</Private>
@@ -214,12 +237,16 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\AutomapperProfiles\DataToModelView.cs" />
+    <Compile Include="App_Start\AutomapperProfiles\ModelViewToData.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
-    <Compile Include="App_Start\Mappings\AutomapperConfig.cs" />
-    <Compile Include="App_Start\Mappings\Profiles\DataModelToViewModel.cs" />
-    <Compile Include="App_Start\Mappings\Profiles\ViewModelToDataModel.cs" />
+    <Compile Include="App_Start\NinjectModules\AuthomapperNinjectModule.cs" />
+    <Compile Include="App_Start\NinjectModules\CommonNinjectModule.cs" />
+    <Compile Include="App_Start\NinjectModules\DataNinjectModule.cs" />
+    <Compile Include="App_Start\NinjectModules\ServicesNinjectModule.cs" />
+    <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Areas\Admin\AdminRegistration.cs" />
@@ -240,19 +267,95 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="WebUtils\Contracts\IImageConverter.cs" />
+    <Compile Include="WebUtils\ImageConverter.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\home.css" />
     <Content Include="Content\images\background.jpg" />
+    <Content Include="Content\kendo\kendo.black.min.css" />
+    <Content Include="Content\kendo\kendo.black.mobile.min.css" />
+    <Content Include="Content\kendo\kendo.blueopal.min.css" />
+    <Content Include="Content\kendo\kendo.blueopal.mobile.min.css" />
+    <Content Include="Content\kendo\kendo.bootstrap-v4.min.css" />
+    <Content Include="Content\kendo\kendo.bootstrap.min.css" />
+    <Content Include="Content\kendo\kendo.bootstrap.mobile.min.css" />
+    <Content Include="Content\kendo\kendo.common-bootstrap.core.min.css" />
+    <Content Include="Content\kendo\kendo.common-bootstrap.min.css" />
+    <Content Include="Content\kendo\kendo.common-fiori.min.css" />
+    <Content Include="Content\kendo\kendo.common-material.core.min.css" />
+    <Content Include="Content\kendo\kendo.common-material.min.css" />
+    <Content Include="Content\kendo\kendo.common-nova.core.min.css" />
+    <Content Include="Content\kendo\kendo.common-nova.min.css" />
+    <Content Include="Content\kendo\kendo.common-office365.min.css" />
+    <Content Include="Content\kendo\kendo.common.core.min.css" />
+    <Content Include="Content\kendo\kendo.common.min.css" />
+    <Content Include="Content\kendo\kendo.dataviz.black.min.css" />
+    <Content Include="Content\kendo\kendo.dataviz.blueopal.min.css" />
+    <Content Include="Content\kendo\kendo.dataviz.bootstrap.min.css" />
+    <Content Include="Content\kendo\kendo.dataviz.default.min.css" />
+    <Content Include="Content\kendo\kendo.dataviz.fiori.min.css" />
+    <Content Include="Content\kendo\kendo.dataviz.flat.min.css" />
+    <Content Include="Content\kendo\kendo.dataviz.highcontrast.min.css" />
+    <Content Include="Content\kendo\kendo.dataviz.material.min.css" />
+    <Content Include="Content\kendo\kendo.dataviz.materialblack.min.css" />
+    <Content Include="Content\kendo\kendo.dataviz.metro.min.css" />
+    <Content Include="Content\kendo\kendo.dataviz.metroblack.min.css" />
+    <Content Include="Content\kendo\kendo.dataviz.min.css" />
+    <Content Include="Content\kendo\kendo.dataviz.mobile.min.css" />
+    <Content Include="Content\kendo\kendo.dataviz.moonlight.min.css" />
+    <Content Include="Content\kendo\kendo.dataviz.nova.min.css" />
+    <Content Include="Content\kendo\kendo.dataviz.office365.min.css" />
+    <Content Include="Content\kendo\kendo.dataviz.silver.min.css" />
+    <Content Include="Content\kendo\kendo.dataviz.uniform.min.css" />
+    <Content Include="Content\kendo\kendo.default-v2.min.css" />
+    <Content Include="Content\kendo\kendo.default.min.css" />
+    <Content Include="Content\kendo\kendo.default.mobile.min.css" />
+    <Content Include="Content\kendo\kendo.fiori.min.css" />
+    <Content Include="Content\kendo\kendo.fiori.mobile.min.css" />
+    <Content Include="Content\kendo\kendo.flat.min.css" />
+    <Content Include="Content\kendo\kendo.flat.mobile.min.css" />
+    <Content Include="Content\kendo\kendo.highcontrast.min.css" />
+    <Content Include="Content\kendo\kendo.highcontrast.mobile.min.css" />
+    <Content Include="Content\kendo\kendo.material.min.css" />
+    <Content Include="Content\kendo\kendo.material.mobile.min.css" />
+    <Content Include="Content\kendo\kendo.materialblack.min.css" />
+    <Content Include="Content\kendo\kendo.materialblack.mobile.min.css" />
+    <Content Include="Content\kendo\kendo.metro.min.css" />
+    <Content Include="Content\kendo\kendo.metro.mobile.min.css" />
+    <Content Include="Content\kendo\kendo.metroblack.min.css" />
+    <Content Include="Content\kendo\kendo.metroblack.mobile.min.css" />
+    <Content Include="Content\kendo\kendo.mobile.all.min.css" />
+    <Content Include="Content\kendo\kendo.mobile.android.dark.min.css" />
+    <Content Include="Content\kendo\kendo.mobile.android.light.min.css" />
+    <Content Include="Content\kendo\kendo.mobile.blackberry.min.css" />
+    <Content Include="Content\kendo\kendo.mobile.common.min.css" />
+    <Content Include="Content\kendo\kendo.mobile.fiori.min.css" />
+    <Content Include="Content\kendo\kendo.mobile.flat.min.css" />
+    <Content Include="Content\kendo\kendo.mobile.ios.min.css" />
+    <Content Include="Content\kendo\kendo.mobile.material.min.css" />
+    <Content Include="Content\kendo\kendo.mobile.meego.min.css" />
+    <Content Include="Content\kendo\kendo.mobile.nova.min.css" />
+    <Content Include="Content\kendo\kendo.mobile.office365.min.css" />
+    <Content Include="Content\kendo\kendo.mobile.wp8.min.css" />
+    <Content Include="Content\kendo\kendo.moonlight.min.css" />
+    <Content Include="Content\kendo\kendo.moonlight.mobile.min.css" />
+    <Content Include="Content\kendo\kendo.nova.min.css" />
+    <Content Include="Content\kendo\kendo.nova.mobile.min.css" />
+    <Content Include="Content\kendo\kendo.office365.min.css" />
+    <Content Include="Content\kendo\kendo.office365.mobile.min.css" />
+    <Content Include="Content\kendo\kendo.rtl.min.css" />
+    <Content Include="Content\kendo\kendo.silver.min.css" />
+    <Content Include="Content\kendo\kendo.silver.mobile.min.css" />
+    <Content Include="Content\kendo\kendo.uniform.min.css" />
+    <Content Include="Content\kendo\kendo.uniform.mobile.min.css" />
     <Content Include="Content\shared.css" />
     <Content Include="Content\silver-theme.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="Scripts\ai.0.15.0-build58334.js" />
-    <Content Include="Scripts\ai.0.15.0-build58334.min.js" />
-    <Content Include="Scripts\bootstrap.js" />
-    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Libraries\Kendo.Mvc.dll" />
+    <Content Include="Libraries\Kendo.Mvc.xml" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -266,18 +369,97 @@
     <Content Include="Areas\Profile\Views\web.config" />
     <Content Include="Areas\Items\Views\Promotions\Promotions.cshtml" />
     <Content Include="Areas\Admin\Views\Admin\Index.cshtml" />
-    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
-    <Content Include="Scripts\jquery-1.10.2.js" />
-    <Content Include="Scripts\jquery-1.10.2.min.js" />
-    <None Include="Scripts\jquery.validate-vsdoc.js" />
-    <Content Include="Scripts\jquery.validate.js" />
-    <Content Include="Scripts\jquery.validate.min.js" />
-    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
-    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
-    <Content Include="Scripts\modernizr-2.6.2.js" />
-    <Content Include="Scripts\respond.js" />
-    <Content Include="Scripts\respond.min.js" />
-    <Content Include="Scripts\_references.js" />
+    <Content Include="Content\kendo\kendo.black.min.css.map" />
+    <Content Include="Content\kendo\kendo.black.mobile.min.css.map" />
+    <Content Include="Content\kendo\kendo.blueopal.min.css.map" />
+    <Content Include="Content\kendo\kendo.blueopal.mobile.min.css.map" />
+    <Content Include="Content\kendo\kendo.bootstrap-v4.min.css.map" />
+    <Content Include="Content\kendo\kendo.bootstrap.min.css.map" />
+    <Content Include="Content\kendo\kendo.bootstrap.mobile.min.css.map" />
+    <Content Include="Content\kendo\kendo.common-bootstrap.core.min.css.map" />
+    <Content Include="Content\kendo\kendo.common-bootstrap.min.css.map" />
+    <Content Include="Content\kendo\kendo.common-fiori.min.css.map" />
+    <Content Include="Content\kendo\kendo.common-material.core.min.css.map" />
+    <Content Include="Content\kendo\kendo.common-material.min.css.map" />
+    <Content Include="Content\kendo\kendo.common-nova.core.min.css.map" />
+    <Content Include="Content\kendo\kendo.common-nova.min.css.map" />
+    <Content Include="Content\kendo\kendo.common-office365.min.css.map" />
+    <Content Include="Content\kendo\kendo.common.core.min.css.map" />
+    <Content Include="Content\kendo\kendo.common.min.css.map" />
+    <Content Include="Content\kendo\kendo.dataviz.black.min.css.map" />
+    <Content Include="Content\kendo\kendo.dataviz.blueopal.min.css.map" />
+    <Content Include="Content\kendo\kendo.dataviz.bootstrap.min.css.map" />
+    <Content Include="Content\kendo\kendo.dataviz.default.min.css.map" />
+    <Content Include="Content\kendo\kendo.dataviz.fiori.min.css.map" />
+    <Content Include="Content\kendo\kendo.dataviz.flat.min.css.map" />
+    <Content Include="Content\kendo\kendo.dataviz.highcontrast.min.css.map" />
+    <Content Include="Content\kendo\kendo.dataviz.material.min.css.map" />
+    <Content Include="Content\kendo\kendo.dataviz.materialblack.min.css.map" />
+    <Content Include="Content\kendo\kendo.dataviz.metro.min.css.map" />
+    <Content Include="Content\kendo\kendo.dataviz.metroblack.min.css.map" />
+    <Content Include="Content\kendo\kendo.dataviz.min.css.map" />
+    <Content Include="Content\kendo\kendo.dataviz.mobile.min.css.map" />
+    <Content Include="Content\kendo\kendo.dataviz.moonlight.min.css.map" />
+    <Content Include="Content\kendo\kendo.dataviz.nova.min.css.map" />
+    <Content Include="Content\kendo\kendo.dataviz.office365.min.css.map" />
+    <Content Include="Content\kendo\kendo.dataviz.silver.min.css.map" />
+    <Content Include="Content\kendo\kendo.dataviz.uniform.min.css.map" />
+    <Content Include="Content\kendo\kendo.default-v2.min.css.map" />
+    <Content Include="Content\kendo\kendo.default.min.css.map" />
+    <Content Include="Content\kendo\kendo.default.mobile.min.css.map" />
+    <Content Include="Content\kendo\kendo.fiori.min.css.map" />
+    <Content Include="Content\kendo\kendo.fiori.mobile.min.css.map" />
+    <Content Include="Content\kendo\kendo.flat.min.css.map" />
+    <Content Include="Content\kendo\kendo.flat.mobile.min.css.map" />
+    <Content Include="Content\kendo\kendo.highcontrast.min.css.map" />
+    <Content Include="Content\kendo\kendo.highcontrast.mobile.min.css.map" />
+    <Content Include="Content\kendo\kendo.material.min.css.map" />
+    <Content Include="Content\kendo\kendo.material.mobile.min.css.map" />
+    <Content Include="Content\kendo\kendo.materialblack.min.css.map" />
+    <Content Include="Content\kendo\kendo.materialblack.mobile.min.css.map" />
+    <Content Include="Content\kendo\kendo.metro.min.css.map" />
+    <Content Include="Content\kendo\kendo.metro.mobile.min.css.map" />
+    <Content Include="Content\kendo\kendo.metroblack.min.css.map" />
+    <Content Include="Content\kendo\kendo.metroblack.mobile.min.css.map" />
+    <Content Include="Content\kendo\kendo.mobile.all.min.css.map" />
+    <Content Include="Content\kendo\kendo.mobile.android.dark.min.css.map" />
+    <Content Include="Content\kendo\kendo.mobile.android.light.min.css.map" />
+    <Content Include="Content\kendo\kendo.mobile.blackberry.min.css.map" />
+    <Content Include="Content\kendo\kendo.mobile.common.min.css.map" />
+    <Content Include="Content\kendo\kendo.mobile.fiori.min.css.map" />
+    <Content Include="Content\kendo\kendo.mobile.flat.min.css.map" />
+    <Content Include="Content\kendo\kendo.mobile.ios.min.css.map" />
+    <Content Include="Content\kendo\kendo.mobile.material.min.css.map" />
+    <Content Include="Content\kendo\kendo.mobile.meego.min.css.map" />
+    <Content Include="Content\kendo\kendo.mobile.nova.min.css.map" />
+    <Content Include="Content\kendo\kendo.mobile.office365.min.css.map" />
+    <Content Include="Content\kendo\kendo.mobile.wp8.min.css.map" />
+    <Content Include="Content\kendo\kendo.moonlight.min.css.map" />
+    <Content Include="Content\kendo\kendo.moonlight.mobile.min.css.map" />
+    <Content Include="Content\kendo\kendo.nova.min.css.map" />
+    <Content Include="Content\kendo\kendo.nova.mobile.min.css.map" />
+    <Content Include="Content\kendo\kendo.office365.min.css.map" />
+    <Content Include="Content\kendo\kendo.office365.mobile.min.css.map" />
+    <Content Include="Content\kendo\kendo.rtl.min.css.map" />
+    <Content Include="Content\kendo\kendo.silver.min.css.map" />
+    <Content Include="Content\kendo\kendo.silver.mobile.min.css.map" />
+    <Content Include="Content\kendo\kendo.uniform.min.css.map" />
+    <Content Include="Content\kendo\kendo.uniform.mobile.min.css.map" />
+    <Content Include="Areas\Items\Views\Shared\EditorTemplates\Currency.cshtml" />
+    <Content Include="Areas\Items\Views\Shared\EditorTemplates\Date.cshtml" />
+    <Content Include="Areas\Items\Views\Shared\EditorTemplates\DateTime.cshtml" />
+    <Content Include="Areas\Items\Views\Shared\EditorTemplates\Email.cshtml" />
+    <Content Include="Areas\Items\Views\Shared\EditorTemplates\EmailAddress.cshtml" />
+    <Content Include="Areas\Items\Views\Shared\EditorTemplates\GridForeignKey.cshtml" />
+    <Content Include="Areas\Items\Views\Shared\EditorTemplates\Integer.cshtml" />
+    <Content Include="Areas\Items\Views\Shared\EditorTemplates\Number.cshtml" />
+    <Content Include="Areas\Items\Views\Shared\EditorTemplates\Password.cshtml" />
+    <Content Include="Areas\Items\Views\Shared\EditorTemplates\String.cshtml" />
+    <Content Include="Areas\Items\Views\Shared\EditorTemplates\Time.cshtml" />
+    <Content Include="Areas\Items\Views\Shared\EditorTemplates\Url.cshtml" />
+    <Content Include="Scripts\jquery.min.js" />
+    <Content Include="Scripts\kendo\kendo.all.min.js" />
+    <Content Include="Scripts\kendo\kendo.aspnetmvc.min.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -315,17 +497,34 @@
   <ItemGroup>
     <Folder Include="Areas\Admin\Views\Shared\" />
     <Folder Include="Areas\Items\Models\" />
-    <Folder Include="Areas\Items\Views\Shared\" />
     <Folder Include="Areas\Profile\Controllers\" />
     <Folder Include="Areas\Profile\Models\" />
     <Folder Include="Areas\Profile\Views\Shared\" />
+    <Folder Include="Content\kendo\Black\" />
+    <Folder Include="Content\kendo\BlueOpal\" />
+    <Folder Include="Content\kendo\Bootstrap\" />
+    <Folder Include="Content\kendo\Default\" />
+    <Folder Include="Content\kendo\Fiori\" />
+    <Folder Include="Content\kendo\Flat\" />
+    <Folder Include="Content\kendo\fonts\" />
+    <Folder Include="Content\kendo\HighContrast\" />
+    <Folder Include="Content\kendo\images\" />
+    <Folder Include="Content\kendo\MaterialBlack\" />
+    <Folder Include="Content\kendo\Material\" />
+    <Folder Include="Content\kendo\MetroBlack\" />
+    <Folder Include="Content\kendo\Metro\" />
+    <Folder Include="Content\kendo\Moonlight\" />
+    <Folder Include="Content\kendo\Nova\" />
+    <Folder Include="Content\kendo\Office365\" />
+    <Folder Include="Content\kendo\Silver\" />
+    <Folder Include="Content\kendo\textures\" />
+    <Folder Include="Content\kendo\Uniform\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
-    <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Fancy.Common\Fancy.Common.csproj">
@@ -340,6 +539,14 @@
       <Project>{f914fd15-203d-4e3a-9665-f4578e797cdf}</Project>
       <Name>Fancy.Data</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Fancy.Services\Fancy.Services.csproj">
+      <Project>{327de3ce-ba92-4de1-8f0c-197e84673c37}</Project>
+      <Name>Fancy.Services</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Scripts\kendo\kendo.all.min.js.map" />
+    <Content Include="Scripts\kendo\kendo.aspnetmvc.min.js.map" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

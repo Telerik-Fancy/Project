@@ -86,21 +86,25 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Contexts\FancyDbContext.cs" />
-    <Compile Include="Contexts\Contracts\IDbContext.cs" />
-    <Compile Include="Contexts\Contracts\IFancyDbContext.cs" />
+    <Compile Include="Contexts\IDbContext.cs" />
+    <Compile Include="Contexts\IFancyDbContext.cs" />
+    <Compile Include="Data\EfFancyData.cs" />
+    <Compile Include="Data\IEfFancyData.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repositories\Contracts\IRepository.cs" />
-    <Compile Include="Repositories\Repository.cs" />
+    <Compile Include="Repositories\IEfGenericRepository.cs" />
+    <Compile Include="Repositories\EfGenericRepository.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="UnitOfWork\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Fancy.Common\Fancy.Common.csproj">
+      <Project>{b6a3113c-98a3-4dd8-8656-43ddef199879}</Project>
+      <Name>Fancy.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Fancy.Data.Models\Fancy.Data.Models.csproj">
       <Project>{d8ce7b15-357a-491a-a67d-f7b4285d3e69}</Project>
       <Name>Fancy.Data.Models</Name>

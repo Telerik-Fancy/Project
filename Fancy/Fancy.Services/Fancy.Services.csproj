@@ -44,11 +44,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="Common\Contracts\IMappingService.cs" />
+    <Compile Include="Common\MappingService.cs" />
+    <Compile Include="Data\Contracts\IItemService.cs" />
+    <Compile Include="Data\ItemService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Fancy.Data.Models\Fancy.Data.Models.csproj">
+      <Project>{d8ce7b15-357a-491a-a67d-f7b4285d3e69}</Project>
+      <Name>Fancy.Data.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Fancy.Data\Fancy.Data.csproj">
+      <Project>{f914fd15-203d-4e3a-9665-f4578e797cdf}</Project>
+      <Name>Fancy.Data</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

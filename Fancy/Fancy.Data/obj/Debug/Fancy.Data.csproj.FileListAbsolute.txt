@@ -3,6 +3,7 @@ C:\Users\georgivelikov\Desktop\MVC\Project\Fancy\Fancy.Data\bin\Debug\Fancy.Data
 C:\Users\georgivelikov\Desktop\MVC\Project\Fancy\Fancy.Data\bin\Debug\Fancy.Data.pdb
 C:\Users\georgivelikov\Desktop\MVC\Project\Fancy\Fancy.Data\bin\Debug\EntityFramework.dll
 C:\Users\georgivelikov\Desktop\MVC\Project\Fancy\Fancy.Data\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\georgivelikov\Desktop\MVC\Project\Fancy\Fancy.Data\bin\Debug\Fancy.Common.dll
 C:\Users\georgivelikov\Desktop\MVC\Project\Fancy\Fancy.Data\bin\Debug\Fancy.Data.Models.dll
 C:\Users\georgivelikov\Desktop\MVC\Project\Fancy\Fancy.Data\bin\Debug\Microsoft.AspNet.Identity.Core.dll
 C:\Users\georgivelikov\Desktop\MVC\Project\Fancy\Fancy.Data\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
@@ -13,6 +14,7 @@ C:\Users\georgivelikov\Desktop\MVC\Project\Fancy\Fancy.Data\bin\Debug\Microsoft.
 C:\Users\georgivelikov\Desktop\MVC\Project\Fancy\Fancy.Data\bin\Debug\Microsoft.Owin.Security.OAuth.dll
 C:\Users\georgivelikov\Desktop\MVC\Project\Fancy\Fancy.Data\bin\Debug\Newtonsoft.Json.dll
 C:\Users\georgivelikov\Desktop\MVC\Project\Fancy\Fancy.Data\bin\Debug\Owin.dll
+C:\Users\georgivelikov\Desktop\MVC\Project\Fancy\Fancy.Data\bin\Debug\Fancy.Common.pdb
 C:\Users\georgivelikov\Desktop\MVC\Project\Fancy\Fancy.Data\bin\Debug\Fancy.Data.Models.pdb
 C:\Users\georgivelikov\Desktop\MVC\Project\Fancy\Fancy.Data\bin\Debug\EntityFramework.xml
 C:\Users\georgivelikov\Desktop\MVC\Project\Fancy\Fancy.Data\bin\Debug\EntityFramework.SqlServer.xml

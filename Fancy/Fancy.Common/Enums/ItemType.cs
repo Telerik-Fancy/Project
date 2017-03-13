@@ -1,6 +1,6 @@
 ﻿namespace Fancy.Common.Enums
 {
-    public enum ItemTypeEnum
+    public enum ItemType
     {
         Necklace = 1,
         Earings = 2,

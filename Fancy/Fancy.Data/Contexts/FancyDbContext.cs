@@ -1,10 +1,8 @@
 ﻿using System.Data.Entity;
 using Fancy.Data.Models.Models;
-using Fancy.Data.Contexts.Contracts;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Fancy.Data.Migrations;
 using System.Data.Entity.ModelConfiguration.Conventions;
-using System;
 
 namespace Fancy.Data.Contexts
 {
@@ -28,17 +26,11 @@ namespace Fancy.Data.Contexts
             return base.Set<T>();
         }
 
-        public IDbSet<Item> Items { get; set; }
+        public virtual IDbSet<Item> Items { get; set; }
 
-        public IDbSet<ItemType> ItemTypes { get; set; }
+        public virtual IDbSet<Order> Orders { get; set; }
 
-        public IDbSet<MainColour> MainColours { get; set; }
-
-        public IDbSet<MainMaterial> MainMaterial { get; set; }
-
-        public IDbSet<Order> Orders { get; set; }
-
-        public IDbSet<OrderStatus> OrderStatuses { get; set; }
+        public virtual IDbSet<OrderStatus> OrderStatuses { get; set; }
 
         public new int SaveChanges()
         {

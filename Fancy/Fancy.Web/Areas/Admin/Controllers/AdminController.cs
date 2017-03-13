@@ -1,14 +1,26 @@
-﻿using AutoMapper;
-using Fancy.Common.Enums;
-using Fancy.Data.Models.Models;
-using Fancy.Web.Areas.Admin.Models;
-using System.Web;
+﻿using Fancy.Web.Areas.Admin.Models;
+using System;
 using System.Web.Mvc;
+using Fancy.Web.WebUtils;
+using Fancy.Web.WebUtils.Contracts;
+using Fancy.Services.Common.Contracts;
+using Fancy.Data.Models.Models;
+using Fancy.Services.Data.Contracts;
 
 namespace Fancy.Web.Areas.Admin.Controllers
 {
     public class AdminController : Controller
     {
+        private readonly IImageConverter imageConverter;
+        private readonly IMappingService mappingService;
+        private readonly IItemService itemService;
+
+        public AdminController(IImageConverter imageConverter, IMappingService mappingService, IItemService itemService)
+        {
+            this.imageConverter = imageConverter;
+            this.mappingService = mappingService;
+            this.itemService = itemService;
+        }
 
         public ActionResult Index()
         {
@@ -19,15 +31,17 @@ namespace Fancy.Web.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult AddItem(AddItemViewModel model)
         {
-            ItemTypeEnum itemTypeName = model.ItemType;
-            MainMaterialEnum materialName = model.MainMaterial;
-            MainColourEnum colourName = model.MainColour;
-            decimal price = model.Price;
-            int quantity = model.Quantity;
-            HttpPostedFileBase image = model.Image;
+            model.DateAdded = DateTime.Now;
+            model.IsDeleted = false;
+            model.Discount = 0;
 
-            var mapped = Mapper.Map<AddItemViewModel, Item>();
-            return View();
+            model.ImageBytes = this.imageConverter.ConvertFileToByteArray(model.Image);
+
+            var item = this.mappingService.Map<AddItemViewModel, Item>(model);
+            this.itemService.AddItem(item);
+
+            ModelState.Clear();
+            return View("Index");
         }
     }
 }

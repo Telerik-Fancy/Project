@@ -1,6 +1,6 @@
 ﻿namespace Fancy.Common.Enums
 {
-    public enum MainMaterialEnum
+    public enum MainMaterial
     {
         Swarovski = 1,
         Alloy = 2,
