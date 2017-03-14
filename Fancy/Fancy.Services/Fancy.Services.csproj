@@ -54,6 +54,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Fancy.Common\Fancy.Common.csproj">
+      <Project>{b6a3113c-98a3-4dd8-8656-43ddef199879}</Project>
+      <Name>Fancy.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Fancy.Data.Models\Fancy.Data.Models.csproj">
       <Project>{d8ce7b15-357a-491a-a67d-f7b4285d3e69}</Project>
       <Name>Fancy.Data.Models</Name>

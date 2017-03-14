@@ -16,7 +16,7 @@ namespace Fancy.Web.Areas.Items
         {
             context.MapRoute(
                 "Items_default",
-                "Items/{controller}/{action}",
+                "Items/{controller}/{action}/{pageNumber}",
                 new { controller = "Items" },
                 new[] { "Fancy.Web.Areas.Items.Controllers" }
             );

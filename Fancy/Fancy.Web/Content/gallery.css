@@ -1,0 +1,21 @@
+﻿.item-info {
+    color: black;
+    font-size: 16px;
+}
+
+.item-holder {
+    width: 30%;
+    margin: 5px;
+    padding: 5px;
+}
+
+.item-img-gallery {
+    border: 1px solid lightgrey;
+    max-width:100%;
+}
+
+.group:after {
+  content: "";
+  display: table;
+  clear: both;
+}

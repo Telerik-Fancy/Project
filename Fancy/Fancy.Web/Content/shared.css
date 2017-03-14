@@ -32,7 +32,7 @@ header{
 
 .navbar-item {
     font-size: 16px;
-    margin:15px 20px;
+    margin:0px 20px;
     color: #446E9B;
     cursor: pointer;
     display: inline-block;
@@ -48,8 +48,13 @@ main {
 }
 
 .navbar-account-item {
-    margin-top:15px;
-    padding:0px;
+
+}
+
+.group:after {
+  content: "";
+  display: table;
+  clear: both;
 }
 
 #navbar-brand-id {

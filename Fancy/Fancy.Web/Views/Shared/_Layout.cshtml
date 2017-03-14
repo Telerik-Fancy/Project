@@ -4,13 +4,10 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title Fancy.com</title>
-    @Styles.Render("~/Content/kendo-css")
     @Styles.Render("~/Content/silver-theme.css")
     @Styles.Render("~/Content/shared.css")
-    @Styles.Render("~/Content/shared.css")
+
     @Scripts.Render("~/bundles/modernizr")
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/kendo")
 </head>
 <body>
     <header>
@@ -35,7 +32,9 @@
         </div>
     </div>
 
+    @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+    @Styles.Render("~/Content/materialize.min.js")
     @RenderSection("scripts", required: false)
 </body>
 </html>

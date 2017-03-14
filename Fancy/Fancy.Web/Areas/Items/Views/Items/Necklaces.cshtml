@@ -1,6 +1,30 @@
 ﻿@{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
+@Styles.Render("~/Content/materialize.min.css")
+@Styles.Render("~/Content/gallery.css");
+
 <div>
     <h1>Necklaces</h1>
+    
+    <div class="gallery group">
+        @foreach (var item in ViewBag.ItemsList)
+        {
+            <div class="item-holder left">
+                <div class="card panel">
+                    <div class="card-content blue-text text-darken-2">
+                        <span class="bold">Item code:</span> <span class="item-info">@item.ItemCode</span>
+                        <img src="@item.ImageBase64String" alt="Alternate Text" class="item-img-gallery" />
+                        <span class="bold">Price:</span> <span class="item-info">@string.Format(" {0:0.00} ", item.Price)BGN</span>
+                        <br />
+                        <span class="bold">Quantity left:</span> <span class="item-info">@item.Quantity</span>
+                    </div>
+                    <div class="card-action">
+                        <a href="#">View more</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
 </div>
