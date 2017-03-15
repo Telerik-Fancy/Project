@@ -15,9 +15,15 @@ namespace Fancy.Web.Areas.Items
         public override void RegisterArea(AreaRegistrationContext context) 
         {
             context.MapRoute(
-                "Items_default",
+                "Items_single",
+                "Items/{controller}/{action}/{itemId}",
+                new { controller = "Items", action = "SingleItem", itemId = UrlParameter.Optional },
+                new[] { "Fancy.Web.Areas.Items.Controllers" }
+            );
+
+            context.MapRoute(
+                "Items_gallery",
                 "Items/{controller}/{action}/{pageNumber}",
-                new { controller = "Items" },
                 new[] { "Fancy.Web.Areas.Items.Controllers" }
             );
         }

@@ -64,6 +64,24 @@ namespace Fancy.Web.Areas.Items.Controllers
 
         public ActionResult NewItems(int pageNumber)
         {
+            var dbItemsList = this.itemService.GetNewestItems(pageNumber);
+            var viewItemsList = this.ConvertToViewItemList(dbItemsList);
+
+            ViewBag.ItemsList = viewItemsList;
+
+            return View();
+        }
+
+        public ActionResult SingleItem(int itemId)
+        {
+            var dbItem = this.itemService.GetItemById(itemId);
+
+            var mvItem = this.mappingService.Map<Item, ViewItem>((Item)dbItem);
+            string base64 = this.imageConverter.ConvertByteArrayToImageString(mvItem.ImageBytes);
+            mvItem.ImageBase64String = string.Format("data:image/gif;base64,{0}", base64);
+
+            ViewBag.Item = mvItem;
+
             return View();
         }
 

@@ -47,7 +47,9 @@
     <Compile Include="Common\Contracts\IMappingService.cs" />
     <Compile Include="Common\MappingService.cs" />
     <Compile Include="Data\Contracts\IItemService.cs" />
+    <Compile Include="Data\Contracts\IPromotionService.cs" />
     <Compile Include="Data\ItemService.cs" />
+    <Compile Include="Data\PromotionService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

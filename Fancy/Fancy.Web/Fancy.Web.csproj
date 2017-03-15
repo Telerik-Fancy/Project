@@ -272,9 +272,10 @@
     <Compile Include="WebUtils\ImageConverter.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\gallery.css" />
     <Content Include="Content\home.css" />
     <Content Include="Content\images\background.jpg" />
-    <Content Include="Content\gallery.css" />
+    <Content Include="Content\single-item.css" />
     <Content Include="Content\materialize.css" />
     <Content Include="Content\materialize.min.css" />
     <Content Include="Content\shared.css" />
@@ -313,6 +314,7 @@
     <Content Include="Scripts\ai.0.15.0-build58334.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Areas\Items\Views\Items\SingleItem.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />

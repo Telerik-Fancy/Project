@@ -1,0 +1,27 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@Styles.Render("~/Content/single-item.css")
+
+<div class="single-item-holder">
+    <div class="card panel">
+        <span class="bold">Item code:&nbsp</span> <span class="item-info">@ViewBag.Item.ItemCode</span>
+        <br />
+        <img src="@ViewBag.Item.ImageBase64String" alt="Alternate Text" class="item-img-single" />
+        <br />
+        <span class="bold">Colour:&nbsp</span><span>@ViewBag.Item.MainColour</span>
+        <br />
+        <span class="bold">Material:&nbsp</span><span>@ViewBag.Item.MainMaterial</span>
+        <br />
+        <span class="bold">Price:&nbsp</span>
+        <span class="item-info">
+            @ViewBag.Item.Price BGN
+        </span>
+        <br />
+        <span class="bold">Quantity left:&nbsp</span> <span class="item-info">@ViewBag.Item.Quantity</span>
+    </div>
+    <div class="card-action">
+        @Html.ActionLink("Add to basket", "OrderItem", "Items", new { area = "Items", itemId = ViewBag.Item.Id }, new { @class = "btn btn-primary" })
+    </div>
+</div>
