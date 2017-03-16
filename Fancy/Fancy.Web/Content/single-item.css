@@ -8,14 +8,15 @@
     font-size: 16px;
 }
 
-.gallery-item-holder {
-    width: 70%;
+.single-item-holder {
+    width: 60%;
     margin: 5px;
     padding: 5px;
 }
 
 .item-img-single {
-    max-width:100%;
+    width:75%;
+    height:75%;
 }
 
 .group:after {

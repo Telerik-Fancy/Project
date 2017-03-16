@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using System.Collections.Generic;
 using Fancy.Web.Areas.Items.Models;
 using Fancy.Data.Models.Models;
+using System;
 
 namespace Fancy.Web.Areas.Items.Controllers
 {
@@ -22,42 +23,18 @@ namespace Fancy.Web.Areas.Items.Controllers
             this.imageConverter = imageConverter;
         }
 
-        public ActionResult Necklaces(int pageNumber)
+        public ActionResult GalleryItems(int pageNumber, string itemType)
         {
-            var dbItemsList = this.itemService.GetAllItemsOfType(ItemType.Necklace, pageNumber);
+            ItemType type = (ItemType) Enum.Parse(typeof(ItemType), itemType, true);
+
+            var itemsOfTypeCount = this.itemService.GetItemsOfTypeCount(type);
+            var dbItemsList = this.itemService.GetItemsOfType(type, pageNumber);
             var viewItemsList = this.ConvertToViewItemList(dbItemsList);
 
+            ViewBag.GalleryTitle = this.SetViewTitleFormItemType(itemType);
+            ViewBag.PageButtonsCount = this.CalculatePageNumberButtonsCount(itemsOfTypeCount);
             ViewBag.ItemsList = viewItemsList;
-
-            return View();
-        }
-
-        public ActionResult Earings(int pageNumber)
-        {
-            var dbItemsList = this.itemService.GetAllItemsOfType(ItemType.Earings, pageNumber);
-            var viewItemsList = this.ConvertToViewItemList(dbItemsList);
-
-            ViewBag.ItemsList = viewItemsList;
-
-            return View();
-        }
-
-        public ActionResult Bracelets(int pageNumber)
-        {
-            var dbItemsList = this.itemService.GetAllItemsOfType(ItemType.Bracelet, pageNumber);
-            var viewItemsList = this.ConvertToViewItemList(dbItemsList);
-
-            ViewBag.ItemsList = viewItemsList;
-
-            return View();
-        }
-
-        public ActionResult Sets(int pageNumber)
-        {
-            var dbItemsList = this.itemService.GetAllItemsOfType(ItemType.Set, pageNumber);
-            var viewItemsList = this.ConvertToViewItemList(dbItemsList);
-
-            ViewBag.ItemsList = viewItemsList;
+            ViewBag.ItemType = itemType;
 
             return View();
         }
@@ -68,8 +45,20 @@ namespace Fancy.Web.Areas.Items.Controllers
             var viewItemsList = this.ConvertToViewItemList(dbItemsList);
 
             ViewBag.ItemsList = viewItemsList;
+            ViewBag.GalleryTitle = "New Items";
 
-            return View();
+            return View("GalleryItems");
+        }
+
+        public ActionResult Promotions(int pageNumber)
+        {
+            var dbItemsList = this.itemService.GetItemsInPromotion(pageNumber);
+            var viewItemsList = this.ConvertToViewItemList(dbItemsList);
+
+            ViewBag.ItemsList = viewItemsList;
+            ViewBag.GalleryTitle = "Items in promotion";
+
+            return View("GalleryItems");
         }
 
         public ActionResult SingleItem(int itemId)
@@ -99,6 +88,45 @@ namespace Fancy.Web.Areas.Items.Controllers
             }
 
             return viewItemsList;
+        }
+
+        private string SetViewTitleFormItemType(string itemType)
+        {
+            string viewTitle = null;
+
+            if(itemType == "Necklace")
+            {
+                viewTitle = "Necklaces";
+            }
+            else if(itemType == "Earings")
+            {
+                viewTitle = "Earings";
+            }
+            else if (itemType == "Bracelet")
+            {
+                viewTitle = "Bracelets";
+            }
+            else if (itemType == "Set")
+            {
+                viewTitle = "Sets";
+            }
+            else
+            {
+                viewTitle = itemType;
+            }
+
+            return viewTitle;
+        }
+
+        private int CalculatePageNumberButtonsCount(int itemsCount)
+        {
+            var pageButtonsCount = itemsCount / 6;
+            if(pageButtonsCount != 0 && pageButtonsCount * 6 < itemsCount)
+            {
+                pageButtonsCount++;
+            }
+
+            return pageButtonsCount;
         }
     }
 }

@@ -23,7 +23,7 @@ namespace Fancy.Web.Areas.Items
 
             context.MapRoute(
                 "Items_gallery",
-                "Items/{controller}/{action}/{pageNumber}",
+                "Items/{controller}/{action}/{pageNumber}/{itemType}",
                 new[] { "Fancy.Web.Areas.Items.Controllers" }
             );
         }

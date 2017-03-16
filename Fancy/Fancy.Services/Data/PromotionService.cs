@@ -21,11 +21,6 @@ namespace Fancy.Services.Data
             throw new NotImplementedException();
         }
 
-        public IEnumerable<Item> GetItemsInPromotion(int pageNumber)
-        {
-            return this.data.Items.All.Where(i => i.Discount != 0);
-        }
-
         public void RemovePromotion(int itemId)
         {
             throw new NotImplementedException();

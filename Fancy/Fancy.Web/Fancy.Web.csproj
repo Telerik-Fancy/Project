@@ -289,14 +289,8 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Areas\Items\Views\web.config" />
-    <Content Include="Areas\Items\Views\Items\Necklaces.cshtml" />
-    <Content Include="Areas\Items\Views\Items\Earings.cshtml" />
-    <Content Include="Areas\Items\Views\Items\Sets.cshtml" />
-    <Content Include="Areas\Items\Views\Items\Bracelets.cshtml" />
-    <Content Include="Areas\Items\Views\Items\NewItems.cshtml" />
     <Content Include="Areas\Admin\Views\web.config" />
     <Content Include="Areas\Profile\Views\web.config" />
-    <Content Include="Areas\Items\Views\Promotions\Promotions.cshtml" />
     <Content Include="Areas\Admin\Views\Admin\Index.cshtml" />
     <Content Include="Areas\Items\Views\Shared\EditorTemplates\Currency.cshtml" />
     <Content Include="Areas\Items\Views\Shared\EditorTemplates\Date.cshtml" />
@@ -315,6 +309,7 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Areas\Items\Views\Items\SingleItem.cshtml" />
+    <Content Include="Areas\Items\Views\Items\GalleryItems.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />

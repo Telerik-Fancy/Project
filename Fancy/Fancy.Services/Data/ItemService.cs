@@ -23,17 +23,28 @@ namespace Fancy.Services.Data
             this.data.Commit();
         }
 
-        public IEnumerable<Item> GetAllItemsOfType(ItemType itemType, int pageNumber)
+        public Item GetItemById(int id)
+        {
+            return this.data.Items.GetById(id);
+        }
+
+        public IEnumerable<Item> GetItemsOfType(ItemType itemType, int pageNumber)
         {
             var itemsList = this.data.Items.All
                 .Where(i => i.ItemType == itemType && !i.IsDeleted && i.Quantity != 0)
+                .OrderBy(i => i.Id)
+                .Skip((pageNumber - 1) * 6)
+                .Take(6)
                 .ToList();
             return itemsList;
         }
 
-        public Item GetItemById(int id)
+        public IEnumerable<Item> GetItemsInPromotion(int pageNumber)
         {
-            return this.data.Items.GetById(id);
+            var itemsList = this.data.Items.All
+                .Where(i => i.Discount != 0 && !i.IsDeleted && i.Quantity != 0)
+                .ToList();
+            return itemsList;
         }
 
         public IEnumerable<Item> GetNewestItems(int pageNumber)
@@ -43,6 +54,16 @@ namespace Fancy.Services.Data
                 .OrderByDescending(i => i.DateAdded)
                 .ToList();
             return itemsList;
+        }
+
+        public int GetItemsOfTypeCount(ItemType itemType)
+        {
+            return this.data.Items.All.Where(i => i.ItemType == itemType).Count();
+        }
+
+        public int GetAllItemsCount()
+        {
+            return this.data.Items.All.Count();
         }
     }
 }
