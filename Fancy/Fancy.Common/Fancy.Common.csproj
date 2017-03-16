@@ -43,6 +43,7 @@
     <Compile Include="Constants\ItemConstants.cs" />
     <Compile Include="Constants\UiConstants.cs" />
     <Compile Include="Constants\UserConstants.cs" />
+    <Compile Include="Enums\PriceFilterType.cs" />
     <Compile Include="Enums\ItemType.cs" />
     <Compile Include="Enums\MainColour.cs" />
     <Compile Include="Enums\MainMaterial.cs" />

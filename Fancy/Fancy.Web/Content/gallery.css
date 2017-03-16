@@ -23,3 +23,9 @@
   display: table;
   clear: both;
 }
+
+.item-filter {
+    margin: 5px;
+    display: inline-block;
+    width: 20%;
+}

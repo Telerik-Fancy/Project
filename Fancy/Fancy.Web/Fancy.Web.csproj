@@ -255,6 +255,7 @@
     <Compile Include="Areas\Items\Controllers\ItemsController.cs" />
     <Compile Include="Areas\Items\Controllers\PromotionsController.cs" />
     <Compile Include="Areas\Items\ItemsAreaRegistration.cs" />
+    <Compile Include="Areas\Items\Models\ViewGalleryItems.cs" />
     <Compile Include="Areas\Items\Models\ViewItem.cs" />
     <Compile Include="Areas\Profile\ProfileAreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
@@ -310,6 +311,8 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Areas\Items\Views\Items\SingleItem.cshtml" />
     <Content Include="Areas\Items\Views\Items\GalleryItems.cshtml" />
+    <Content Include="Areas\Items\Views\Items\GalleryItemsPromotions.cshtml" />
+    <Content Include="Areas\Items\Views\Items\GalleryItemsNew.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />

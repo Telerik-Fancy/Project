@@ -24,42 +24,46 @@ namespace Fancy.Web.Areas.Items.Controllers
             this.imageConverter = imageConverter;
         }
 
-        public ActionResult GalleryItems(int pageNumber, string itemType)
+        public ActionResult GalleryItems(ViewGalleryItems model, int pageNumber, string type)
         {
-            ItemType type = (ItemType) Enum.Parse(typeof(ItemType), itemType, true);
+            ItemType itemType = (ItemType)Enum.Parse(typeof(ItemType), type, true);
 
-            var itemsOfTypeCount = this.itemService.GetItemsOfTypeCount(type);
-            var dbItemsList = this.itemService.GetItemsOfType(type, pageNumber);
+            var itemsOfTypeCount = this.itemService.GetItemsOfTypeCount(itemType);
+            var dbItemsList = this.itemService.GetItemsOfType(pageNumber, itemType, model.Colour, model.Material, model.PriceFilter);
             var viewItemsList = this.ConvertToViewItemList(dbItemsList);
 
-            ViewBag.GalleryTitle = this.SetViewTitleFormItemType(itemType);
-            ViewBag.PageButtonsCount = this.CalculatePageNumberButtonsCount(itemsOfTypeCount);
-            ViewBag.ItemsList = viewItemsList;
-            ViewBag.ItemType = itemType;
+            model.GalleryTitle = this.SetViewTitleFormItemType(type);
+            model.PageButtonsCount = this.CalculatePageNumberButtonsCount(itemsOfTypeCount);
+            model.ItemsList = viewItemsList;
+            model.ItemType = type;
 
-            return View();
+            return View(model);
         }
 
-        public ActionResult NewItems(int pageNumber)
+        public ActionResult GalleryItemsNew(ViewGalleryItems model, int pageNumber)
         {
-            var dbItemsList = this.itemService.GetNewestItems(pageNumber);
+            var itemsCount = this.itemService.GetAllItemsCount();
+            var dbItemsList = this.itemService.GetNewestItems(pageNumber, model.Colour, model.Material, model.PriceFilter);
             var viewItemsList = this.ConvertToViewItemList(dbItemsList);
 
-            ViewBag.ItemsList = viewItemsList;
-            ViewBag.GalleryTitle = "New Items";
+            model.GalleryTitle = "New items";
+            model.PageButtonsCount = this.CalculatePageNumberButtonsCount(itemsCount);
+            model.ItemsList = viewItemsList;
 
-            return View("GalleryItems");
+            return View(model);
         }
 
-        public ActionResult Promotions(int pageNumber)
+        public ActionResult GalleryItemsPromotions(ViewGalleryItems model, int pageNumber)
         {
-            var dbItemsList = this.itemService.GetItemsInPromotion(pageNumber);
+            var itemsCount = this.itemService.GetAllItemsInPromotionCount();
+            var dbItemsList = this.itemService.GetItemsInPromotion(pageNumber, model.Colour, model.Material, model.PriceFilter);
             var viewItemsList = this.ConvertToViewItemList(dbItemsList);
 
-            ViewBag.ItemsList = viewItemsList;
-            ViewBag.GalleryTitle = "Items in promotion";
+            model.GalleryTitle = "Items in promotion";
+            model.PageButtonsCount = this.CalculatePageNumberButtonsCount(itemsCount);
+            model.ItemsList = viewItemsList;
 
-            return View("GalleryItems");
+            return View(model);
         }
 
         public ActionResult SingleItem(int itemId)

@@ -16,7 +16,7 @@ namespace Fancy.Web.Areas.Items
         {
             context.MapRoute(
                 "Items_single",
-                "Items/{controller}/{action}/{itemId}",
+                "Items/{controller}/{action}/{itemId}/",
                 new { controller = "Items", action = "SingleItem", itemId = UrlParameter.Optional },
                 new[] { "Fancy.Web.Areas.Items.Controllers" }
             );
@@ -24,6 +24,7 @@ namespace Fancy.Web.Areas.Items
             context.MapRoute(
                 "Items_gallery",
                 "Items/{controller}/{action}/{pageNumber}/{itemType}",
+                new { itemType = UrlParameter.Optional },
                 new[] { "Fancy.Web.Areas.Items.Controllers" }
             );
         }

@@ -14,8 +14,8 @@
         <nav class="navbar navbar-default">
             @Html.ActionLink("FANCY.COM", "Index", "Home", new { area = "" }, new { @class = "navbar-item", id = "navbar-home-id" })
             @Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "navbar-item", id = "navbar-home-id" })
-            @Html.ActionLink("New Items", "NewItems", "Items", new { area = "Items", pageNumber = 1 }, new { @class = "navbar-item", id = "navbar-newest-id" })
-            @Html.ActionLink("Promotions", "Promotions", "Items", new { area = "Items", pageNumber = 1 }, new { @class = "navbar-item", id = "navbar-promotions-id" })
+            @Html.ActionLink("New Items", "GalleryItemsNew", "Items", new { area = "Items", pageNumber = 1 }, new { @class = "navbar-item", id = "navbar-newest-id" })
+            @Html.ActionLink("Promotions", "GalleryItemsPromotions", "Items", new { area = "Items", pageNumber = 1 }, new { @class = "navbar-item", id = "navbar-promotions-id" })
             @Html.Partial("_LoginPartial")
         </nav>
     </header>

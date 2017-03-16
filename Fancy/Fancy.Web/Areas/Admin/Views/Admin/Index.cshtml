@@ -1,4 +1,6 @@
-﻿@model Fancy.Web.Areas.Admin.Models.AddItemViewModel
+﻿@using Fancy.Web.Areas.Admin.Models
+
+@model AddItemViewModel
 
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -7,10 +9,6 @@
 <h1>
     Admin Area
 </h1>
-@*<hr />
-<a href="#" id="add-item-button" class="btn btn-primary">
-    Add new item
-</a>*@
 @using (Html.BeginForm("AddItem", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
@@ -23,8 +21,7 @@
             Item Type:
         </label>
         @Html.EnumDropDownListFor(m => m.ItemType, "Select item type", new { @class = "form-control" })
-        @Html.ValidationMessageFor(m => m.ItemType, string.Empty)
-        @*@Html.ValidationMessageFor(m => m.Category, string.Empty, new { @class = CssClass.ValidationErrorMessage })*@
+        @Html.ValidationMessageFor(m => m.ItemType, "")
         <br />         
         <label>
             Material:
@@ -32,7 +29,6 @@
         @Html.EnumDropDownListFor(m => m.MainMaterial, "Select material", new { @class = "form-control" })
         @Html.ValidationMessageFor(m => m.MainMaterial, string.Empty)
         <br />  
-
         <label>
             Colour:
         </label>

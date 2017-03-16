@@ -1,14 +1,21 @@
-﻿@{
+﻿@model ViewGalleryItems
+
+@{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 @Styles.Render("~/Content/gallery.css")
 
 <div>
-    <h1>@ViewBag.GalleryTitle</h1>
+    <h1>@Model.GalleryTitle </h1>
+    <div class="filters-holder">
+        @Html.EnumDropDownListFor(m => m.Colour, "Select colour", new { @class = "form-control item-filter" })
+        @Html.EnumDropDownListFor(m => m.Material, "Select material", new { @class = "form-control item-filter" })
+        @Html.EnumDropDownListFor(m => m.PriceFilter, "Select price order", new { @class = "form-control item-filter" })
+    </div>
 
     <div class="gallery group">
-        @foreach (var item in ViewBag.ItemsList)
+        @foreach (var item in Model.ItemsList)
         {
             <div class="item-holder left">
                 <div class="card panel">
@@ -30,16 +37,12 @@
         }
     </div>
     <ul class="pagination pagination-sm">
-        @for (int i = 1; i <= ViewBag.PageButtonsCount; i += 1)
+        @for (int i = 1; i <= Model.PageButtonsCount; i += 1)
         {
             <li>
-                @Html.ActionLink(i.ToString(), "GalleryItems", "Items", new { area = "Items", pageNumber = i, itemType = ViewBag.ItemType }, null)
+                @Html.ActionLink(i.ToString(), "GalleryItems", "Items", new { area = "Items", pageNumber = i, type = Model.ItemType, colour = Model.Colour, material = Model.Material, priceFilter = ViewBag.PriceFilter }, null)
             </li>
         }
-        @*<li class="active"><a href="#">1</a></li>
-        <li><a href="#">2</a></li>
-        <li><a href="#">3</a></li>
-        <li><a href="#">4</a></li>
-        <li><a href="#">5</a></li>*@
+        @*<li class="active"><a href="#">1</a></li>*@
     </ul>
 </div>
