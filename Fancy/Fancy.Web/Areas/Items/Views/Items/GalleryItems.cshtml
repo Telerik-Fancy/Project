@@ -1,0 +1,45 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@Styles.Render("~/Content/gallery.css")
+
+<div>
+    <h1>@ViewBag.GalleryTitle</h1>
+
+    <div class="gallery group">
+        @foreach (var item in ViewBag.ItemsList)
+        {
+            <div class="item-holder left">
+                <div class="card panel">
+                    <div class="card-content blue-text text-darken-2">
+                        <span class="bold">Item code:&nbsp</span> <span class="item-info">@item.ItemCode</span>
+                        <img src="@item.ImageBase64String" alt="Alternate Text" class="item-img-gallery" />
+                        <span class="bold">Price:&nbsp</span>
+                        <span class="item-info">
+                            @item.Price BGN
+                        </span>
+                        <br />
+                        <span class="bold">Quantity left:&nbsp</span> <span class="item-info">@item.Quantity</span>
+                    </div>
+                    <div>
+                        @Html.ActionLink("View more", "SingleItem", "Items", new { area = "Items", itemId = item.Id }, new { @class = "btn btn-primary" })
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+    <ul class="pagination pagination-sm">
+        @for (int i = 1; i <= ViewBag.PageButtonsCount; i += 1)
+        {
+            <li>
+                @Html.ActionLink(i.ToString(), "GalleryItems", "Items", new { area = "Items", pageNumber = i, itemType = ViewBag.ItemType }, null)
+            </li>
+        }
+        @*<li class="active"><a href="#">1</a></li>
+        <li><a href="#">2</a></li>
+        <li><a href="#">3</a></li>
+        <li><a href="#">4</a></li>
+        <li><a href="#">5</a></li>*@
+    </ul>
+</div>

@@ -5,6 +5,7 @@ using Fancy.Common.Enums;
 using System.Linq;
 using System.Collections.Generic;
 using System;
+using Fancy.Common.Constants;
 
 namespace Fancy.Services.Data
 {
@@ -33,8 +34,8 @@ namespace Fancy.Services.Data
             var itemsList = this.data.Items.All
                 .Where(i => i.ItemType == itemType && !i.IsDeleted && i.Quantity != 0)
                 .OrderBy(i => i.Id)
-                .Skip((pageNumber - 1) * 6)
-                .Take(6)
+                .Skip((pageNumber - 1) * UiConstants.ItemsOnPage)
+                .Take(UiConstants.ItemsOnPage)
                 .ToList();
             return itemsList;
         }

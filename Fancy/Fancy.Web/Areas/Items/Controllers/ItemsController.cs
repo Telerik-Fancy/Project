@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using Fancy.Web.Areas.Items.Models;
 using Fancy.Data.Models.Models;
 using System;
+using Fancy.Common.Constants;
 
 namespace Fancy.Web.Areas.Items.Controllers
 {
@@ -120,8 +121,8 @@ namespace Fancy.Web.Areas.Items.Controllers
 
         private int CalculatePageNumberButtonsCount(int itemsCount)
         {
-            var pageButtonsCount = itemsCount / 6;
-            if(pageButtonsCount != 0 && pageButtonsCount * 6 < itemsCount)
+            var pageButtonsCount = itemsCount / UiConstants.ItemsOnPage;
+            if(pageButtonsCount != 0 && pageButtonsCount * UiConstants.ItemsOnPage < itemsCount)
             {
                 pageButtonsCount++;
             }
