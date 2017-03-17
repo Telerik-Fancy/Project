@@ -13,7 +13,7 @@ namespace Fancy.Web.App_Start
     using NinjectModules;
     using WebUtils.Contracts;
     using WebUtils;
-
+    using Controllers;
     public static class NinjectWebCommon 
     {
         private static readonly Bootstrapper bootstrapper = new Bootstrapper();
@@ -38,8 +38,9 @@ namespace Fancy.Web.App_Start
                 kernel.Bind<Func<IKernel>>().ToMethod(ctx => () => new Bootstrapper().Kernel);
                 kernel.Bind<IHttpModule>().To<HttpApplicationInitializationHttpModule>();
 
-                kernel.Bind<IImageConverter>().To<ImageConverter>();
-                
+                kernel.Bind<IImageProvider>().To<ImageProvider>();
+                kernel.Bind<IIdentityProvider>().To<IdentityProvider>();
+
                 RegisterServices(kernel);
                 return kernel;
             }

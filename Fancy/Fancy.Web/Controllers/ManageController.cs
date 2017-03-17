@@ -7,6 +7,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Fancy.Web.Models;
+using Fancy.Web.WebUtils.Contracts;
 
 namespace Fancy.Web.Controllers
 {

@@ -11,11 +11,11 @@ namespace Fancy.Web.Areas.Admin.Controllers
 {
     public class AdminController : Controller
     {
-        private readonly IImageConverter imageConverter;
+        private readonly IImageProvider imageConverter;
         private readonly IMappingService mappingService;
         private readonly IItemService itemService;
 
-        public AdminController(IImageConverter imageConverter, IMappingService mappingService, IItemService itemService)
+        public AdminController(IImageProvider imageConverter, IMappingService mappingService, IItemService itemService)
         {
             this.imageConverter = imageConverter;
             this.mappingService = mappingService;

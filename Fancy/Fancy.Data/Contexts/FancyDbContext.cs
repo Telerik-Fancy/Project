@@ -11,6 +11,7 @@ namespace Fancy.Data.Contexts
         public FancyDbContext()
             :base("Fancy", throwIfV1Schema: false)
         {
+            
             Database.SetInitializer(new MigrateDatabaseToLatestVersion<FancyDbContext, Configuration>());
         }
 
@@ -29,8 +30,6 @@ namespace Fancy.Data.Contexts
         public virtual IDbSet<Item> Items { get; set; }
 
         public virtual IDbSet<Order> Orders { get; set; }
-
-        public virtual IDbSet<OrderStatus> OrderStatuses { get; set; }
 
         public new int SaveChanges()
         {

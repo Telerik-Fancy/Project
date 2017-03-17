@@ -3,7 +3,7 @@ using System.Web;
 
 namespace Fancy.Web.WebUtils.Contracts
 {
-    public interface IImageConverter
+    public interface IImageProvider
     {
         byte[] ConvertFileToByteArray(HttpPostedFileBase file);
 

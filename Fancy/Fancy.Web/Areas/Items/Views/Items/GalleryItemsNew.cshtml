@@ -11,7 +11,6 @@
     <div class="filters-holder">
         @Html.EnumDropDownListFor(m => m.Colour, "Select colour", new { @class = "form-control item-filter" })
         @Html.EnumDropDownListFor(m => m.Material, "Select material", new { @class = "form-control item-filter" })
-        @Html.EnumDropDownListFor(m => m.PriceFilter, "Select price order", new { @class = "form-control item-filter" })
     </div>
 
     <div class="gallery group">
@@ -40,7 +39,7 @@
         @for (int i = 1; i <= Model.PageButtonsCount; i += 1)
         {
             <li>
-                @Html.ActionLink(i.ToString(), "GalleryItemsNew", "Items", new { area = "Items", pageNumber = i, type = Model.ItemType, colour = Model.Colour, material = Model.Material, priceFilter = ViewBag.PriceFilter }, null)
+                @Html.ActionLink(i.ToString(), "GalleryItemsNew", "Items", new { area = "Items", pageNumber = i, type = Model.ItemType, colour = Model.Colour, material = Model.Material }, null)
             </li>
         }
         @*<li class="active"><a href="#">1</a></li>*@

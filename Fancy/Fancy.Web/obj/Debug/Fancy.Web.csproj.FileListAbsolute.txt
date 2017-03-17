@@ -85,18 +85,18 @@ D:\TELERIK\TELERIK-2016-2017\Module III\19. ASP MVC\Fancy\Fancy.Web\bin\Glimpse.
 D:\TELERIK\TELERIK-2016-2017\Module III\19. ASP MVC\Fancy\Fancy.Web\bin\Glimpse.EF6.dll
 D:\TELERIK\TELERIK-2016-2017\Module III\19. ASP MVC\Fancy\Fancy.Web\bin\Glimpse.Mvc5.dll
 D:\TELERIK\TELERIK-2016-2017\Module III\19. ASP MVC\Fancy\Fancy.Web\obj\Debug\Fancy.Web.csprojResolveAssemblyReference.cache
-C:\Users\georgivelikov\Desktop\MVC\Project\Fancy\Fancy.Web\bin\ApplicationInsights.config
 C:\Users\georgivelikov\Desktop\MVC\Project\Fancy\Fancy.Web\bin\roslyn\csc.exe
-C:\Users\georgivelikov\Desktop\MVC\Project\Fancy\Fancy.Web\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
 C:\Users\georgivelikov\Desktop\MVC\Project\Fancy\Fancy.Web\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
 C:\Users\georgivelikov\Desktop\MVC\Project\Fancy\Fancy.Web\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\georgivelikov\Desktop\MVC\Project\Fancy\Fancy.Web\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\georgivelikov\Desktop\MVC\Project\Fancy\Fancy.Web\bin\roslyn\VBCSCompiler.exe
+C:\Users\georgivelikov\Desktop\MVC\Project\Fancy\Fancy.Web\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\georgivelikov\Desktop\MVC\Project\Fancy\Fancy.Web\bin\ApplicationInsights.config
+C:\Users\georgivelikov\Desktop\MVC\Project\Fancy\Fancy.Web\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
 C:\Users\georgivelikov\Desktop\MVC\Project\Fancy\Fancy.Web\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
 C:\Users\georgivelikov\Desktop\MVC\Project\Fancy\Fancy.Web\bin\roslyn\Microsoft.CSharp.Core.targets
 C:\Users\georgivelikov\Desktop\MVC\Project\Fancy\Fancy.Web\bin\roslyn\Microsoft.VisualBasic.Core.targets
-C:\Users\georgivelikov\Desktop\MVC\Project\Fancy\Fancy.Web\bin\roslyn\System.Collections.Immutable.dll
-C:\Users\georgivelikov\Desktop\MVC\Project\Fancy\Fancy.Web\bin\roslyn\System.Reflection.Metadata.dll
 C:\Users\georgivelikov\Desktop\MVC\Project\Fancy\Fancy.Web\bin\roslyn\vbc.exe
-C:\Users\georgivelikov\Desktop\MVC\Project\Fancy\Fancy.Web\bin\roslyn\VBCSCompiler.exe
 C:\Users\georgivelikov\Desktop\MVC\Project\Fancy\Fancy.Web\bin\roslyn\VBCSCompiler.exe.config
 C:\Users\georgivelikov\Desktop\MVC\Project\Fancy\Fancy.Web\bin\Fancy.Web.dll.config
 C:\Users\georgivelikov\Desktop\MVC\Project\Fancy\Fancy.Web\bin\Fancy.Web.dll
@@ -169,11 +169,11 @@ C:\Users\georgivelikov\Desktop\MVC\Project\Fancy\Fancy.Web\bin\Ninject.Web.Commo
 C:\Users\georgivelikov\Desktop\MVC\Project\Fancy\Fancy.Web\bin\Ninject.Web.Mvc.xml
 C:\Users\georgivelikov\Desktop\MVC\Project\Fancy\Fancy.Web\bin\System.Web.Helpers.xml
 C:\Users\georgivelikov\Desktop\MVC\Project\Fancy\Fancy.Web\bin\System.Web.Mvc.xml
-C:\Users\georgivelikov\Desktop\MVC\Project\Fancy\Fancy.Web\bin\System.Web.Optimization.xml
 C:\Users\georgivelikov\Desktop\MVC\Project\Fancy\Fancy.Web\bin\System.Web.Razor.xml
 C:\Users\georgivelikov\Desktop\MVC\Project\Fancy\Fancy.Web\bin\System.Web.WebPages.xml
 C:\Users\georgivelikov\Desktop\MVC\Project\Fancy\Fancy.Web\bin\System.Web.WebPages.Deployment.xml
 C:\Users\georgivelikov\Desktop\MVC\Project\Fancy\Fancy.Web\bin\System.Web.WebPages.Razor.xml
+C:\Users\georgivelikov\Desktop\MVC\Project\Fancy\Fancy.Web\bin\System.Web.Optimization.xml
 C:\Users\georgivelikov\Desktop\MVC\Project\Fancy\Fancy.Web\bin\Antlr3.Runtime.pdb
 C:\Users\georgivelikov\Desktop\MVC\Project\Fancy\Fancy.Web\bin\Newtonsoft.Json.xml
 C:\Users\georgivelikov\Desktop\MVC\Project\Fancy\Fancy.Web\bin\EntityFramework.xml

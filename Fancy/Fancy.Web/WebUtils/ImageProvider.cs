@@ -6,7 +6,7 @@ using System.Web;
 
 namespace Fancy.Web.WebUtils
 {
-    public class ImageConverter : IImageConverter
+    public class ImageProvider : IImageProvider
     {
         public object BitmapFactory { get; private set; }
 

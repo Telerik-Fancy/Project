@@ -12,7 +12,7 @@ namespace Fancy.Web.App_Start.NinjectModules
     {
         public override void Load()
         {
-            this.Bind<IFancyDbContext>().To<FancyDbContext>().InRequestScope();
+            this.Bind<IFancyDbContext>().To<FancyDbContext>().InSingletonScope();
             this.Bind(this.BindAllClassesByConvention);
         }
 

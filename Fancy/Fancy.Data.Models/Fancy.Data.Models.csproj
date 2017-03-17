@@ -85,16 +85,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Contracts\IItem.cs" />
-    <Compile Include="Contracts\IMainColour.cs" />
-    <Compile Include="Contracts\IMainMaterial.cs" />
-    <Compile Include="Contracts\IOrder.cs" />
-    <Compile Include="Contracts\IOrderStatus.cs" />
-    <Compile Include="Contracts\IItemType.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\Item.cs" />
     <Compile Include="Models\Order.cs" />
-    <Compile Include="Models\OrderStatus.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -106,6 +99,9 @@
       <Project>{b6a3113c-98a3-4dd8-8656-43ddef199879}</Project>
       <Name>Fancy.Common</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Contracts\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Fancy.Data.Models.Models;
 using Fancy.Web.Areas.Items.Models;
+using Fancy.Web.Areas.Profile.Models;
 
 namespace Fancy.Web.App_Start.AutomapperProfiles
 {
@@ -10,6 +11,8 @@ namespace Fancy.Web.App_Start.AutomapperProfiles
         {
             this.CreateMap<Item, ViewItem>()
                 .ForMember(x => x.ImageBase64String, opt => opt.Ignore());
+
+            this.CreateMap<Order, OrderViewModel>();
         }
     }
 }

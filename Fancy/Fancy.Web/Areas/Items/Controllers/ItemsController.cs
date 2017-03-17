@@ -15,9 +15,9 @@ namespace Fancy.Web.Areas.Items.Controllers
     {
         private IItemService itemService;
         private IMappingService mappingService;
-        private IImageConverter imageConverter;
+        private IImageProvider imageConverter;
 
-        public ItemsController(IItemService itemService, IMappingService mappingService, IImageConverter imageConverter)
+        public ItemsController(IItemService itemService, IMappingService mappingService, IImageProvider imageConverter)
         {
             this.itemService = itemService;
             this.mappingService = mappingService;
@@ -66,17 +66,15 @@ namespace Fancy.Web.Areas.Items.Controllers
             return View(model);
         }
 
-        public ActionResult SingleItem(int itemId)
+        public ActionResult SingleItem(ViewItem model, int itemId)
         {
             var dbItem = this.itemService.GetItemById(itemId);
 
-            var mvItem = this.mappingService.Map<Item, ViewItem>((Item)dbItem);
-            string base64 = this.imageConverter.ConvertByteArrayToImageString(mvItem.ImageBytes);
-            mvItem.ImageBase64String = string.Format("data:image/gif;base64,{0}", base64);
+            model = this.mappingService.Map<Item, ViewItem>((Item)dbItem);
+            string base64 = this.imageConverter.ConvertByteArrayToImageString(model.ImageBytes);
+            model.ImageBase64String = string.Format("data:image/gif;base64,{0}", base64);
 
-            ViewBag.Item = mvItem;
-
-            return View();
+            return View(model);
         }
 
         private IEnumerable<ViewItem> ConvertToViewItemList(IEnumerable<Item> dbItemsList)

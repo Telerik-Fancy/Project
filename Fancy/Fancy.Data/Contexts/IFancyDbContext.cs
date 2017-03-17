@@ -10,7 +10,5 @@ namespace Fancy.Data.Contexts
         IDbSet<Item> Items { get; }
 
         IDbSet<Order> Orders { get; }
-
-        IDbSet<OrderStatus> OrderStatuses { get; }
     }
 }
