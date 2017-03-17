@@ -17,8 +17,6 @@ namespace Fancy.Web.Areas.Items.Models
 
         public MainMaterial Material { get; set; }
 
-        public PriceFilterType PriceFilter { get; set; }
-
         public string SelectedColour { get; set; }
     }
 }

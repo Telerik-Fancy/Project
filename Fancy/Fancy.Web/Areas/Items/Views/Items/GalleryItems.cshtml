@@ -40,7 +40,7 @@
         @for (int i = 1; i <= Model.PageButtonsCount; i += 1)
         {
             <li>
-                @Html.ActionLink(i.ToString(), "GalleryItems", "Items", new { area = "Items", pageNumber = i, type = Model.ItemType, colour = Model.Colour, material = Model.Material, priceFilter = ViewBag.PriceFilter }, null)
+                @Html.ActionLink(i.ToString(), "GalleryItems", "Items", new { area = "Items", pageNumber = i, type = Model.ItemType, colour = Model.Colour, material = Model.Material }, null)
             </li>
         }
         @*<li class="active"><a href="#">1</a></li>*@

@@ -29,7 +29,7 @@ namespace Fancy.Web.Areas.Items.Controllers
             ItemType itemType = (ItemType)Enum.Parse(typeof(ItemType), type, true);
 
             var itemsOfTypeCount = this.itemService.GetItemsOfTypeCount(itemType);
-            var dbItemsList = this.itemService.GetItemsOfType(pageNumber, itemType, model.Colour, model.Material, model.PriceFilter);
+            var dbItemsList = this.itemService.GetItemsOfType(pageNumber, itemType, model.Colour, model.Material);
             var viewItemsList = this.ConvertToViewItemList(dbItemsList);
 
             model.GalleryTitle = this.SetViewTitleFormItemType(type);
@@ -43,7 +43,7 @@ namespace Fancy.Web.Areas.Items.Controllers
         public ActionResult GalleryItemsNew(ViewGalleryItems model, int pageNumber)
         {
             var itemsCount = this.itemService.GetAllItemsCount();
-            var dbItemsList = this.itemService.GetNewestItems(pageNumber, model.Colour, model.Material, model.PriceFilter);
+            var dbItemsList = this.itemService.GetNewestItems(pageNumber, model.Colour, model.Material);
             var viewItemsList = this.ConvertToViewItemList(dbItemsList);
 
             model.GalleryTitle = "New items";
@@ -56,7 +56,7 @@ namespace Fancy.Web.Areas.Items.Controllers
         public ActionResult GalleryItemsPromotions(ViewGalleryItems model, int pageNumber)
         {
             var itemsCount = this.itemService.GetAllItemsInPromotionCount();
-            var dbItemsList = this.itemService.GetItemsInPromotion(pageNumber, model.Colour, model.Material, model.PriceFilter);
+            var dbItemsList = this.itemService.GetItemsInPromotion(pageNumber, model.Colour, model.Material);
             var viewItemsList = this.ConvertToViewItemList(dbItemsList);
 
             model.GalleryTitle = "Items in promotion";

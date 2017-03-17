@@ -29,7 +29,7 @@ namespace Fancy.Services.Data
             return this.data.Items.GetById(id);
         }
 
-        public IEnumerable<Item> GetItemsOfType(int pageNumber, ItemType itemType, MainColour colourType, MainMaterial materialType, PriceFilterType priceFilter)
+        public IEnumerable<Item> GetItemsOfType(int pageNumber, ItemType itemType, MainColour colourType, MainMaterial materialType)
         {
             var itemsList = this.data.Items.All
                 .Where(i => i.ItemType == itemType && !i.IsDeleted && i.Quantity != 0);
@@ -44,22 +44,6 @@ namespace Fancy.Services.Data
                 itemsList.Where(i => i.MainMaterial == materialType);
             }
 
-            if(priceFilter != 0)
-            {
-                if(priceFilter == PriceFilterType.Ascending)
-                {
-                    itemsList.OrderBy(i => i.Price);
-                }
-                else
-                {
-                    itemsList.OrderByDescending(i => i.Price);
-                }
-            }
-            else
-            {
-                itemsList.OrderBy(i => i.Id);
-            }
-
             return itemsList
                     .OrderBy(i => i.Id)
                     .Skip((pageNumber - 1) * UiConstants.ItemsOnPage)
@@ -67,7 +51,7 @@ namespace Fancy.Services.Data
                     .ToList();
         }
 
-        public IEnumerable<Item> GetItemsInPromotion(int pageNumber, MainColour colourType, MainMaterial materialType, PriceFilterType priceFilter)
+        public IEnumerable<Item> GetItemsInPromotion(int pageNumber, MainColour colourType, MainMaterial materialType)
         {
             var itemsList = this.data.Items.All
                 .Where(i => i.Discount != 0 && !i.IsDeleted && i.Quantity != 0);
@@ -82,22 +66,6 @@ namespace Fancy.Services.Data
                 itemsList.Where(i => i.MainMaterial == materialType);
             }
 
-            if (priceFilter != 0)
-            {
-                if (priceFilter == PriceFilterType.Ascending)
-                {
-                    itemsList.OrderBy(i => i.Price);
-                }
-                else
-                {
-                    itemsList.OrderByDescending(i => i.Price);
-                }
-            }
-            else
-            {
-                itemsList.OrderBy(i => i.Id);
-            }
-
             return itemsList
                     .OrderBy(i => i.Id)
                     .Skip((pageNumber - 1) * UiConstants.ItemsOnPage)
@@ -105,7 +73,7 @@ namespace Fancy.Services.Data
                     .ToList();
         }
 
-        public IEnumerable<Item> GetNewestItems(int pageNumber, MainColour colourType, MainMaterial materialType, PriceFilterType priceFilter)
+        public IEnumerable<Item> GetNewestItems(int pageNumber, MainColour colourType, MainMaterial materialType)
         {
             var itemsList = this.data.Items.All
                 .Where(i => !i.IsDeleted && i.Quantity != 0)
@@ -119,18 +87,6 @@ namespace Fancy.Services.Data
             if (materialType != 0)
             {
                 itemsList.Where(i => i.MainMaterial == materialType);
-            }
-
-            if (priceFilter != 0)
-            {
-                if (priceFilter == PriceFilterType.Ascending)
-                {
-                    itemsList.ThenBy(i => i.Price);
-                }
-                else
-                {
-                    itemsList.ThenByDescending(i => i.Price);
-                }
             }
 
             return itemsList
