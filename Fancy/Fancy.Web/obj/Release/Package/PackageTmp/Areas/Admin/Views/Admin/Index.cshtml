@@ -9,6 +9,7 @@
 <h1>
     Admin Area
 </h1>
+
 @using (Html.BeginForm("AddItem", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()

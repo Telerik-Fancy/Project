@@ -1,3 +1,0 @@
-<connectionStrings>
-    <add name="DefaultConnection" connectionString="Data Source=DESKTOP-TES6QB0\SQLEXPRESS;Initial Catalog=Fancy;Integrated Security=True" providerName="System.Data.SqlClient" />
-  </connectionStrings>

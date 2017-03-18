@@ -21,10 +21,20 @@
                     <div class="card-content blue-text text-darken-2">
                         <span class="bold">Item code:&nbsp</span> <span class="item-info">@item.ItemCode</span>
                         <img src="@item.ImageBase64String" alt="Alternate Text" class="item-img-gallery" />
+                        <br />
                         <span class="bold">Price:&nbsp</span>
-                        <span class="item-info">
-                            @item.Price BGN
-                        </span>
+                        @if (item.Discount == 0)
+                        {
+                            <span class="item-info">
+                                @string.Format("{0:0.00}", item.Price) BGN
+                            </span>
+                        }
+                        else
+                        {
+                            <span class="item-info red">
+                                @string.Format("{0:0.00}", item.Price * ((100 - item.Discount))/100) BGN
+                            </span>
+                        }
                         <br />
                         <span class="bold">Quantity left:&nbsp</span> <span class="item-info">@item.Quantity</span>
                     </div>
