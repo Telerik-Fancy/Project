@@ -263,7 +263,6 @@ C:\Users\gvelikov\Desktop\MVC\Project\Fancy\Fancy.Web\bin\Fancy.Data.Models.pdb
 C:\Users\gvelikov\Desktop\MVC\Project\Fancy\Fancy.Web\bin\Fancy.Data.pdb
 C:\Users\gvelikov\Desktop\MVC\Project\Fancy\Fancy.Web\bin\Fancy.Services.pdb
 C:\Users\gvelikov\Desktop\MVC\Project\Fancy\Fancy.Web\bin\AutoMapper.xml
-C:\Users\gvelikov\Desktop\MVC\Project\Fancy\Fancy.Web\bin\Kendo.Mvc.xml
 C:\Users\gvelikov\Desktop\MVC\Project\Fancy\Fancy.Web\bin\Microsoft.AI.DependencyCollector.xml
 C:\Users\gvelikov\Desktop\MVC\Project\Fancy\Fancy.Web\bin\Microsoft.AI.ServerTelemetryChannel.xml
 C:\Users\gvelikov\Desktop\MVC\Project\Fancy\Fancy.Web\bin\Microsoft.AI.Web.xml
