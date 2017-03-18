@@ -15,14 +15,18 @@ namespace Fancy.Web.Areas.Items.Controllers
             this.promotionService = promotionService;
             this.mappingService = mappingService;        }
 
-        public ActionResult AddPromotionToItem()
+        public ActionResult AddPromotion(int itemId, decimal discount)
         {
-            return View();
+            this.promotionService.AddPromotion(itemId, discount);
+
+            return this.Redirect("~/Items/Items/SingleItem/" + itemId);
         }
 
-        public ActionResult RemovePromotionFromItem()
+        public ActionResult RemovePromotion(int itemId)
         {
-            return View();
+            this.promotionService.RemovePromotion(itemId);
+
+            return this.Redirect("~/Items/Items/SingleItem/" + itemId);
         }
     }
 }

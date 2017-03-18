@@ -24,8 +24,34 @@
         <span class="bold">Quantity left:&nbsp</span> <span class="item-info">@Model.Quantity</span>
     </div>
     <div class="card-action">
-        @Html.ActionLink("Add to basket", "AddItemToBasket", "Profile", new { area = "Profile", itemId = Model.Id }, new { @class = "btn btn-primary" })
+        @Html.ActionLink("Add to basket", "AddItemToBasket", "Profile", new { area = "Profile", itemId = Model.Id, discount = Model.Discount }, new { @class = "btn btn-primary" })
     </div>
+    <br />
+    @if (Model.Discount == 0)
+    {
+        <div class="card-action add-promo">
+            @using (Html.BeginForm("AddPromotion", "Promotions", new { area = "Items", itemId = Model.Id }, FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                @Html.AntiForgeryToken()
+                <label>
+                    Discount:
+                </label>
+                <br />
+                @Html.EditorFor(m => m.Discount, new { @type = "number", @class = "form-control", @min = "0" })
+                <br />
+                <br />
+                <button type="submit" class="btn btn-primary">
+                    Add promotion
+                </button>
+            }
+        </div>
+    }
+    else
+    {
+        <div class="card-action remove-promo">
+            @Html.ActionLink("Remove promotion", "RemovePromotion", "Promotions", new { area = "Items", itemId = Model.Id }, new { @class = "btn btn-primary promo-but" })
+        </div>
+    }
 </div>
 
 @*@if (Request.IsAuthenticated && User.IsInRole("Administrators"))
