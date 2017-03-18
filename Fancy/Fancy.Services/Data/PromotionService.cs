@@ -18,12 +18,20 @@ namespace Fancy.Services.Data
 
         public void AddPromotion(int itemId, decimal discount)
         {
-            throw new NotImplementedException();
+            var item = this.data.Items.All.Single(i => i.Id == itemId);
+
+            item.Discount = discount;
+
+            this.data.Commit();
         }
 
         public void RemovePromotion(int itemId)
         {
-            throw new NotImplementedException();
+            var item = this.data.Items.All.Single(i => i.Id == itemId);
+
+            item.Discount = 0;
+
+            this.data.Commit();
         }
     }
 }
