@@ -1,0 +1,26 @@
+﻿span {
+    display: inline-block;
+    margin: 5px 0px;
+}
+
+.item-info {
+    color: black;
+    font-size: 16px;
+}
+
+.single-item-holder {
+    width: 60%;
+    margin: 5px;
+    padding: 5px;
+}
+
+.item-img-single {
+    width:75%;
+    height:75%;
+}
+
+.group:after {
+  content: "";
+  display: table;
+  clear: both;
+}

@@ -1,0 +1,45 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model ViewItem
+
+@Styles.Render("~/Content/single-item.css")
+
+<div class="single-item-holder">
+    <div class="card panel">
+        <span class="bold">Item code:&nbsp</span> <span class="item-info">@Model.ItemCode</span>
+        <br />
+        <img src="@Model.ImageBase64String" alt="Alternate Text" class="item-img-single" />
+        <br />
+        <span class="bold">Colour:&nbsp</span><span>@Model.MainColour</span>
+        <br />
+        <span class="bold">Material:&nbsp</span><span>@Model.MainMaterial</span>
+        <br />
+        <span class="bold">Price:&nbsp</span>
+        <span class="item-info">
+            @Model.Price BGN
+        </span>
+        <br />
+        <span class="bold">Quantity left:&nbsp</span> <span class="item-info">@Model.Quantity</span>
+    </div>
+    <div class="card-action">
+        @Html.ActionLink("Add to basket", "AddItemToBasket", "Profile", new { area = "Profile", itemId = Model.Id }, new { @class = "btn btn-primary" })
+    </div>
+</div>
+
+@*@if (Request.IsAuthenticated && User.IsInRole("Administrators"))
+{
+    <div id="sidebar">
+        <div class="module">
+            <ul class="menu">
+                <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                <li>@Html.ActionLink("About", "About", "Home")</li>
+                <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+            </ul>
+        </div>
+        <div class="mainContent">
+            Hello, @User.Identity.Name !
+        </div>
+    </div>
+}*@

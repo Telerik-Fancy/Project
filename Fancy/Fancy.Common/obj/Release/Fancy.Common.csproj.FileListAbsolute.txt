@@ -1,0 +1,5 @@
+C:\Users\gvelikov\Desktop\MVC\Project\Fancy\Fancy.Common\bin\Release\Fancy.Common.dll
+C:\Users\gvelikov\Desktop\MVC\Project\Fancy\Fancy.Common\bin\Release\Fancy.Common.pdb
+C:\Users\gvelikov\Desktop\MVC\Project\Fancy\Fancy.Common\obj\Release\Fancy.Common.csprojResolveAssemblyReference.cache
+C:\Users\gvelikov\Desktop\MVC\Project\Fancy\Fancy.Common\obj\Release\Fancy.Common.dll
+C:\Users\gvelikov\Desktop\MVC\Project\Fancy\Fancy.Common\obj\Release\Fancy.Common.pdb
