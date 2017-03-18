@@ -222,7 +222,6 @@ C:\Users\gvelikov\Desktop\MVC\Project\Fancy\Fancy.Web\bin\Glimpse.AspNet.dll
 C:\Users\gvelikov\Desktop\MVC\Project\Fancy\Fancy.Web\bin\Glimpse.Core.dll
 C:\Users\gvelikov\Desktop\MVC\Project\Fancy\Fancy.Web\bin\Glimpse.EF6.dll
 C:\Users\gvelikov\Desktop\MVC\Project\Fancy\Fancy.Web\bin\Glimpse.Mvc5.dll
-C:\Users\gvelikov\Desktop\MVC\Project\Fancy\Fancy.Web\bin\Kendo.Mvc.dll
 C:\Users\gvelikov\Desktop\MVC\Project\Fancy\Fancy.Web\bin\Microsoft.AI.Agent.Intercept.dll
 C:\Users\gvelikov\Desktop\MVC\Project\Fancy\Fancy.Web\bin\Microsoft.AI.DependencyCollector.dll
 C:\Users\gvelikov\Desktop\MVC\Project\Fancy\Fancy.Web\bin\Microsoft.AI.PerfCounterCollector.dll

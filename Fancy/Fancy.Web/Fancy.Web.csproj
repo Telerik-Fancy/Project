@@ -299,18 +299,6 @@
     <Content Include="Areas\Admin\Views\web.config" />
     <Content Include="Areas\Profile\Views\web.config" />
     <Content Include="Areas\Admin\Views\Admin\Index.cshtml" />
-    <Content Include="Areas\Items\Views\Shared\EditorTemplates\Currency.cshtml" />
-    <Content Include="Areas\Items\Views\Shared\EditorTemplates\Date.cshtml" />
-    <Content Include="Areas\Items\Views\Shared\EditorTemplates\DateTime.cshtml" />
-    <Content Include="Areas\Items\Views\Shared\EditorTemplates\Email.cshtml" />
-    <Content Include="Areas\Items\Views\Shared\EditorTemplates\EmailAddress.cshtml" />
-    <Content Include="Areas\Items\Views\Shared\EditorTemplates\GridForeignKey.cshtml" />
-    <Content Include="Areas\Items\Views\Shared\EditorTemplates\Integer.cshtml" />
-    <Content Include="Areas\Items\Views\Shared\EditorTemplates\Number.cshtml" />
-    <Content Include="Areas\Items\Views\Shared\EditorTemplates\Password.cshtml" />
-    <Content Include="Areas\Items\Views\Shared\EditorTemplates\String.cshtml" />
-    <Content Include="Areas\Items\Views\Shared\EditorTemplates\Time.cshtml" />
-    <Content Include="Areas\Items\Views\Shared\EditorTemplates\Url.cshtml" />
     <Content Include="Scripts\ai.0.15.0-build58334.js" />
     <Content Include="Scripts\ai.0.15.0-build58334.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -376,6 +364,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\Admin\Views\Shared\" />
+    <Folder Include="Areas\Items\Views\Shared\" />
     <Folder Include="Areas\Profile\Views\Shared\" />
   </ItemGroup>
   <ItemGroup>
