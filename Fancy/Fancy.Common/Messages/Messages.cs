@@ -22,5 +22,7 @@ namespace Fancy.Common.Messages
         public const string ImageRequired = "Image is required.";
 
         public const string RequiredDiscount = "Discount is required.";
+
+        public const string ArgumentNullMessage = "{0} can not be null.";
     }
 }

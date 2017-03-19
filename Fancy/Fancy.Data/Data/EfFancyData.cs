@@ -1,8 +1,9 @@
-﻿using Fancy.Data.Contexts;
-using System;
+﻿using Fancy.Common.Messages;
+using Fancy.Common.Validator;
+using Fancy.Data.Contexts;
 using Fancy.Data.Models.Models;
 using Fancy.Data.Repositories;
-using Bytes2you.Validation;
+using System;
 
 namespace Fancy.Data.Data
 {
@@ -15,10 +16,10 @@ namespace Fancy.Data.Data
 
         public EfFancyData(IFancyDbContext context, IEfGenericRepository<Item> items, IEfGenericRepository<Order> orders, IEfGenericRepository<User> users)
         {
-            //Guard.WhenArgument(context, nameof(context)).IsNull().Throw();
-            //Guard.WhenArgument(items, nameof(items)).IsNull().Throw();
-            //Guard.WhenArgument(orders, nameof(orders)).IsNull().Throw();
-            //Guard.WhenArgument(users, nameof(users)).IsNull().Throw();
+            Validator.ValidateNullArgument(context, "context");
+            Validator.ValidateNullArgument(items, "items");
+            Validator.ValidateNullArgument(orders, "orders");
+            Validator.ValidateNullArgument(users, "users");
 
             this.context = context;
             this.items = items;

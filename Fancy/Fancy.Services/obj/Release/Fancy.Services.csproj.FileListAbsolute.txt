@@ -22,4 +22,3 @@ C:\Users\gvelikov\Desktop\MVC\Project\Fancy\Fancy.Services\obj\Release\Fancy.Ser
 C:\Users\gvelikov\Desktop\MVC\Project\Fancy\Fancy.Services\bin\Release\Fancy.Services.dll.config
 C:\Users\gvelikov\Desktop\MVC\Project\Fancy\Fancy.Services\bin\Release\EntityFramework.SqlServer.dll
 C:\Users\gvelikov\Desktop\MVC\Project\Fancy\Fancy.Services\bin\Release\EntityFramework.SqlServer.xml
-C:\Users\gvelikov\Desktop\MVC\Project\Fancy\Fancy.Services\bin\Release\Bytes2you.Validation.dll

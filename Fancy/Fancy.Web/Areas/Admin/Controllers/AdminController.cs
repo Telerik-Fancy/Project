@@ -6,7 +6,7 @@ using Fancy.Services.Common.Contracts;
 using Fancy.Data.Models.Models;
 using Fancy.Services.Data.Contracts;
 using Fancy.Common.Constants;
-using Bytes2you.Validation;
+using Fancy.Common.Validator;
 
 namespace Fancy.Web.Areas.Admin.Controllers
 {
@@ -17,15 +17,15 @@ namespace Fancy.Web.Areas.Admin.Controllers
         private readonly IMappingService mappingService;
         private readonly IItemService itemService;
 
-        public AdminController(IImageProvider imageProvider, IMappingService mappingService, IItemService itemService)
+        public AdminController(IMappingService mappingService, IItemService itemService, IImageProvider imageProvider)
         {
-            Guard.WhenArgument(imageProvider, nameof(imageProvider)).IsNull().Throw();
-            Guard.WhenArgument(mappingService, nameof(mappingService)).IsNull().Throw();
-            Guard.WhenArgument(itemService, nameof(itemService)).IsNull().Throw();
+            Validator.ValidateNullArgument(mappingService, "mappingService");
+            Validator.ValidateNullArgument(itemService, "itemService");
+            Validator.ValidateNullArgument(imageProvider, "imageProvider");
 
-            this.imageProvider = imageProvider;
             this.mappingService = mappingService;
             this.itemService = itemService;
+            this.imageProvider = imageProvider;
         }
 
         public ActionResult AdminPanel()

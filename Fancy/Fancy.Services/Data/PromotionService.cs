@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Fancy.Data.Models.Models;
-using Bytes2you.Validation;
+using Fancy.Common.Validator;
 
 namespace Fancy.Services.Data
 {
@@ -14,7 +14,7 @@ namespace Fancy.Services.Data
 
         public PromotionService(IEfFancyData data)
         {
-            Guard.WhenArgument(data, nameof(data)).IsNull().Throw();
+            Validator.ValidateNullArgument(data, "data");
 
             this.data = data;
         }

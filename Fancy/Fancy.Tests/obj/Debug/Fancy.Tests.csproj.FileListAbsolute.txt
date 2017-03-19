@@ -138,4 +138,3 @@ C:\Users\gvelikov\Desktop\MVC\Project\Fancy\Fancy.Tests\bin\Debug\Microsoft.Owin
 C:\Users\gvelikov\Desktop\MVC\Project\Fancy\Fancy.Tests\obj\Debug\Fancy.Tests.csprojResolveAssemblyReference.cache
 C:\Users\gvelikov\Desktop\MVC\Project\Fancy\Fancy.Tests\obj\Debug\Fancy.Tests.dll
 C:\Users\gvelikov\Desktop\MVC\Project\Fancy\Fancy.Tests\obj\Debug\Fancy.Tests.pdb
-C:\Users\gvelikov\Desktop\MVC\Project\Fancy\Fancy.Tests\bin\Debug\Bytes2you.Validation.dll

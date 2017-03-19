@@ -1,5 +1,5 @@
-﻿using Bytes2you.Validation;
-using Fancy.Common.Constants;
+﻿using Fancy.Common.Constants;
+using Fancy.Common.Validator;
 using Fancy.Services.Common.Contracts;
 using Fancy.Services.Data.Contracts;
 using Fancy.Web.Areas.Items.Models;
@@ -15,8 +15,8 @@ namespace Fancy.Web.Areas.Items.Controllers
 
         public PromotionsController(IPromotionService promotionService, IMappingService mappingService)
         {
-            Guard.WhenArgument(promotionService, nameof(promotionService)).IsNull().Throw();
-            Guard.WhenArgument(mappingService, nameof(mappingService)).IsNull().Throw();
+            Validator.ValidateNullArgument(promotionService, "promotionService");
+            Validator.ValidateNullArgument(mappingService, "mappingService");
 
             this.promotionService = promotionService;
             this.mappingService = mappingService;

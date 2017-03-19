@@ -60,4 +60,3 @@ C:\Users\gvelikov\Desktop\MVC\Project\Fancy\Fancy.Data\bin\Debug\Newtonsoft.Json
 C:\Users\gvelikov\Desktop\MVC\Project\Fancy\Fancy.Data\obj\Debug\Fancy.Data.csprojResolveAssemblyReference.cache
 C:\Users\gvelikov\Desktop\MVC\Project\Fancy\Fancy.Data\obj\Debug\Fancy.Data.dll
 C:\Users\gvelikov\Desktop\MVC\Project\Fancy\Fancy.Data\obj\Debug\Fancy.Data.pdb
-C:\Users\gvelikov\Desktop\MVC\Project\Fancy\Fancy.Data\bin\Debug\Bytes2you.Validation.dll

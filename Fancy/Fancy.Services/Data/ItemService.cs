@@ -6,7 +6,7 @@ using System.Linq;
 using System.Collections.Generic;
 using System;
 using Fancy.Common.Constants;
-using Bytes2you.Validation;
+using Fancy.Common.Validator;
 
 namespace Fancy.Services.Data
 {
@@ -16,7 +16,7 @@ namespace Fancy.Services.Data
 
         public ItemService(IEfFancyData data)
         {
-            Guard.WhenArgument(data, nameof(data)).IsNull().Throw();
+            Validator.ValidateNullArgument(data, "data");
 
             this.data = data;   
         }

@@ -104,4 +104,3 @@ C:\Users\gvelikov\Desktop\MVC\Project\Fancy\Fancy.Web\bin\Microsoft.Owin.Securit
 C:\Users\gvelikov\Desktop\MVC\Project\Fancy\Fancy.Web\obj\Release\Fancy.Web.csprojResolveAssemblyReference.cache
 C:\Users\gvelikov\Desktop\MVC\Project\Fancy\Fancy.Web\obj\Release\Fancy.Web.dll
 C:\Users\gvelikov\Desktop\MVC\Project\Fancy\Fancy.Web\obj\Release\Fancy.Web.pdb
-C:\Users\gvelikov\Desktop\MVC\Project\Fancy\Fancy.Web\bin\Bytes2you.Validation.dll
