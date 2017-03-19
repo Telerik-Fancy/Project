@@ -19,5 +19,7 @@ namespace Fancy.Web.Areas.Profile.Models
         public User User { get; set; }
 
         public ICollection<ViewItem> Items { get; set; }
+
+        public decimal TotalPrice { get; set; }
     }
 }

@@ -14,7 +14,7 @@ namespace Fancy.Web.Areas.Items.Models
 
         public MainMaterial MainMaterial { get; set; }
 
-        public byte[] ImageBytes { get; set; }
+        //public byte[] ImageBytes { get; set; }
 
         public decimal Price { get; set; }
 

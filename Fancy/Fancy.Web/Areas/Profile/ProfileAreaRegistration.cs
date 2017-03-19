@@ -28,8 +28,8 @@ namespace Fancy.Web.Areas.Profile
 
             context.MapRoute(
                 "Execute_order_from_profile",
-                "Profile/{controller}/{action}/{orderId}",
-                new { orderId = UrlParameter.Optional }
+                "Profile/{controller}/{action}/{orderId}/{totalPrice}",
+                new { controler = "Profile", action="ProfilePage", orderId = UrlParameter.Optional, totalPrice = UrlParameter.Optional }
             );
 
             context.MapRoute(

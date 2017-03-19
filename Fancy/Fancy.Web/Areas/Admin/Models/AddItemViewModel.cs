@@ -16,7 +16,7 @@ namespace Fancy.Web.Areas.Admin.Models
 
         public HttpPostedFileBase Image { get; set; }
 
-        public byte[] ImageBytes { get; set; }
+        //public byte[] ImageBytes { get; set; }
 
         public decimal Price { get; set; }
 
@@ -27,5 +27,7 @@ namespace Fancy.Web.Areas.Admin.Models
         public DateTime DateAdded { get; set; }
 
         public bool IsDeleted { get; set; }
+
+        public string ImageBase64String { get; set; }
     }
 }

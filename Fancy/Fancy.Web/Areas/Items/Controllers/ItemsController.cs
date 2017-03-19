@@ -15,13 +15,13 @@ namespace Fancy.Web.Areas.Items.Controllers
     {
         private IItemService itemService;
         private IMappingService mappingService;
-        private IImageProvider imageConverter;
+        private IImageProvider imageProvider;
 
-        public ItemsController(IItemService itemService, IMappingService mappingService, IImageProvider imageConverter)
+        public ItemsController(IItemService itemService, IMappingService mappingService, IImageProvider imageProvider)
         {
             this.itemService = itemService;
             this.mappingService = mappingService;
-            this.imageConverter = imageConverter;
+            this.imageProvider = imageProvider;
         }
 
         public ActionResult GalleryItems(ViewGalleryItems model, int pageNumber, string type)
@@ -71,8 +71,6 @@ namespace Fancy.Web.Areas.Items.Controllers
             var dbItem = this.itemService.GetItemById(itemId);
 
             model = this.mappingService.Map<Item, ViewItem>((Item)dbItem);
-            string base64 = this.imageConverter.ConvertByteArrayToImageString(model.ImageBytes);
-            model.ImageBase64String = string.Format("data:image/gif;base64,{0}", base64);
 
             return View(model);
         }
@@ -84,8 +82,6 @@ namespace Fancy.Web.Areas.Items.Controllers
             foreach (var dbItem in dbItemsList)
             {
                 var mvItem = this.mappingService.Map<Item, ViewItem>((Item)dbItem);
-                string base64 = this.imageConverter.ConvertByteArrayToImageString(mvItem.ImageBytes);
-                mvItem.ImageBase64String = string.Format("data:image/gif;base64,{0}", base64);
 
                 viewItemsList.Add(mvItem);
             }

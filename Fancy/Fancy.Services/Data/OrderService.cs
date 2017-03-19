@@ -65,9 +65,11 @@ namespace Fancy.Services.Data
             this.data.Commit();
         }
 
-        public void ExecuteOrder(int orderId)
+        public void ExecuteOrder(int orderId, decimal totalPrice)
         {
-            this.data.Orders.GetById(orderId).OrderStatus = OrderStatusType.Shipped;
+            var order = this.data.Orders.GetById(orderId);
+            order.OrderStatus = OrderStatusType.Shipped;
+            order.TotalPrice = totalPrice;
 
             this.data.Commit();
         }

@@ -29,5 +29,7 @@ namespace Fancy.Data.Models.Models
 
             set { this.items = value; }
         }
+
+        public decimal TotalPrice { get; set; }
     }
 }

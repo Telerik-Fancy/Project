@@ -1,7 +1,6 @@
 ﻿using Fancy.Data.Models.Models;
 using Fancy.Services.Common.Contracts;
 using Fancy.Services.Data.Contracts;
-using Fancy.Web.Areas.Items.Models;
 using Fancy.Web.Areas.Profile.Models;
 using Fancy.Web.WebUtils.Contracts;
 using System.Collections.Generic;
@@ -14,12 +13,14 @@ namespace Fancy.Web.Areas.Profile.Controllers
         private IIdentityProvider identityProvider;
         private IOrderService orderService;
         private IMappingService mappingService;
+        private IImageProvider imageProvider;
 
-        public ProfileController(IIdentityProvider identityProvider, IOrderService orderService, IMappingService mappingService)
+        public ProfileController(IIdentityProvider identityProvider, IOrderService orderService, IMappingService mappingService, IImageProvider imageProvider)
         {
             this.identityProvider = identityProvider;
             this.orderService = orderService;
             this.mappingService = mappingService;
+            this.imageProvider = imageProvider;
         }
 
         public ActionResult ProfilePage(ProfilePageViewModel model)
@@ -55,9 +56,9 @@ namespace Fancy.Web.Areas.Profile.Controllers
             return this.Redirect("~/Profile/Profile/ProfilePage");
         }
 
-        public ActionResult ExecuteOrder(int orderId)
+        public ActionResult ExecuteOrder(int orderId, decimal totalPrice)
         {
-            this.orderService.ExecuteOrder(orderId);
+            this.orderService.ExecuteOrder(orderId, totalPrice);
 
             return this.Redirect("~/Profile/Profile/ProfilePage");
         }

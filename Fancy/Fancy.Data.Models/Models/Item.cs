@@ -23,7 +23,9 @@ namespace Fancy.Data.Models.Models
 
         public MainMaterial MainMaterial { get; set; }
 
-        public byte[] ImageBytes { get; set; }
+        //public byte[] ImageBytes { get; set; }
+
+        public string ImageBase64String { get; set; }
 
         public virtual ICollection<Order> Orders
         {

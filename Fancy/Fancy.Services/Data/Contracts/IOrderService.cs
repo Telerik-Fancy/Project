@@ -9,7 +9,7 @@ namespace Fancy.Services.Data.Contracts
 
         void RemoveItemFromBasket(int itemId, string userId);
 
-        void ExecuteOrder(int orederId);
+        void ExecuteOrder(int orederId, decimal totalPrice);
 
         Order GetOrderInBasket(string userId);
 

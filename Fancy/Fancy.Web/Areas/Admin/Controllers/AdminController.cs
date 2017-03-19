@@ -11,13 +11,13 @@ namespace Fancy.Web.Areas.Admin.Controllers
 {
     public class AdminController : Controller
     {
-        private readonly IImageProvider imageConverter;
+        private readonly IImageProvider imageProvider;
         private readonly IMappingService mappingService;
         private readonly IItemService itemService;
 
-        public AdminController(IImageProvider imageConverter, IMappingService mappingService, IItemService itemService)
+        public AdminController(IImageProvider imageProvider, IMappingService mappingService, IItemService itemService)
         {
-            this.imageConverter = imageConverter;
+            this.imageProvider = imageProvider;
             this.mappingService = mappingService;
             this.itemService = itemService;
         }
@@ -35,7 +35,9 @@ namespace Fancy.Web.Areas.Admin.Controllers
             model.IsDeleted = false;
             model.Discount = 0;
 
-            model.ImageBytes = this.imageConverter.ConvertFileToByteArray(model.Image);
+            var bytesArray = this.imageProvider.ConvertFileToByteArray(model.Image);
+            string base64 = this.imageProvider.ConvertByteArrayToImageString(bytesArray);
+            model.ImageBase64String = string.Format("data:image/gif;base64,{0}", base64); 
 
             var item = this.mappingService.Map<AddItemViewModel, Item>(model);
             this.itemService.AddItem(item);
