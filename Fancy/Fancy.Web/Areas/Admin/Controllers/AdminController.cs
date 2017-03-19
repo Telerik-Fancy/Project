@@ -1,7 +1,6 @@
 ﻿using Fancy.Web.Areas.Admin.Models;
 using System;
 using System.Web.Mvc;
-using Fancy.Web.WebUtils;
 using Fancy.Web.WebUtils.Contracts;
 using Fancy.Services.Common.Contracts;
 using Fancy.Data.Models.Models;
@@ -33,18 +32,21 @@ namespace Fancy.Web.Areas.Admin.Controllers
         [Authorize(Roles = UserConstants.AdministratorRole)]
         public ActionResult AddItem(AddItemViewModel model)
         {
-            model.DateAdded = DateTime.Now;
-            model.IsDeleted = false;
-            model.Discount = 0;
+            if(this.ModelState.IsValid)
+            {
+                model.DateAdded = DateTime.Now;
+                model.IsDeleted = false;
+                model.Discount = 0;
 
-            var bytesArray = this.imageProvider.ConvertFileToByteArray(model.Image);
-            string base64 = this.imageProvider.ConvertByteArrayToImageString(bytesArray);
-            model.ImageBase64String = string.Format("data:image/gif;base64,{0}", base64); 
+                var bytesArray = this.imageProvider.ConvertFileToByteArray(model.Image);
+                model.ImageBase64String = this.imageProvider.ConvertByteArrayToImageString(bytesArray);
 
-            var item = this.mappingService.Map<AddItemViewModel, Item>(model);
-            this.itemService.AddItem(item);
+                var item = this.mappingService.Map<AddItemViewModel, Item>(model);
+                this.itemService.AddItem(item);
 
-            ModelState.Clear();
+                this.ModelState.Clear();
+            }
+            
             return View("AdminPanel");
         }
     }

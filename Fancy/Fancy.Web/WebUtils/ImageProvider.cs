@@ -19,7 +19,9 @@ namespace Fancy.Web.WebUtils
 
         public string ConvertByteArrayToImageString(byte[] array)
         {
-            return Convert.ToBase64String(array);
+            string base64 = Convert.ToBase64String(array);
+
+            return string.Format("data:image/gif;base64,{0}", base64);
         }
     }
 }

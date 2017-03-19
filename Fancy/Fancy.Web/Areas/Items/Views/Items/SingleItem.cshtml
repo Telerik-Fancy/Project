@@ -51,7 +51,8 @@
                         Discount:
                     </label>
                     <br />
-                    @Html.EditorFor(m => m.Discount, new { @type = "number", @class = "form-control", @min = "0" })
+                    @Html.EditorFor(m => m.Discount, new { @type = "number", @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Discount, string.Empty, new { @class = "red" })
                     <br />
                     <br />
                     <button type="submit" class="btn btn-primary">
@@ -68,19 +69,3 @@
         }
     }
 </div>
-
-@*@if (Request.IsAuthenticated && User.IsInRole("Administrators"))
-{
-    <div id="sidebar">
-        <div class="module">
-            <ul class="menu">
-                <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                <li>@Html.ActionLink("About", "About", "Home")</li>
-                <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-            </ul>
-        </div>
-        <div class="mainContent">
-            Hello, @User.Identity.Name !
-        </div>
-    </div>
-}*@

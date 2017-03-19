@@ -41,7 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Constants\ItemConstants.cs" />
-    <Compile Include="Constants\UiConstants.cs" />
+    <Compile Include="Constants\ServerConstants.cs" />
     <Compile Include="Constants\UserConstants.cs" />
     <Compile Include="Enums\ItemType.cs" />
     <Compile Include="Enums\MainColourType.cs" />

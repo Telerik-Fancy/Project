@@ -46,7 +46,7 @@ namespace Fancy.Web.Areas.Items.Controllers
             var dbItemsList = this.itemService.GetNewestItems(pageNumber, model.Colour, model.Material);
             var viewItemsList = this.ConvertToViewItemList(dbItemsList);
 
-            model.GalleryTitle = UiConstants.GalleryNewItemsHeader;
+            model.GalleryTitle = ServerConstants.GalleryNewItemsHeader;
             model.PageButtonsCount = this.CalculatePageNumberButtonsCount(itemsCount);
             model.ItemsList = viewItemsList;
 
@@ -59,7 +59,7 @@ namespace Fancy.Web.Areas.Items.Controllers
             var dbItemsList = this.itemService.GetItemsInPromotion(pageNumber, model.Colour, model.Material);
             var viewItemsList = this.ConvertToViewItemList(dbItemsList);
 
-            model.GalleryTitle = UiConstants.GalleryPromotionItemsHeader;
+            model.GalleryTitle = ServerConstants.GalleryPromotionItemsHeader;
             model.PageButtonsCount = this.CalculatePageNumberButtonsCount(itemsCount);
             model.ItemsList = viewItemsList;
 
@@ -96,19 +96,19 @@ namespace Fancy.Web.Areas.Items.Controllers
 
             if(itemType == ItemType.Necklace)
             {
-                viewTitle = UiConstants.GalleryNecklacesHeader;
+                viewTitle = ServerConstants.GalleryNecklacesHeader;
             }
             else if(itemType == ItemType.Earings)
             {
-                viewTitle = UiConstants.GalleryEaringsHeader;
+                viewTitle = ServerConstants.GalleryEaringsHeader;
             }
             else if (itemType == ItemType.Bracelet)
             {
-                viewTitle = UiConstants.GalleryBraceletsHeader;
+                viewTitle = ServerConstants.GalleryBraceletsHeader;
             }
             else if (itemType == ItemType.Set)
             {
-                viewTitle = UiConstants.GallerySetsHeader;
+                viewTitle = ServerConstants.GallerySetsHeader;
             }
             else
             {
@@ -120,8 +120,8 @@ namespace Fancy.Web.Areas.Items.Controllers
 
         private int CalculatePageNumberButtonsCount(int itemsCount)
         {
-            var pageButtonsCount = itemsCount / UiConstants.ItemsOnPage;
-            if(pageButtonsCount != 0 && pageButtonsCount * UiConstants.ItemsOnPage < itemsCount)
+            var pageButtonsCount = itemsCount / ServerConstants.ItemsOnPage;
+            if(pageButtonsCount != 0 && pageButtonsCount * ServerConstants.ItemsOnPage < itemsCount)
             {
                 pageButtonsCount++;
             }

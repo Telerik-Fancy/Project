@@ -49,8 +49,8 @@ namespace Fancy.Services.Data
 
             return itemsList
                     .OrderBy(i => i.Id)
-                    .Skip((pageNumber - 1) * UiConstants.ItemsOnPage)
-                    .Take(UiConstants.ItemsOnPage)
+                    .Skip((pageNumber - 1) * ServerConstants.ItemsOnPage)
+                    .Take(ServerConstants.ItemsOnPage)
                     .ToList();
         }
 
@@ -71,8 +71,8 @@ namespace Fancy.Services.Data
 
             return itemsList
                     .OrderBy(i => i.Id)
-                    .Skip((pageNumber - 1) * UiConstants.ItemsOnPage)
-                    .Take(UiConstants.ItemsOnPage)
+                    .Skip((pageNumber - 1) * ServerConstants.ItemsOnPage)
+                    .Take(ServerConstants.ItemsOnPage)
                     .ToList();
         }
 
@@ -94,8 +94,8 @@ namespace Fancy.Services.Data
 
             return itemsList
                     .OrderByDescending(i => i.DateAdded)
-                    .Skip((pageNumber - 1) * UiConstants.ItemsOnPage)
-                    .Take(UiConstants.ItemsOnPage)
+                    .Skip((pageNumber - 1) * ServerConstants.ItemsOnPage)
+                    .Take(ServerConstants.ItemsOnPage)
                     .ToList();
         }
             

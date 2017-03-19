@@ -22,28 +22,30 @@
             Item Type:
         </label>
         @Html.EnumDropDownListFor(m => m.ItemType, "Select item type", new { @class = "form-control" })
-        @Html.ValidationMessageFor(m => m.ItemType, "")
+        @Html.ValidationMessageFor(m => m.ItemType, string.Empty, new { @class = "red" })
         <br />         
         <label>
             Material:
         </label>
         @Html.EnumDropDownListFor(m => m.MainMaterial, "Select material", new { @class = "form-control" })
-        @Html.ValidationMessageFor(m => m.MainMaterial, string.Empty)
+        @Html.ValidationMessageFor(m => m.MainMaterial, string.Empty, new { @class = "red" })
         <br />  
         <label>
             Colour:
         </label>
         @Html.EnumDropDownListFor(m => m.MainColour, "Select colour", new { @class = "form-control" })
-        @Html.ValidationMessageFor(m => m.MainColour, string.Empty)
+        @Html.ValidationMessageFor(m => m.MainColour, string.Empty, new { @class = "red" })
         <br />
         <label>Image:</label>
         @Html.TextBoxFor(m => m.Image, new { type = "file"})
+        @Html.ValidationMessageFor(m => m.Image, string.Empty, new { @class = "red" })
         <br />
         <label>
             Item Code:
         </label>
         <br />
         @Html.TextBoxFor(m => m.ItemCode)
+        @Html.ValidationMessageFor(m => m.ItemCode, string.Empty, new { @class = "red" })
         <br />
         <br />
         <label>
@@ -51,6 +53,7 @@
         </label>
         <br />
         @Html.EditorFor(m => m.Price, new { @type = "number", @class = "form-control", @min = "0" })
+        @Html.ValidationMessageFor(m => m.Price, string.Empty, new { @class = "red" })
         <br />
         <br />
         <label>
@@ -58,6 +61,7 @@
         </label>
         <br />
         @Html.EditorFor(m => m.Quantity, new { @type = "number", @class = "form-control", @min = "0" })
+        @Html.ValidationMessageFor(m => m.Quantity, string.Empty, new { @class = "red" })
         <br />
         <br />
         <button type="submit" class="btn btn-success">

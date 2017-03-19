@@ -1,6 +1,8 @@
 ﻿using Fancy.Common.Enums;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Fancy.Data.Models.Models
 {
@@ -15,14 +17,21 @@ namespace Fancy.Data.Models.Models
 
         public int Id { get; set; }
 
+        [Index(IsUnique = true)]
+        [Required]
+        [MaxLength(20, ErrorMessage = "Item code must be 20 characters or less."), MinLength(3, ErrorMessage = "Item code must be 3 characters or more.")]
         public string ItemCode { get; set; }
 
+        [Required]
         public ItemType ItemType { get; set; }
 
+        [Required]
         public MainColourType MainColour { get; set; }
 
+        [Required]
         public MainMaterialType MainMaterial { get; set; }
 
+        [Required]
         public string ImageBase64String { get; set; }
 
         public virtual ICollection<Order> Orders
@@ -32,10 +41,12 @@ namespace Fancy.Data.Models.Models
             set { this.orders = value; }
         }
 
+        [Required]
         public decimal Price { get; set; }
 
         public decimal Discount { get; set; }
 
+        [Required]
         public int Quantity { get; set; }
 
         public DateTime DateAdded { get; set; }

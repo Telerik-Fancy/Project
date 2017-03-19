@@ -1,6 +1,7 @@
 ﻿using Fancy.Common.Constants;
 using Fancy.Services.Common.Contracts;
 using Fancy.Services.Data.Contracts;
+using Fancy.Web.Areas.Items.Models;
 using System.Web.Mvc;
 
 namespace Fancy.Web.Areas.Items.Controllers
@@ -22,7 +23,11 @@ namespace Fancy.Web.Areas.Items.Controllers
         [Authorize(Roles = UserConstants.AdministratorRole)]
         public ActionResult AddPromotion(int itemId, decimal discount)
         {
-            this.promotionService.AddPromotion(itemId, discount);
+
+             if(discount != 0)
+            {
+                this.promotionService.AddPromotion(itemId, discount);
+            }
 
             return this.Redirect(SingleItemPageUrl + itemId);
         }

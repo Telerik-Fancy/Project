@@ -22,7 +22,7 @@ namespace Fancy.Web.Areas.Items
 
             context.MapRoute(
                 "Remove_promotion",
-                "Items/{controller}/{action}/{itemId}/",
+                "Items/{controller}/{action}/{itemId}",
                 new { controller = "Promotions", action = "RemovePromotion", itemId = UrlParameter.Optional }
             );
 
