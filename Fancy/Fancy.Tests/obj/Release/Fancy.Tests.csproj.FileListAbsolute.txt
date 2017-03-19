@@ -68,3 +68,4 @@ C:\Users\gvelikov\Desktop\MVC\Project\Fancy\Fancy.Tests\bin\Release\Microsoft.Ow
 C:\Users\gvelikov\Desktop\MVC\Project\Fancy\Fancy.Tests\obj\Release\Fancy.Tests.csprojResolveAssemblyReference.cache
 C:\Users\gvelikov\Desktop\MVC\Project\Fancy\Fancy.Tests\obj\Release\Fancy.Tests.dll
 C:\Users\gvelikov\Desktop\MVC\Project\Fancy\Fancy.Tests\obj\Release\Fancy.Tests.pdb
+C:\Users\gvelikov\Desktop\MVC\Project\Fancy\Fancy.Tests\bin\Release\Bytes2you.Validation.dll

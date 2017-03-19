@@ -8,6 +8,7 @@ using Fancy.Web.Areas.Items.Models;
 using Fancy.Data.Models.Models;
 using System;
 using Fancy.Common.Constants;
+using Bytes2you.Validation;
 
 namespace Fancy.Web.Areas.Items.Controllers
 {
@@ -19,6 +20,10 @@ namespace Fancy.Web.Areas.Items.Controllers
 
         public ItemsController(IItemService itemService, IMappingService mappingService, IImageProvider imageProvider)
         {
+            Guard.WhenArgument(itemService, nameof(itemService)).IsNull().Throw();
+            Guard.WhenArgument(mappingService, nameof(mappingService)).IsNull().Throw();
+            Guard.WhenArgument(imageProvider, nameof(imageProvider)).IsNull().Throw();
+
             this.itemService = itemService;
             this.mappingService = mappingService;
             this.imageProvider = imageProvider;

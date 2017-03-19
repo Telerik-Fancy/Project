@@ -6,17 +6,23 @@ using Fancy.Services.Common.Contracts;
 using Fancy.Data.Models.Models;
 using Fancy.Services.Data.Contracts;
 using Fancy.Common.Constants;
+using Bytes2you.Validation;
 
 namespace Fancy.Web.Areas.Admin.Controllers
 {
     public class AdminController : Controller
     {
+        private const string AdminPanelUrl = "AdminPanel";
         private readonly IImageProvider imageProvider;
         private readonly IMappingService mappingService;
         private readonly IItemService itemService;
 
         public AdminController(IImageProvider imageProvider, IMappingService mappingService, IItemService itemService)
         {
+            Guard.WhenArgument(imageProvider, nameof(imageProvider)).IsNull().Throw();
+            Guard.WhenArgument(mappingService, nameof(mappingService)).IsNull().Throw();
+            Guard.WhenArgument(itemService, nameof(itemService)).IsNull().Throw();
+
             this.imageProvider = imageProvider;
             this.mappingService = mappingService;
             this.itemService = itemService;
@@ -47,7 +53,7 @@ namespace Fancy.Web.Areas.Admin.Controllers
                 this.ModelState.Clear();
             }
             
-            return View("AdminPanel");
+            return View(AdminPanelUrl);
         }
     }
 }

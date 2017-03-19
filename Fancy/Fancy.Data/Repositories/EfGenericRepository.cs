@@ -1,4 +1,5 @@
-﻿using Fancy.Common.Messages;
+﻿using Bytes2you.Validation;
+using Fancy.Common.Messages;
 using Fancy.Data.Contexts;
 using System;
 using System.Collections.Generic;
@@ -12,10 +13,7 @@ namespace Fancy.Data.Repositories
     {
         public EfGenericRepository(IFancyDbContext context)
         {
-            if (context == null)
-            {
-                throw new ArgumentException(Messages.RepositoryInitializingContextError);
-            }
+            Guard.WhenArgument(context, nameof(context)).IsNull().Throw();
 
             this.Context = context;
             this.DbSet = this.Context.Set<T>();

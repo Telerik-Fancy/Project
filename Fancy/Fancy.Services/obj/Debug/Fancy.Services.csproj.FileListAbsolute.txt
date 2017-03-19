@@ -54,3 +54,4 @@ C:\Users\gvelikov\Desktop\MVC\Project\Fancy\Fancy.Services\bin\Debug\Newtonsoft.
 C:\Users\gvelikov\Desktop\MVC\Project\Fancy\Fancy.Services\obj\Debug\Fancy.Services.csprojResolveAssemblyReference.cache
 C:\Users\gvelikov\Desktop\MVC\Project\Fancy\Fancy.Services\obj\Debug\Fancy.Services.dll
 C:\Users\gvelikov\Desktop\MVC\Project\Fancy\Fancy.Services\obj\Debug\Fancy.Services.pdb
+C:\Users\gvelikov\Desktop\MVC\Project\Fancy\Fancy.Services\bin\Debug\Bytes2you.Validation.dll

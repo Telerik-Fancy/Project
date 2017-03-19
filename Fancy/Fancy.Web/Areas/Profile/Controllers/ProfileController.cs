@@ -1,4 +1,5 @@
-﻿using Fancy.Common.Constants;
+﻿using Bytes2you.Validation;
+using Fancy.Common.Constants;
 using Fancy.Data.Models.Models;
 using Fancy.Services.Common.Contracts;
 using Fancy.Services.Data.Contracts;
@@ -19,8 +20,13 @@ namespace Fancy.Web.Areas.Profile.Controllers
         private IMappingService mappingService;
         private IImageProvider imageProvider;
 
-        public ProfileController(IIdentityProvider identityProvider, IOrderService orderService, IMappingService mappingService, IImageProvider imageProvider)
+        public ProfileController(IOrderService orderService, IMappingService mappingService, IImageProvider imageProvider, IIdentityProvider identityProvider)
         {
+            Guard.WhenArgument(orderService, nameof(orderService)).IsNull().Throw();
+            Guard.WhenArgument(mappingService, nameof(mappingService)).IsNull().Throw();
+            Guard.WhenArgument(imageProvider, nameof(imageProvider)).IsNull().Throw();
+            Guard.WhenArgument(identityProvider, nameof(identityProvider)).IsNull().Throw();
+
             this.identityProvider = identityProvider;
             this.orderService = orderService;
             this.mappingService = mappingService;

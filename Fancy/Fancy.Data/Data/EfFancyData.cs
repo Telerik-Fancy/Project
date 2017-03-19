@@ -2,6 +2,7 @@
 using System;
 using Fancy.Data.Models.Models;
 using Fancy.Data.Repositories;
+using Bytes2you.Validation;
 
 namespace Fancy.Data.Data
 {
@@ -14,10 +15,10 @@ namespace Fancy.Data.Data
 
         public EfFancyData(IFancyDbContext context, IEfGenericRepository<Item> items, IEfGenericRepository<Order> orders, IEfGenericRepository<User> users)
         {
-            if (context == null)
-            {
-                throw new ArgumentException();
-            }
+            Guard.WhenArgument(context, nameof(context)).IsNull().Throw();
+            Guard.WhenArgument(items, nameof(items)).IsNull().Throw();
+            Guard.WhenArgument(orders, nameof(orders)).IsNull().Throw();
+            Guard.WhenArgument(users, nameof(users)).IsNull().Throw();
 
             this.context = context;
             this.items = items;

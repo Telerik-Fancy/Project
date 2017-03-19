@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Bytes2you.Validation;
 using Fancy.Services.Common.Contracts;
 
 namespace Fancy.Services.Common
@@ -9,6 +10,8 @@ namespace Fancy.Services.Common
 
         public MappingService(IMapper mapper)
         {
+            Guard.WhenArgument(mapper, nameof(mapper)).IsNull().Throw();
+
             this.mapper = mapper;
         }
 

@@ -29,3 +29,4 @@ C:\Users\gvelikov\Desktop\MVC\Project\Fancy\Fancy.Data\bin\Release\Newtonsoft.Js
 C:\Users\gvelikov\Desktop\MVC\Project\Fancy\Fancy.Data\obj\Release\Fancy.Data.csprojResolveAssemblyReference.cache
 C:\Users\gvelikov\Desktop\MVC\Project\Fancy\Fancy.Data\obj\Release\Fancy.Data.dll
 C:\Users\gvelikov\Desktop\MVC\Project\Fancy\Fancy.Data\obj\Release\Fancy.Data.pdb
+C:\Users\gvelikov\Desktop\MVC\Project\Fancy\Fancy.Data\bin\Release\Bytes2you.Validation.dll

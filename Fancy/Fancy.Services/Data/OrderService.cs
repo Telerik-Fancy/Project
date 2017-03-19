@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Fancy.Common.Enums;
+using Bytes2you.Validation;
 
 namespace Fancy.Services.Data
 {
@@ -14,6 +15,8 @@ namespace Fancy.Services.Data
 
         public OrderService(IEfFancyData data)
         {
+            Guard.WhenArgument(data, nameof(data)).IsNull().Throw();
+
             this.data = data;
         }
 
