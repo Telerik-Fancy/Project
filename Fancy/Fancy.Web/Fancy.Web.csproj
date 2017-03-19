@@ -303,6 +303,8 @@
     <Content Include="Areas\Items\Views\Items\GalleryItemsPromotions.cshtml" />
     <Content Include="Areas\Items\Views\Items\GalleryItemsNew.cshtml" />
     <Content Include="Areas\Profile\Views\Profile\ProfilePage.cshtml" />
+    <None Include="Properties\PublishProfiles\telerik-fancy - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\telerik-fancy - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
