@@ -27,7 +27,6 @@ C:\Users\gvelikov\Desktop\MVC\Project\Fancy\Fancy.Web\bin\Glimpse.AspNet.dll
 C:\Users\gvelikov\Desktop\MVC\Project\Fancy\Fancy.Web\bin\Glimpse.Core.dll
 C:\Users\gvelikov\Desktop\MVC\Project\Fancy\Fancy.Web\bin\Glimpse.EF6.dll
 C:\Users\gvelikov\Desktop\MVC\Project\Fancy\Fancy.Web\bin\Glimpse.Mvc5.dll
-C:\Users\gvelikov\Desktop\MVC\Project\Fancy\Fancy.Web\bin\Kendo.Mvc.dll
 C:\Users\gvelikov\Desktop\MVC\Project\Fancy\Fancy.Web\bin\Microsoft.AI.Agent.Intercept.dll
 C:\Users\gvelikov\Desktop\MVC\Project\Fancy\Fancy.Web\bin\Microsoft.AI.DependencyCollector.dll
 C:\Users\gvelikov\Desktop\MVC\Project\Fancy\Fancy.Web\bin\Microsoft.AI.PerfCounterCollector.dll
@@ -69,7 +68,6 @@ C:\Users\gvelikov\Desktop\MVC\Project\Fancy\Fancy.Web\bin\Fancy.Data.Models.pdb
 C:\Users\gvelikov\Desktop\MVC\Project\Fancy\Fancy.Web\bin\Fancy.Data.pdb
 C:\Users\gvelikov\Desktop\MVC\Project\Fancy\Fancy.Web\bin\Fancy.Services.pdb
 C:\Users\gvelikov\Desktop\MVC\Project\Fancy\Fancy.Web\bin\AutoMapper.xml
-C:\Users\gvelikov\Desktop\MVC\Project\Fancy\Fancy.Web\bin\Kendo.Mvc.xml
 C:\Users\gvelikov\Desktop\MVC\Project\Fancy\Fancy.Web\bin\Microsoft.AI.DependencyCollector.xml
 C:\Users\gvelikov\Desktop\MVC\Project\Fancy\Fancy.Web\bin\Microsoft.AI.ServerTelemetryChannel.xml
 C:\Users\gvelikov\Desktop\MVC\Project\Fancy\Fancy.Web\bin\Microsoft.AI.Web.xml
