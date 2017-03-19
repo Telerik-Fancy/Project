@@ -8,11 +8,11 @@ namespace Fancy.Services.Data.Contracts
     {
         void AddItem(Item item);
 
-        IEnumerable<Item> GetItemsOfType(int pageNumber, ItemType itemType, MainColour colour, MainMaterial material);
+        IEnumerable<Item> GetItemsOfType(int pageNumber, ItemType itemType, MainColourType colour, MainMaterialType material);
 
-        IEnumerable<Item> GetNewestItems(int pageNumber, MainColour colourType, MainMaterial materialType);
+        IEnumerable<Item> GetNewestItems(int pageNumber, MainColourType colourType, MainMaterialType materialType);
 
-        IEnumerable<Item> GetItemsInPromotion(int pageNumber, MainColour colourType, MainMaterial materialType);
+        IEnumerable<Item> GetItemsInPromotion(int pageNumber, MainColourType colourType, MainMaterialType materialType);
 
         Item GetItemById(int id);
 

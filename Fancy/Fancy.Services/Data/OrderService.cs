@@ -50,7 +50,6 @@ namespace Fancy.Services.Data
             var user = this.data.Users.GetById(userId);
 
             var order = this.data.Orders.All.FirstOrDefault(o => o.UserId == userId && o.OrderStatus == OrderStatusType.InBasket);
-            //order == null error?
 
             order.Items.Remove(item);
 
@@ -70,13 +69,16 @@ namespace Fancy.Services.Data
             var order = this.data.Orders.GetById(orderId);
             order.OrderStatus = OrderStatusType.Shipped;
             order.TotalPrice = totalPrice;
+            order.PurchaseDate = DateTime.Today;
 
             this.data.Commit();
         }
 
         public IEnumerable<Order> PreviousOrders(string userId)
         {
-            return this.data.Orders.All.Where(o => o.UserId == userId && o.OrderStatus == OrderStatusType.Shipped).ToList();
+            var previousOrders = this.data.Orders.All.Where(o => o.UserId == userId && o.OrderStatus == OrderStatusType.Shipped).ToList();
+
+            return previousOrders;
         }
     }
 }

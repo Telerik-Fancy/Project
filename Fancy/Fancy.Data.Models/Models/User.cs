@@ -17,15 +17,9 @@ namespace Fancy.Data.Models.Models
 
         public virtual ICollection<Order> Orders
         {
-            get
-            {
-                return this.orders;
-            }
+            get { return this.orders; }
 
-            set
-            {
-                this.orders = value;
-            }
+            set { this.orders = value; }
         }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<User> manager)

@@ -6,3 +6,4 @@ C:\Users\gvelikov\Desktop\MVC\Project\Fancy\Fancy.Common\bin\Debug\Fancy.Common.
 C:\Users\gvelikov\Desktop\MVC\Project\Fancy\Fancy.Common\bin\Debug\Fancy.Common.pdb
 C:\Users\gvelikov\Desktop\MVC\Project\Fancy\Fancy.Common\obj\Debug\Fancy.Common.dll
 C:\Users\gvelikov\Desktop\MVC\Project\Fancy\Fancy.Common\obj\Debug\Fancy.Common.pdb
+C:\Users\gvelikov\Desktop\MVC\Project\Fancy\Fancy.Common\obj\Debug\Fancy.Common.csprojResolveAssemblyReference.cache

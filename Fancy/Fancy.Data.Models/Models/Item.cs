@@ -19,25 +19,17 @@ namespace Fancy.Data.Models.Models
 
         public ItemType ItemType { get; set; }
 
-        public MainColour MainColour { get; set; }
+        public MainColourType MainColour { get; set; }
 
-        public MainMaterial MainMaterial { get; set; }
-
-        //public byte[] ImageBytes { get; set; }
+        public MainMaterialType MainMaterial { get; set; }
 
         public string ImageBase64String { get; set; }
 
         public virtual ICollection<Order> Orders
         {
-            get
-            {
-                return this.orders;
-            }
+            get { return this.orders; }
 
-            set
-            {
-                this.orders = value;
-            }
+            set { this.orders = value; }
         }
 
         public decimal Price { get; set; }

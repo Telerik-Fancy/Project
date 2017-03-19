@@ -3,19 +3,19 @@ using System.Collections.Generic;
 
 namespace Fancy.Web.Areas.Items.Models
 {
-    public class ViewGalleryItems
+    public class GalleryItemsViewModel
     {
         public string GalleryTitle { get; set; }
 
         public int PageButtonsCount { get; set; }
 
-        public IEnumerable<ViewItem> ItemsList { get; set; }
+        public IEnumerable<SingleItemViewModel> ItemsList { get; set; }
 
         public string ItemType { get; set; }
 
-        public MainColour Colour { get; set; }
+        public MainColourType Colour { get; set; }
 
-        public MainMaterial Material { get; set; }
+        public MainMaterialType Material { get; set; }
 
         public string SelectedColour { get; set; }
     }

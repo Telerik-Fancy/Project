@@ -252,8 +252,8 @@
     <Compile Include="Areas\Items\Controllers\ItemsController.cs" />
     <Compile Include="Areas\Items\Controllers\PromotionsController.cs" />
     <Compile Include="Areas\Items\ItemsAreaRegistration.cs" />
-    <Compile Include="Areas\Items\Models\ViewGalleryItems.cs" />
-    <Compile Include="Areas\Items\Models\ViewItem.cs" />
+    <Compile Include="Areas\Items\Models\GalleryItemsViewModel.cs" />
+    <Compile Include="Areas\Items\Models\SingleItemViewModel.cs" />
     <Compile Include="Areas\Profile\Controllers\ProfileController.cs" />
     <Compile Include="Areas\Profile\Models\OrderViewModel.cs" />
     <Compile Include="Areas\Profile\Models\ProfilePageViewModel.cs" />
@@ -293,7 +293,7 @@
     <Content Include="Areas\Items\Views\web.config" />
     <Content Include="Areas\Admin\Views\web.config" />
     <Content Include="Areas\Profile\Views\web.config" />
-    <Content Include="Areas\Admin\Views\Admin\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\AdminPanel.cshtml" />
     <Content Include="Scripts\ai.0.15.0-build58334.js" />
     <Content Include="Scripts\ai.0.15.0-build58334.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -334,7 +334,7 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\HomePage.cshtml" />
     <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
     <Content Include="Views\Account\ConfirmEmail.cshtml" />
     <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
@@ -357,11 +357,7 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\_AsideNavPartial.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Areas\Admin\Views\Shared\" />
-    <Folder Include="Areas\Items\Views\Shared\" />
-    <Folder Include="Areas\Profile\Views\Shared\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />

@@ -1,4 +1,5 @@
 ﻿using Fancy.Common.Enums;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -31,5 +32,8 @@ namespace Fancy.Data.Models.Models
         }
 
         public decimal TotalPrice { get; set; }
+
+        [Column(TypeName = "datetime2")]
+        public DateTime PurchaseDate { get; set; }
     }
 }

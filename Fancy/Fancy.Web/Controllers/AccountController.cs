@@ -7,6 +7,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Fancy.Web.Models;
 using Fancy.Data.Models.Models;
+using Fancy.Common.Constants;
 
 namespace Fancy.Web.Controllers
 {
@@ -154,7 +155,7 @@ namespace Fancy.Web.Controllers
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    this.UserManager.AddToRole(user.Id, "Regular");
+                    this.UserManager.AddToRole(user.Id, UserConstants.RegularRole);
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
                     
                     // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
@@ -163,7 +164,7 @@ namespace Fancy.Web.Controllers
                     // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
 
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("HomePage", "Home");
                 }
                 AddErrors(result);
             }
@@ -392,7 +393,7 @@ namespace Fancy.Web.Controllers
         public ActionResult LogOff()
         {
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("HomePage", "Home");
         }
 
         //
@@ -449,7 +450,7 @@ namespace Fancy.Web.Controllers
             {
                 return Redirect(returnUrl);
             }
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("HomePage", "Home");
         }
 
         internal class ChallengeResult : HttpUnauthorizedResult

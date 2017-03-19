@@ -44,8 +44,8 @@
     <Compile Include="Constants\UiConstants.cs" />
     <Compile Include="Constants\UserConstants.cs" />
     <Compile Include="Enums\ItemType.cs" />
-    <Compile Include="Enums\MainColour.cs" />
-    <Compile Include="Enums\MainMaterial.cs" />
+    <Compile Include="Enums\MainColourType.cs" />
+    <Compile Include="Enums\MainMaterialType.cs" />
     <Compile Include="Enums\OrderStatusType.cs" />
     <Compile Include="Messages\Messages.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

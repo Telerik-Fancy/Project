@@ -1,4 +1,5 @@
-﻿using Fancy.Data.Contexts;
+﻿using Fancy.Common.Constants;
+using Fancy.Data.Contexts;
 using Fancy.Data.Models.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
@@ -27,8 +28,8 @@ namespace Fancy.Data.Migrations
             {
                 var roleStore = new RoleStore<IdentityRole>(context);
                 var roleManager = new RoleManager<IdentityRole>(roleStore);
-                var regularRole = new IdentityRole { Name = "Regular" };
-                var administratorRole = new IdentityRole { Name = "Administrator" };
+                var regularRole = new IdentityRole { Name = UserConstants.RegularRole };
+                var administratorRole = new IdentityRole { Name = UserConstants.AdministratorRole };
 
                 roleManager.Create(regularRole);
                 roleManager.Create(administratorRole);
@@ -40,12 +41,12 @@ namespace Fancy.Data.Migrations
             var userStore = new UserStore<User>(context);
             var userManager = new UserManager<User>(userStore);
 
-            if (!context.Users.Any(u => u.UserName == "admin@gmail.com"))
+            if (!context.Users.Any(u => u.UserName == UserConstants.AdminUsername))
             {
-                var adminUser = new User { UserName = "admin@gmail.com", Email = "admin@gmail.com" };
+                var adminUser = new User { UserName = UserConstants.AdminUsername, Email = UserConstants.AdminEmail };
 
-                userManager.Create(adminUser, "123456");
-                userManager.AddToRole(adminUser.Id, "Administrator");
+                userManager.Create(adminUser, UserConstants.AdminPassword);
+                userManager.AddToRole(adminUser.Id, UserConstants.AdministratorRole);
             }
         }
     }

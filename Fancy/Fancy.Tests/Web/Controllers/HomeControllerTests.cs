@@ -14,7 +14,7 @@ namespace Fancy.Tests.Web.Controllers
             HomeController homeController = new HomeController();
 
             //Act
-            ViewResult viewResult = homeController.Index() as ViewResult;
+            ViewResult viewResult = homeController.HomePage() as ViewResult;
 
             //Assert
             Assert.IsNotNull(viewResult);

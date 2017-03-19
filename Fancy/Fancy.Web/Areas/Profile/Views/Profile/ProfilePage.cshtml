@@ -1,10 +1,10 @@
 ﻿@using Fancy.Web.Areas.Profile.Models;
 
+@model ProfilePageViewModel
+
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-@model ProfilePageViewModel
 
 @Styles.Render("~/Content/profile.css")
 
@@ -12,7 +12,7 @@
     <h3>
         BASKET
     </h3>
-    @if (Model.OrderInBasket == null)
+    @if (Model.OrderInBasket == null || Model.OrderInBasket.Items.Count == 0)
     {
         <h4>Empty</h4>
     }
@@ -69,16 +69,25 @@
     {
         foreach (var order in Model.PreviousOrders)
         {
-            decimal totalPrice = 0;
             <hr />
+            <span class="bold">
+                Purchased on:&nbsp
+            </span>
+            <span class="bold">
+                @string.Format("{0}.{1}.{2}", order.PurchaseDate.Day, order.PurchaseDate.Month, order.PurchaseDate.Year)
+            </span>
             <div class="group">
                 @foreach (var item in order.Items)
                 {
-                    totalPrice += (item.Price * (100 - item.Discount) / 100);
                     <div class="item-holder left">
                         <div class="card panel">
                             <div class="card-content blue-text text-darken-2">
-                                <span class="bold">Item code:&nbsp</span> <span class="item-info">@item.ItemCode</span>
+                                <span class="bold">
+                                    Item code:&nbsp
+                                </span> 
+                                <span class="item-info">
+                                    @item.ItemCode
+                                </span>
                                 <img src="@item.ImageBase64String" alt="Alternate Text" class="item-img-gallery" />
                             </div>
                         </div>

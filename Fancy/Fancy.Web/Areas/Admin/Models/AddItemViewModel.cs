@@ -10,9 +10,9 @@ namespace Fancy.Web.Areas.Admin.Models
 
         public ItemType ItemType { get; set; }
 
-        public MainColour MainColour { get; set; }
+        public MainColourType MainColour { get; set; }
 
-        public MainMaterial MainMaterial { get; set; }
+        public MainMaterialType MainMaterial { get; set; }
 
         public HttpPostedFileBase Image { get; set; }
 

@@ -24,7 +24,7 @@ namespace Fancy.Web.Areas.Items.Controllers
             this.imageProvider = imageProvider;
         }
 
-        public ActionResult GalleryItems(ViewGalleryItems model, int pageNumber, string type)
+        public ActionResult GalleryItems(GalleryItemsViewModel model, int pageNumber, string type)
         {
             ItemType itemType = (ItemType)Enum.Parse(typeof(ItemType), type, true);
 
@@ -32,7 +32,7 @@ namespace Fancy.Web.Areas.Items.Controllers
             var dbItemsList = this.itemService.GetItemsOfType(pageNumber, itemType, model.Colour, model.Material);
             var viewItemsList = this.ConvertToViewItemList(dbItemsList);
 
-            model.GalleryTitle = this.SetViewTitleFormItemType(type);
+            model.GalleryTitle = this.SetViewTitleFormItemType(itemType);
             model.PageButtonsCount = this.CalculatePageNumberButtonsCount(itemsOfTypeCount);
             model.ItemsList = viewItemsList;
             model.ItemType = type;
@@ -40,48 +40,49 @@ namespace Fancy.Web.Areas.Items.Controllers
             return View(model);
         }
 
-        public ActionResult GalleryItemsNew(ViewGalleryItems model, int pageNumber)
+        public ActionResult GalleryItemsNew(GalleryItemsViewModel model, int pageNumber)
         {
             var itemsCount = this.itemService.GetAllItemsCount();
             var dbItemsList = this.itemService.GetNewestItems(pageNumber, model.Colour, model.Material);
             var viewItemsList = this.ConvertToViewItemList(dbItemsList);
 
-            model.GalleryTitle = "New items";
+            model.GalleryTitle = UiConstants.GalleryNewItemsHeader;
             model.PageButtonsCount = this.CalculatePageNumberButtonsCount(itemsCount);
             model.ItemsList = viewItemsList;
 
             return View(model);
         }
 
-        public ActionResult GalleryItemsPromotions(ViewGalleryItems model, int pageNumber)
+        public ActionResult GalleryItemsPromotions(GalleryItemsViewModel model, int pageNumber)
         {
             var itemsCount = this.itemService.GetAllItemsInPromotionCount();
             var dbItemsList = this.itemService.GetItemsInPromotion(pageNumber, model.Colour, model.Material);
             var viewItemsList = this.ConvertToViewItemList(dbItemsList);
 
-            model.GalleryTitle = "Items in promotion";
+            model.GalleryTitle = UiConstants.GalleryPromotionItemsHeader;
             model.PageButtonsCount = this.CalculatePageNumberButtonsCount(itemsCount);
             model.ItemsList = viewItemsList;
 
             return View(model);
         }
 
-        public ActionResult SingleItem(ViewItem model, int itemId)
+        [Authorize(Roles = UserConstants.AdministratorOrRegular)]
+        public ActionResult SingleItem(SingleItemViewModel model, int itemId)
         {
             var dbItem = this.itemService.GetItemById(itemId);
 
-            model = this.mappingService.Map<Item, ViewItem>((Item)dbItem);
+            model = this.mappingService.Map<Item, SingleItemViewModel>(dbItem);
 
             return View(model);
         }
 
-        private IEnumerable<ViewItem> ConvertToViewItemList(IEnumerable<Item> dbItemsList)
+        private IEnumerable<SingleItemViewModel> ConvertToViewItemList(IEnumerable<Item> dbItemsList)
         {
-            var viewItemsList = new List<ViewItem>();
+            var viewItemsList = new List<SingleItemViewModel>();
 
             foreach (var dbItem in dbItemsList)
             {
-                var mvItem = this.mappingService.Map<Item, ViewItem>((Item)dbItem);
+                var mvItem = this.mappingService.Map<Item, SingleItemViewModel>((Item)dbItem);
 
                 viewItemsList.Add(mvItem);
             }
@@ -89,29 +90,29 @@ namespace Fancy.Web.Areas.Items.Controllers
             return viewItemsList;
         }
 
-        private string SetViewTitleFormItemType(string itemType)
+        private string SetViewTitleFormItemType(ItemType itemType)
         {
             string viewTitle = null;
 
-            if(itemType == "Necklace")
+            if(itemType == ItemType.Necklace)
             {
-                viewTitle = "Necklaces";
+                viewTitle = UiConstants.GalleryNecklacesHeader;
             }
-            else if(itemType == "Earings")
+            else if(itemType == ItemType.Earings)
             {
-                viewTitle = "Earings";
+                viewTitle = UiConstants.GalleryEaringsHeader;
             }
-            else if (itemType == "Bracelet")
+            else if (itemType == ItemType.Bracelet)
             {
-                viewTitle = "Bracelets";
+                viewTitle = UiConstants.GalleryBraceletsHeader;
             }
-            else if (itemType == "Set")
+            else if (itemType == ItemType.Set)
             {
-                viewTitle = "Sets";
+                viewTitle = UiConstants.GallerySetsHeader;
             }
             else
             {
-                viewTitle = itemType;
+                viewTitle = itemType.ToString();
             }
 
             return viewTitle;

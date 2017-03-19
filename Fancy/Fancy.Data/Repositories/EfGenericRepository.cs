@@ -1,4 +1,5 @@
-﻿using Fancy.Data.Contexts;
+﻿using Fancy.Common.Messages;
+using Fancy.Data.Contexts;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -13,7 +14,7 @@ namespace Fancy.Data.Repositories
         {
             if (context == null)
             {
-                throw new ArgumentException("An instance of DbContext is required to use this repository.", "context");
+                throw new ArgumentException(Messages.RepositoryInitializingContextError);
             }
 
             this.Context = context;
@@ -28,7 +29,6 @@ namespace Fancy.Data.Repositories
         {
             get { return this.DbSet; }
         }
-
 
         public T GetById(object id)
         {
@@ -77,11 +77,6 @@ namespace Fancy.Data.Repositories
         public void Add(T entity)
         {
             this.DbSet.Add(entity);
-        }
-
-        public void Update(T entity)
-        {
-            // to do
         }
 
         public void Delete(T entity)

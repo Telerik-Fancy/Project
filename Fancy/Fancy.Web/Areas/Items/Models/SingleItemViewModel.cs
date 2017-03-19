@@ -4,17 +4,15 @@ using System.Web;
 
 namespace Fancy.Web.Areas.Items.Models
 {
-    public class ViewItem
+    public class SingleItemViewModel
     {
         public int Id { get; set; }
 
         public string ItemCode { get; set; }
 
-        public MainColour MainColour { get; set; }
+        public MainColourType MainColour { get; set; }
 
-        public MainMaterial MainMaterial { get; set; }
-
-        //public byte[] ImageBytes { get; set; }
+        public MainMaterialType MainMaterial { get; set; }
 
         public decimal Price { get; set; }
 

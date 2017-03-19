@@ -16,16 +16,8 @@ namespace Fancy.Web
             routes.MapRoute(
                 name: "Home",
                 url: "{controller}/{action}",
-                defaults: new { controller = "Home", action = "Index" },
-                namespaces: new string[] { "Fancy.Web.Controllers" }
+                defaults: new { controller = "Home", action = "HomePage" }
             );
-
-            //routes.MapRoute(
-            //    name: "Default",
-            //    url: "{controller}/{action}",
-            //    defaults: new { controller = "Home", action = "Index" },
-            //    namespaces: new string[] { "Fancy.Web.Controllers" }
-            //);
         }
     }
 }

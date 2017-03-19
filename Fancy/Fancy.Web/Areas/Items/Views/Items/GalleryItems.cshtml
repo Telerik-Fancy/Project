@@ -1,4 +1,6 @@
-﻿@model ViewGalleryItems
+﻿@using Fancy.Common.Constants;
+
+@model GalleryItemsViewModel
 
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -38,9 +40,12 @@
                         <br />
                         <span class="bold">Quantity left:&nbsp</span> <span class="item-info">@item.Quantity</span>
                     </div>
-                    <div>
-                        @Html.ActionLink("View more", "SingleItem", "Items", new { area = "Items", itemId = item.Id }, new { @class = "btn btn-primary" })
-                    </div>
+                    @if (User.IsInRole(UserConstants.RegularRole) || User.IsInRole(UserConstants.AdministratorRole))
+                    {
+                        <div>
+                            @Html.ActionLink("View more", "SingleItem", "Items", new { area = "Items", itemId = item.Id }, new { @class = "btn btn-primary" })
+                        </div>
+                    }
                 </div>
             </div>
         }
@@ -52,6 +57,5 @@
                 @Html.ActionLink(i.ToString(), "GalleryItems", "Items", new { area = "Items", pageNumber = i, type = Model.ItemType, colour = Model.Colour }, null)
             </li>
         }
-        @*<li class="active"><a href="#">1</a></li>*@
     </ul>
 </div>

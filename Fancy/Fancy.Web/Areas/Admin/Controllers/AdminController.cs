@@ -6,6 +6,7 @@ using Fancy.Web.WebUtils.Contracts;
 using Fancy.Services.Common.Contracts;
 using Fancy.Data.Models.Models;
 using Fancy.Services.Data.Contracts;
+using Fancy.Common.Constants;
 
 namespace Fancy.Web.Areas.Admin.Controllers
 {
@@ -22,13 +23,14 @@ namespace Fancy.Web.Areas.Admin.Controllers
             this.itemService = itemService;
         }
 
-        public ActionResult Index()
+        public ActionResult AdminPanel()
         {
             return View();
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = UserConstants.AdministratorRole)]
         public ActionResult AddItem(AddItemViewModel model)
         {
             model.DateAdded = DateTime.Now;
@@ -43,7 +45,7 @@ namespace Fancy.Web.Areas.Admin.Controllers
             this.itemService.AddItem(item);
 
             ModelState.Clear();
-            return View("Index");
+            return View("AdminPanel");
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using Fancy.Data.Models.Models;
+﻿using Fancy.Common.Constants;
+using Fancy.Data.Models.Models;
 using Fancy.Services.Common.Contracts;
 using Fancy.Services.Data.Contracts;
 using Fancy.Web.Areas.Profile.Models;
@@ -10,6 +11,9 @@ namespace Fancy.Web.Areas.Profile.Controllers
 {
     public class ProfileController : Controller
     {
+        private const string SingleItemPageUrl = "~/Items/Items/SingleItem/";
+        private const string ProfilePageUrl = "~/Profile/Profile/ProfilePage";
+
         private IIdentityProvider identityProvider;
         private IOrderService orderService;
         private IMappingService mappingService;
@@ -23,6 +27,7 @@ namespace Fancy.Web.Areas.Profile.Controllers
             this.imageProvider = imageProvider;
         }
 
+        [Authorize(Roles = UserConstants.AdministratorOrRegular)]
         public ActionResult ProfilePage(ProfilePageViewModel model)
         {
             var userId = this.identityProvider.GetUserId();
@@ -38,29 +43,32 @@ namespace Fancy.Web.Areas.Profile.Controllers
             return View(model);
         }
 
+        [Authorize(Roles = UserConstants.AdministratorOrRegular)]
         public ActionResult AddItemToBasket(int itemId)
         {
             string userId = this.identityProvider.GetUserId();
 
             this.orderService.AddItemToBasket(itemId, userId);
 
-            return this.Redirect("~/Items/Items/SingleItem/" + itemId);
+            return this.Redirect(SingleItemPageUrl + itemId);
         }
 
+        [Authorize(Roles = UserConstants.AdministratorOrRegular)]
         public ActionResult RemoveItemFromBasket(OrderViewModel model, int itemId)
         {
             string userId = this.identityProvider.GetUserId();
 
             this.orderService.RemoveItemFromBasket(itemId, userId);
 
-            return this.Redirect("~/Profile/Profile/ProfilePage");
+            return this.Redirect(ProfilePageUrl);
         }
 
+        [Authorize(Roles = UserConstants.AdministratorOrRegular)]
         public ActionResult ExecuteOrder(int orderId, decimal totalPrice)
         {
             this.orderService.ExecuteOrder(orderId, totalPrice);
 
-            return this.Redirect("~/Profile/Profile/ProfilePage");
+            return this.Redirect(ProfilePageUrl);
         }
 
         private IEnumerable<OrderViewModel> ConvertToOrderViewModelList(IEnumerable<Order> dbPreviousOrders)

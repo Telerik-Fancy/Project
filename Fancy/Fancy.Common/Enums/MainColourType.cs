@@ -1,6 +1,6 @@
 ﻿namespace Fancy.Common.Enums
 {
-    public enum MainColour
+    public enum MainColourType
     {
         Red = 1,
         Blue = 2,
@@ -9,8 +9,9 @@
         Pink = 5,
         White = 6,
         Golden = 7,
-        Silver = 9,
+        Silver = 8,
         Aquamarine = 9,
-        Mix = 10
+        Black = 10,
+        Mix = 11
     }
 }

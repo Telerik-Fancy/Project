@@ -9,7 +9,7 @@ namespace Fancy.Web.App_Start.AutomapperProfiles
     {
         public DataToModelView()
         {
-            this.CreateMap<Item, ViewItem>();
+            this.CreateMap<Item, SingleItemViewModel>();
                // .ForMember(x => x.ImageBase64String, opt => opt.Ignore());
 
             this.CreateMap<Order, OrderViewModel>();

@@ -21,15 +21,18 @@ namespace Fancy.Services.Data
         public void AddItem(Item item)
         {
             this.data.Items.Add(item);
+
             this.data.Commit();
         }
 
         public Item GetItemById(int id)
         {
-            return this.data.Items.GetById(id);
+            var item = this.data.Items.GetById(id);
+
+            return item;
         }
 
-        public IEnumerable<Item> GetItemsOfType(int pageNumber, ItemType itemType, MainColour colourType, MainMaterial materialType)
+        public IEnumerable<Item> GetItemsOfType(int pageNumber, ItemType itemType, MainColourType colourType, MainMaterialType materialType)
         {
             var itemsList = this.data.Items.All
                 .Where(i => i.ItemType == itemType && !i.IsDeleted && i.Quantity != 0);
@@ -51,7 +54,7 @@ namespace Fancy.Services.Data
                     .ToList();
         }
 
-        public IEnumerable<Item> GetItemsInPromotion(int pageNumber, MainColour colourType, MainMaterial materialType)
+        public IEnumerable<Item> GetItemsInPromotion(int pageNumber, MainColourType colourType, MainMaterialType materialType)
         {
             var itemsList = this.data.Items.All
                 .Where(i => i.Discount != 0 && !i.IsDeleted && i.Quantity != 0);
@@ -73,7 +76,7 @@ namespace Fancy.Services.Data
                     .ToList();
         }
 
-        public IEnumerable<Item> GetNewestItems(int pageNumber, MainColour colourType, MainMaterial materialType)
+        public IEnumerable<Item> GetNewestItems(int pageNumber, MainColourType colourType, MainMaterialType materialType)
         {
             var itemsList = this.data.Items.All
                 .Where(i => !i.IsDeleted && i.Quantity != 0)
@@ -98,18 +101,24 @@ namespace Fancy.Services.Data
             
         public int GetItemsOfTypeCount(ItemType itemType)
         {
-            return this.data.Items.All.Where(i => i.ItemType == itemType).Count();
+            var itemsCount = this.data.Items.All.Where(i => i.ItemType == itemType).Count();
+
+            return itemsCount;
         }
 
         public int GetAllItemsCount()
         {
-            return this.data.Items.All.Count();
+            var itemsCount = this.data.Items.All.Count();
+
+            return itemsCount;
         }
 
         public int GetAllItemsInPromotionCount()
         {
-            return this.data.Items.All
+            var itemsCount = this.data.Items.All
                 .Where(i => i.Discount != 0 && !i.IsDeleted && i.Quantity != 0).Count();
+
+            return itemsCount;
         }
     }
 }

@@ -17,29 +17,25 @@ namespace Fancy.Web.Areas.Items
             context.MapRoute(
                 "Add_Promotion",
                 "Items/{controller}/{action}/{itemId}/{discount}",
-                new { controller = "Promotions", action = "AddPromotion", itemId = UrlParameter.Optional, discount = UrlParameter.Optional },
-                new[] { "Fancy.Web.Areas.Items.Controllers" }
+                new { controller = "Promotions", action = "AddPromotion", itemId = UrlParameter.Optional, discount = UrlParameter.Optional }
             );
 
             context.MapRoute(
                 "Remove_promotion",
                 "Items/{controller}/{action}/{itemId}/",
-                new { controller = "Promotions", action = "RemovePromotion", itemId = UrlParameter.Optional },
-                new[] { "Fancy.Web.Areas.Items.Controllers" }
+                new { controller = "Promotions", action = "RemovePromotion", itemId = UrlParameter.Optional }
             );
 
             context.MapRoute(
                 "Items_single",
                 "Items/{controller}/{action}/{itemId}/",
-                new { controller = "Items", action = "SingleItem", itemId = UrlParameter.Optional },
-                new[] { "Fancy.Web.Areas.Items.Controllers" }
+                new { controller = "Items", action = "SingleItem", itemId = UrlParameter.Optional }
             );
 
             context.MapRoute(
                 "Items_gallery",
                 "Items/{controller}/{action}/{pageNumber}/{itemType}",
-                new { itemType = UrlParameter.Optional },
-                new[] { "Fancy.Web.Areas.Items.Controllers" }
+                new { itemType = UrlParameter.Optional }
             );
         }
     }
