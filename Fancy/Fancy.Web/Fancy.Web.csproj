@@ -303,8 +303,6 @@
     <Content Include="Areas\Items\Views\Items\GalleryItemsPromotions.cshtml" />
     <Content Include="Areas\Items\Views\Items\GalleryItemsNew.cshtml" />
     <Content Include="Areas\Profile\Views\Profile\ProfilePage.cshtml" />
-    <None Include="Properties\PublishProfiles\fancy-academy - FTP.pubxml" />
-    <None Include="Properties\PublishProfiles\fancy-academy - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
