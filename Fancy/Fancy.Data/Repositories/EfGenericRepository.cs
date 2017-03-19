@@ -13,7 +13,7 @@ namespace Fancy.Data.Repositories
     {
         public EfGenericRepository(IFancyDbContext context)
         {
-            Guard.WhenArgument(context, nameof(context)).IsNull().Throw();
+            //Guard.WhenArgument(context, nameof(context)).IsNull().Throw();
 
             this.Context = context;
             this.DbSet = this.Context.Set<T>();

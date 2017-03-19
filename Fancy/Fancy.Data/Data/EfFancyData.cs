@@ -15,10 +15,10 @@ namespace Fancy.Data.Data
 
         public EfFancyData(IFancyDbContext context, IEfGenericRepository<Item> items, IEfGenericRepository<Order> orders, IEfGenericRepository<User> users)
         {
-            Guard.WhenArgument(context, nameof(context)).IsNull().Throw();
-            Guard.WhenArgument(items, nameof(items)).IsNull().Throw();
-            Guard.WhenArgument(orders, nameof(orders)).IsNull().Throw();
-            Guard.WhenArgument(users, nameof(users)).IsNull().Throw();
+            //Guard.WhenArgument(context, nameof(context)).IsNull().Throw();
+            //Guard.WhenArgument(items, nameof(items)).IsNull().Throw();
+            //Guard.WhenArgument(orders, nameof(orders)).IsNull().Throw();
+            //Guard.WhenArgument(users, nameof(users)).IsNull().Throw();
 
             this.context = context;
             this.items = items;
