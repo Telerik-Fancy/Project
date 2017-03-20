@@ -2,68 +2,101 @@
 using System.Text;
 using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Moq;
+using Fancy.Data.Repositories;
+using Fancy.Data.Models.Models;
+using Fancy.Data.Data;
+using Fancy.Data.Contexts;
 
 namespace Fancy.Tests.Data.Data
 {
-    /// <summary>
-    /// Summary description for EfFancyDataTests
-    /// </summary>
     [TestClass]
     public class EfFancyDataTests
-    {
-        public EfFancyDataTests()
+    { 
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void Constructor_ShouldThrowArgumentNullException_WhenContextParameterIsNull()
         {
-            //
-            // TODO: Add constructor logic here
-            //
+            // Arrange
+            var itemRepoMock = new Mock<IEfGenericRepository<Item>>();
+            var orderRepoMock = new Mock<IEfGenericRepository<Order>>();
+            var userRepoMock = new Mock<IEfGenericRepository<User>>();
+
+            // Act & Assert
+            var data = new EfFancyData(null, itemRepoMock.Object, orderRepoMock.Object, userRepoMock.Object);
         }
-
-        private TestContext testContextInstance;
-
-        /// <summary>
-        ///Gets or sets the test context which provides
-        ///information about and functionality for the current test run.
-        ///</summary>
-        public TestContext TestContext
-        {
-            get
-            {
-                return testContextInstance;
-            }
-            set
-            {
-                testContextInstance = value;
-            }
-        }
-
-        #region Additional test attributes
-        //
-        // You can use the following additional attributes as you write your tests:
-        //
-        // Use ClassInitialize to run code before running the first test in the class
-        // [ClassInitialize()]
-        // public static void MyClassInitialize(TestContext testContext) { }
-        //
-        // Use ClassCleanup to run code after all tests in a class have run
-        // [ClassCleanup()]
-        // public static void MyClassCleanup() { }
-        //
-        // Use TestInitialize to run code before running each test 
-        // [TestInitialize()]
-        // public void MyTestInitialize() { }
-        //
-        // Use TestCleanup to run code after each test has run
-        // [TestCleanup()]
-        // public void MyTestCleanup() { }
-        //
-        #endregion
 
         [TestMethod]
-        public void TestMethod1()
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void Constructor_ShouldThrowArgumentNullException_WhenItemRepoParameterIsNull()
         {
-            //
-            // TODO: Add test logic here
-            //
+            // Arrange
+            var dbContextMock = new Mock<IFancyDbContext>();
+            var orderRepoMock = new Mock<IEfGenericRepository<Order>>();
+            var userRepoMock = new Mock<IEfGenericRepository<User>>();
+
+            // Act & Assert
+            var data = new EfFancyData(dbContextMock.Object, null, orderRepoMock.Object, userRepoMock.Object);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void Constructor_ShouldThrowArgumentNullException_WhenOrderRepoParameterIsNull()
+        {
+            // Arrange
+            var dbContextMock = new Mock<IFancyDbContext>();
+            var itemRepoMock = new Mock<IEfGenericRepository<Item>>();
+            var userRepoMock = new Mock<IEfGenericRepository<User>>();
+
+            // Act & Assert
+            var data = new EfFancyData(dbContextMock.Object, itemRepoMock.Object, null, userRepoMock.Object);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void Constructor_ShouldThrowArgumentNullException_WhenUserRepoParameterIsNull()
+        {
+            // Arrange
+            var dbContextMock = new Mock<IFancyDbContext>();
+            var itemRepoMock = new Mock<IEfGenericRepository<Item>>();
+            var orderRepoMock = new Mock<IEfGenericRepository<Order>>();
+
+            // Act & Assert
+            var data = new EfFancyData(dbContextMock.Object, itemRepoMock.Object, orderRepoMock.Object, null);
+        }
+
+        [TestMethod]
+        public void Commit_ShouldCallDbContextSaveChanges()
+        {
+            // Arrange
+            var dbContextMock = new Mock<IFancyDbContext>();
+            var itemRepoMock = new Mock<IEfGenericRepository<Item>>();
+            var orderRepoMock = new Mock<IEfGenericRepository<Order>>();
+            var userRepoMock = new Mock<IEfGenericRepository<User>>();
+
+            // Act
+            var data = new EfFancyData(dbContextMock.Object, itemRepoMock.Object, orderRepoMock.Object, userRepoMock.Object);
+            data.Commit();
+            
+            // Assert
+            dbContextMock.Verify(c => c.SaveChanges(), Times.Once);
+        }
+
+        [TestMethod]
+        public void Dispose_ShouldCallDbContextDispose()
+        {
+            // Arrange
+            var dbContextMock = new Mock<IFancyDbContext>();
+            var itemRepoMock = new Mock<IEfGenericRepository<Item>>();
+            var orderRepoMock = new Mock<IEfGenericRepository<Order>>();
+            var userRepoMock = new Mock<IEfGenericRepository<User>>();
+
+            // Act
+            var data = new EfFancyData(dbContextMock.Object, itemRepoMock.Object, orderRepoMock.Object, userRepoMock.Object);
+            data.Dispose();
+
+            // Assert
+            dbContextMock.Verify(c => c.Dispose(), Times.Once);
         }
     }
 }
