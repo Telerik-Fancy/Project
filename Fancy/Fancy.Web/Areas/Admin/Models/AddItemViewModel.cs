@@ -10,7 +10,7 @@ namespace Fancy.Web.Areas.Admin.Models
     public class AddItemViewModel
     {
         [Required(ErrorMessage = Messages.ItemCodeRequired)]
-        [Range(ServerConstants.ItemCodeMinLength, ServerConstants.ItemCodeMaxLength, ErrorMessage = Messages.ItemCodeInvalidLength)]
+        [StringLength(ServerConstants.ItemCodeMaxLength, ErrorMessage = Messages.ItemCodeInvalidLength, MinimumLength = ServerConstants.ItemCodeMinLength)]
         public string ItemCode { get; set; }
 
         [Required]

@@ -13,7 +13,7 @@ namespace Fancy.Common.Messages
         public const string RequiredInputMessage = "{0} is required!";
 
         public const string ItemCodeRequired = "Item code is required.";
-        public const string ItemCodeInvalidLength = "Item code must be between 3 and 40.";
+        public const string ItemCodeInvalidLength = "Item code length must be between 3 and 40.";
         public const string ItemTypeRequired = "Item type is required.";
         public const string MainColourTypeRequired = "Colour is required.";
         public const string MainMaterialTypeRequired = "Material is required.";

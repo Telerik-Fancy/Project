@@ -10,17 +10,28 @@ namespace Fancy.Data.Repositories
 {
     public class EfGenericRepository<T> : IEfGenericRepository<T> where T : class
     {
+        private IFancyDbContext context;
+        private IDbSet<T> dbSet;
+
         public EfGenericRepository(IFancyDbContext context)
         {
             Validator.ValidateNullArgument(context, "context");
 
-            this.Context = context;
+            this.context = context;
             this.DbSet = this.Context.Set<T>();
 
         }
-        public IFancyDbContext Context { get; set; }
+        public IFancyDbContext Context
+        {
+            get { return this.context; }
+        }
 
-        protected IDbSet<T> DbSet { get; set; }
+        protected IDbSet<T> DbSet
+        {
+            get  { return this.dbSet; }
+            
+            set { this.dbSet = value; }
+        }
 
         public IQueryable<T> All
         {
