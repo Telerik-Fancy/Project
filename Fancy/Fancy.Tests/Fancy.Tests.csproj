@@ -137,6 +137,7 @@
     <Compile Include="Data\Data\EfFancyDataTests.cs" />
     <Compile Include="Data\Repositories\EfGenericRepositoryTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\Data\ItemServiceTests.cs" />
     <Compile Include="Services\Data\OrderServiceTests.cs" />
     <Compile Include="Services\Data\PromotionServiceTests.cs" />
     <Compile Include="Web\Controllers\HomeControllerTests.cs" />

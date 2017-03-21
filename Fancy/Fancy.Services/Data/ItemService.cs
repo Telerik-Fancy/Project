@@ -23,14 +23,20 @@ namespace Fancy.Services.Data
 
         public void AddItem(Item item)
         {
+            Validator.ValidateNullArgument(item, "Item");
+
             this.data.Items.Add(item);
 
             this.data.Commit();
         }
 
-        public Item GetItemById(int id)
+        public Item GetItemById(int itemId)
         {
-            var item = this.data.Items.GetById(id);
+            Validator.ValidateRange(itemId, ServerConstants.IdMinValue, ServerConstants.IdMaxValue, "itemId");
+
+            var item = this.data.Items.GetById(itemId);
+
+            Validator.ValidateNullDatabaseObject(item, "Item");
 
             return item;
         }
@@ -104,28 +110,31 @@ namespace Fancy.Services.Data
             
         public int GetItemsOfTypeCount(ItemType itemType)
         {
-            var itemsCount = this.data.Items.All.Where(i => i.ItemType == itemType).Count();
+            Validator.ValidateNullArgument(itemType, "itemType");
 
-            return itemsCount;
+            var items = this.data.Items.GetAll(i => i.ItemType == itemType);
+
+            return items.Count();
         }
 
         public int GetAllItemsCount()
         {
-            var itemsCount = this.data.Items.All.Count();
+            var items = this.data.Items.All;
 
-            return itemsCount;
+            return items.Count();
         }
 
         public int GetAllItemsInPromotionCount()
         {
-            var itemsCount = this.data.Items.All
-                .Where(i => i.Discount != 0 && !i.IsDeleted && i.Quantity != 0).Count();
+            var items = this.data.Items.GetAll(i => i.Discount != 0 && !i.IsDeleted && i.Quantity != 0);
 
-            return itemsCount;
+            return items.Count();
         }
 
         public bool CheckUniqueItemCode(string itemCode)
         {
+            Validator.ValidateNullArgument(itemCode, "itemCode");
+
             var result = this.data.Items.GetSingleOrDefault(i => i.ItemCode == itemCode);
 
             return result == null;
