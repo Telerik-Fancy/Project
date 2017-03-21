@@ -56,7 +56,6 @@ namespace Fancy.Services.Data
 
             Validator.ValidateNullDatabaseObject(item, "Item");
             Validator.ValidateNullDatabaseObject(user, "User");
-            Validator.ValidateNullDatabaseObject(order, "Order");
 
             order.Items.Add(item);
 
@@ -93,7 +92,7 @@ namespace Fancy.Services.Data
         public void ExecuteOrder(int orderId, decimal totalPrice)
         {
             Validator.ValidateRange(orderId, ServerConstants.IdMinValue, ServerConstants.IdMaxValue, "orderId");
-            Validator.ValidateRange(orderId, 0, decimal.MaxValue, "orderId");
+            Validator.ValidateRange(totalPrice, 0, decimal.MaxValue, "totalPrice");
 
             var order = this.data.Orders.GetById(orderId);
 

@@ -123,5 +123,12 @@ namespace Fancy.Services.Data
 
             return itemsCount;
         }
+
+        public bool CheckUniqueItemCode(string itemCode)
+        {
+            var result = this.data.Items.GetSingleOrDefault(i => i.ItemCode == itemCode);
+
+            return result == null;
+        }
     }
 }

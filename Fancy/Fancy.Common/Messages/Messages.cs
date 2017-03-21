@@ -26,7 +26,6 @@ namespace Fancy.Common.Messages
         public const string ArgumentNullMessage = "{0} can not be null.";
         public const string ArgumentOutOfRangeMessage = "{0} is out of range.";
         public const string ObjectNotFoundInDatabaseMessage = "{0} was not found in the database.";
-
-        
+        public const string ItemNotUniqueMessage = "Item code {0} is not unique.";
     }
 }

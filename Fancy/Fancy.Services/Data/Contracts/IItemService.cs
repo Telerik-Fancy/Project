@@ -21,5 +21,7 @@ namespace Fancy.Services.Data.Contracts
         int GetAllItemsCount();
 
         int GetAllItemsInPromotionCount();
+
+        bool CheckUniqueItemCode(string itemCode);
     }
 }

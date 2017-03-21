@@ -1,4 +1,6 @@
-﻿using Fancy.Common.Enums;
+﻿using Fancy.Common.Constants;
+using Fancy.Common.Enums;
+using Fancy.Common.Messages;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -19,7 +21,7 @@ namespace Fancy.Data.Models.Models
 
         [Index(IsUnique = true)]
         [Required]
-        [MaxLength(20, ErrorMessage = "Item code must be 20 characters or less."), MinLength(3, ErrorMessage = "Item code must be 3 characters or more.")]
+        [MaxLength(ServerConstants.ItemCodeMaxLength, ErrorMessage = Messages.ItemCodeInvalidLength), MinLength(ServerConstants.ItemCodeMinLength, ErrorMessage = Messages.ItemCodeInvalidLength)]
         public string ItemCode { get; set; }
 
         [Required]
