@@ -20,7 +20,7 @@ namespace Fancy.Web.Areas.Items.Models
         public decimal Price { get; set; }
 
         [Required]
-        [Range(ServerConstants.PromotionMinValue, ServerConstants.PromotionMaxValue, ErrorMessage = Messages.RequiredDiscount)]
+        [Range(ServerConstants.DiscountMinValue, ServerConstants.DiscountMaxValue, ErrorMessage = Messages.RequiredDiscount)]
         public decimal Discount { get; set; }
 
         public int Quantity { get; set; }

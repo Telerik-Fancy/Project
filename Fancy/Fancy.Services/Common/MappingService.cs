@@ -19,6 +19,7 @@ namespace Fancy.Services.Common
         public TDestination Map<TSource, TDestination>(TSource source)
         {
             var mappedEntity = this.mapper.Map<TDestination>(source);
+
             return mappedEntity;
         }
     }

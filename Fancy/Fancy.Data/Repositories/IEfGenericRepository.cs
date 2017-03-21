@@ -11,6 +11,14 @@ namespace Fancy.Data.Repositories
 
         IQueryable<T> All { get; }
 
+        T GetSingle(Expression<Func<T, bool>> filterExpression);
+
+        T GetSingleOrDefault(Expression<Func<T, bool>> filterExpression);
+
+        T GetFirst(Expression<Func<T, bool>> filterExpression);
+
+        T GetFirstOrDefault(Expression<Func<T, bool>> filterExpression);
+
         IEnumerable<T> GetAll();
 
         IEnumerable<T> GetAll(Expression<Func<T, bool>> filterExpression);

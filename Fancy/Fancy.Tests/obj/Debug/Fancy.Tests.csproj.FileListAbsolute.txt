@@ -144,3 +144,7 @@ C:\Users\gvelikov\Desktop\MVC\Project\Fancy\Fancy.Tests\bin\Debug\Castle.Core.xm
 C:\Users\gvelikov\Desktop\MVC\Project\Fancy\Fancy.Tests\bin\Debug\Moq.xml
 C:\Users\gvelikov\Desktop\MVC\Project\Fancy\Fancy.Tests\bin\Debug\EntityFramework.SqlServer.dll
 C:\Users\gvelikov\Desktop\MVC\Project\Fancy\Fancy.Tests\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\gvelikov\Desktop\MVC\Project\Fancy\Fancy.Tests\bin\Debug\Microsoft.Owin.Security.OAuth.dll
+C:\Users\gvelikov\Desktop\MVC\Project\Fancy\Fancy.Tests\bin\Debug\Newtonsoft.Json.dll
+C:\Users\gvelikov\Desktop\MVC\Project\Fancy\Fancy.Tests\bin\Debug\Microsoft.Owin.Security.OAuth.xml
+C:\Users\gvelikov\Desktop\MVC\Project\Fancy\Fancy.Tests\bin\Debug\Newtonsoft.Json.xml

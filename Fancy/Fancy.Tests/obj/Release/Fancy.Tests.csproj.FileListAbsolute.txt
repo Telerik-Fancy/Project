@@ -22,6 +22,7 @@ C:\Users\gvelikov\Desktop\MVC\Project\Fancy\Fancy.Tests\bin\Release\Fancy.Data.M
 C:\Users\gvelikov\Desktop\MVC\Project\Fancy\Fancy.Tests\bin\Release\Fancy.Services.dll
 C:\Users\gvelikov\Desktop\MVC\Project\Fancy\Fancy.Tests\bin\Release\Fancy.Web.dll
 C:\Users\gvelikov\Desktop\MVC\Project\Fancy\Fancy.Tests\bin\Release\Microsoft.AspNet.Identity.Core.dll
+C:\Users\gvelikov\Desktop\MVC\Project\Fancy\Fancy.Tests\bin\Release\Microsoft.AspNet.Identity.EntityFramework.dll
 C:\Users\gvelikov\Desktop\MVC\Project\Fancy\Fancy.Tests\bin\Release\Microsoft.AspNet.Identity.Owin.dll
 C:\Users\gvelikov\Desktop\MVC\Project\Fancy\Fancy.Tests\bin\Release\Microsoft.Owin.dll
 C:\Users\gvelikov\Desktop\MVC\Project\Fancy\Fancy.Tests\bin\Release\Microsoft.Owin.Security.Cookies.dll
@@ -37,7 +38,6 @@ C:\Users\gvelikov\Desktop\MVC\Project\Fancy\Fancy.Tests\bin\Release\System.Web.R
 C:\Users\gvelikov\Desktop\MVC\Project\Fancy\Fancy.Tests\bin\Release\System.Web.WebPages.Deployment.dll
 C:\Users\gvelikov\Desktop\MVC\Project\Fancy\Fancy.Tests\bin\Release\System.Web.WebPages.dll
 C:\Users\gvelikov\Desktop\MVC\Project\Fancy\Fancy.Tests\bin\Release\System.Web.WebPages.Razor.dll
-C:\Users\gvelikov\Desktop\MVC\Project\Fancy\Fancy.Tests\bin\Release\Microsoft.AspNet.Identity.EntityFramework.dll
 C:\Users\gvelikov\Desktop\MVC\Project\Fancy\Fancy.Tests\bin\Release\Fancy.Common.dll
 C:\Users\gvelikov\Desktop\MVC\Project\Fancy\Fancy.Tests\bin\Release\AutoMapper.dll
 C:\Users\gvelikov\Desktop\MVC\Project\Fancy\Fancy.Tests\bin\Release\WebActivatorEx.dll
@@ -54,6 +54,7 @@ C:\Users\gvelikov\Desktop\MVC\Project\Fancy\Fancy.Tests\bin\Release\Castle.Core.
 C:\Users\gvelikov\Desktop\MVC\Project\Fancy\Fancy.Tests\bin\Release\EntityFramework.xml
 C:\Users\gvelikov\Desktop\MVC\Project\Fancy\Fancy.Tests\bin\Release\EntityFramework.SqlServer.xml
 C:\Users\gvelikov\Desktop\MVC\Project\Fancy\Fancy.Tests\bin\Release\Microsoft.AspNet.Identity.Core.xml
+C:\Users\gvelikov\Desktop\MVC\Project\Fancy\Fancy.Tests\bin\Release\Microsoft.AspNet.Identity.EntityFramework.xml
 C:\Users\gvelikov\Desktop\MVC\Project\Fancy\Fancy.Tests\bin\Release\Microsoft.AspNet.Identity.Owin.xml
 C:\Users\gvelikov\Desktop\MVC\Project\Fancy\Fancy.Tests\bin\Release\Microsoft.Owin.xml
 C:\Users\gvelikov\Desktop\MVC\Project\Fancy\Fancy.Tests\bin\Release\Microsoft.Owin.Security.xml
@@ -67,7 +68,6 @@ C:\Users\gvelikov\Desktop\MVC\Project\Fancy\Fancy.Tests\bin\Release\System.Web.R
 C:\Users\gvelikov\Desktop\MVC\Project\Fancy\Fancy.Tests\bin\Release\System.Web.WebPages.xml
 C:\Users\gvelikov\Desktop\MVC\Project\Fancy\Fancy.Tests\bin\Release\System.Web.WebPages.Deployment.xml
 C:\Users\gvelikov\Desktop\MVC\Project\Fancy\Fancy.Tests\bin\Release\System.Web.WebPages.Razor.xml
-C:\Users\gvelikov\Desktop\MVC\Project\Fancy\Fancy.Tests\bin\Release\Microsoft.AspNet.Identity.EntityFramework.xml
 C:\Users\gvelikov\Desktop\MVC\Project\Fancy\Fancy.Tests\bin\Release\Fancy.Common.pdb
 C:\Users\gvelikov\Desktop\MVC\Project\Fancy\Fancy.Tests\bin\Release\AutoMapper.xml
 C:\Users\gvelikov\Desktop\MVC\Project\Fancy\Fancy.Tests\bin\Release\System.Web.Optimization.xml

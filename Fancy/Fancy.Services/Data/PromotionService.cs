@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Fancy.Data.Models.Models;
 using Fancy.Common.Validator;
+using Fancy.Common.Constants;
 
 namespace Fancy.Services.Data
 {
@@ -21,7 +22,12 @@ namespace Fancy.Services.Data
 
         public void AddPromotion(int itemId, decimal discount)
         {
-            var item = this.data.Items.All.Single(i => i.Id == itemId);
+            Validator.ValidateRange(itemId, ServerConstants.IdMinValue, ServerConstants.IdMaxValue, "itemId");
+            Validator.ValidateRange(discount, ServerConstants.DiscountMinValue, ServerConstants.DiscountMaxValue, "discount");
+
+            var item = this.data.Items.GetById(itemId);
+
+            Validator.ValidateNullDatabaseObject(item, "Item");
 
             item.Discount = discount;
 
@@ -30,7 +36,11 @@ namespace Fancy.Services.Data
 
         public void RemovePromotion(int itemId)
         {
-            var item = this.data.Items.All.Single(i => i.Id == itemId);
+            Validator.ValidateRange(itemId, ServerConstants.IdMinValue, ServerConstants.IdMaxValue, "itemId");
+
+            var item = this.data.Items.GetById(itemId);
+
+            Validator.ValidateNullDatabaseObject(item, "Item");
 
             item.Discount = 0;
 

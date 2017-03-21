@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Fancy.Common.Enums;
 using Fancy.Common.Validator;
+using Fancy.Common.Constants;
 
 namespace Fancy.Services.Data
 {
@@ -22,23 +23,40 @@ namespace Fancy.Services.Data
 
         public Order GetOrderInBasket(string userId)
         {
-            return this.data.Orders.All.FirstOrDefault(o => o.UserId == userId && o.OrderStatus == OrderStatusType.InBasket);
-        }
+            Validator.ValidateNullArgument(userId, "userId");
 
-        public void AddItemToBasket(int itemId, string userId)
-        {
-            var item = this.data.Items.GetById(itemId);
             var user = this.data.Users.GetById(userId);
+            
+            Validator.ValidateNullDatabaseObject(user, "User");
 
-            var order = this.GetOrderInBasket(userId);
-            if(order == null)
+            var order = this.data.Orders.GetSingleOrDefault(o => o.UserId == userId && o.OrderStatus == OrderStatusType.InBasket);
+
+            if (order == null)
             {
                 order = new Order();
                 order.User = user;
                 order.OrderStatus = OrderStatusType.InBasket;
 
                 this.data.Orders.Add(order);
+
+                this.data.Commit();
             }
+
+            return order;
+        }
+
+        public void AddItemToBasket(int itemId, string userId)
+        {
+            Validator.ValidateRange(itemId, ServerConstants.IdMinValue, ServerConstants.IdMaxValue, "itemId");
+            Validator.ValidateNullArgument(userId, "userId");
+
+            var item = this.data.Items.GetById(itemId);
+            var user = this.data.Users.GetById(userId);
+            var order = this.GetOrderInBasket(userId);
+
+            Validator.ValidateNullDatabaseObject(item, "Item");
+            Validator.ValidateNullDatabaseObject(user, "User");
+            Validator.ValidateNullDatabaseObject(order, "Order");
 
             order.Items.Add(item);
 
@@ -49,10 +67,16 @@ namespace Fancy.Services.Data
 
         public void RemoveItemFromBasket(int itemId, string userId)
         {
+            Validator.ValidateRange(itemId, ServerConstants.IdMinValue, ServerConstants.IdMaxValue, "itemId");
+            Validator.ValidateNullArgument(userId, "userId");
+
             var item = this.data.Items.GetById(itemId);
             var user = this.data.Users.GetById(userId);
+            var order = this.data.Orders.GetSingleOrDefault(o => o.UserId == userId && o.OrderStatus == OrderStatusType.InBasket);
 
-            var order = this.data.Orders.All.FirstOrDefault(o => o.UserId == userId && o.OrderStatus == OrderStatusType.InBasket);
+            Validator.ValidateNullDatabaseObject(item, "Item");
+            Validator.ValidateNullDatabaseObject(user, "User");
+            Validator.ValidateNullDatabaseObject(order, "Order");
 
             order.Items.Remove(item);
 
@@ -62,14 +86,19 @@ namespace Fancy.Services.Data
             {
                 order.OrderStatus = OrderStatusType.Discarded;
             }
-            
 
             this.data.Commit();
         }
 
         public void ExecuteOrder(int orderId, decimal totalPrice)
         {
+            Validator.ValidateRange(orderId, ServerConstants.IdMinValue, ServerConstants.IdMaxValue, "orderId");
+            Validator.ValidateRange(orderId, 0, decimal.MaxValue, "orderId");
+
             var order = this.data.Orders.GetById(orderId);
+
+            Validator.ValidateNullDatabaseObject(order, "Order");
+
             order.OrderStatus = OrderStatusType.Shipped;
             order.TotalPrice = totalPrice;
             order.PurchaseDate = DateTime.Today;
@@ -79,7 +108,9 @@ namespace Fancy.Services.Data
 
         public IEnumerable<Order> PreviousOrders(string userId)
         {
-            var previousOrders = this.data.Orders.All.Where(o => o.UserId == userId && o.OrderStatus == OrderStatusType.Shipped).ToList();
+            Validator.ValidateNullArgument(userId, "userId");
+
+            var previousOrders = this.data.Orders.GetAll(o => o.UserId == userId && o.OrderStatus == OrderStatusType.Shipped).ToList();
 
             return previousOrders;
         }

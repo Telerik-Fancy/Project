@@ -98,5 +98,56 @@ namespace Fancy.Tests.Data.Data
             // Assert
             dbContextMock.Verify(c => c.Dispose(), Times.Once);
         }
+
+        [TestMethod]
+        public void GetItems_ShouldReturnCorrectInstanceOfItemRepository()
+        {
+            // Arrange
+            var dbContextMock = new Mock<IFancyDbContext>();
+            var itemRepoMock = new Mock<IEfGenericRepository<Item>>();
+            var orderRepoMock = new Mock<IEfGenericRepository<Order>>();
+            var userRepoMock = new Mock<IEfGenericRepository<User>>();
+
+            // Act
+            var data = new EfFancyData(dbContextMock.Object, itemRepoMock.Object, orderRepoMock.Object, userRepoMock.Object);
+            var itemRepo = data.Items;
+
+            // Assert
+            Assert.AreEqual(itemRepo, itemRepoMock.Object);
+        }
+
+        [TestMethod]
+        public void GetOrders_ShouldReturnCorrectInstanceOfItemRepository()
+        {
+            // Arrange
+            var dbContextMock = new Mock<IFancyDbContext>();
+            var itemRepoMock = new Mock<IEfGenericRepository<Item>>();
+            var orderRepoMock = new Mock<IEfGenericRepository<Order>>();
+            var userRepoMock = new Mock<IEfGenericRepository<User>>();
+
+            // Act
+            var data = new EfFancyData(dbContextMock.Object, itemRepoMock.Object, orderRepoMock.Object, userRepoMock.Object);
+            var orderRepo = data.Orders;
+
+            // Assert
+            Assert.AreEqual(orderRepo, orderRepoMock.Object);
+        }
+
+        [TestMethod]
+        public void GetUsers_ShouldReturnCorrectInstanceOfItemRepository()
+        {
+            // Arrange
+            var dbContextMock = new Mock<IFancyDbContext>();
+            var itemRepoMock = new Mock<IEfGenericRepository<Item>>();
+            var orderRepoMock = new Mock<IEfGenericRepository<Order>>();
+            var userRepoMock = new Mock<IEfGenericRepository<User>>();
+
+            // Act
+            var data = new EfFancyData(dbContextMock.Object, itemRepoMock.Object, orderRepoMock.Object, userRepoMock.Object);
+            var usersRepo = data.Users;
+
+            // Assert
+            Assert.AreEqual(usersRepo, userRepoMock.Object);
+        }
     }
 }

@@ -20,10 +20,13 @@ namespace Fancy.Common.Constants
         public const int EnumStartValue = 1;
         public const int EnumEndValue = 10000;
 
-        public const int PromotionMinValue = 5;
-        public const int PromotionMaxValue = 90;
+        public const int DiscountMinValue = 5;
+        public const int DiscountMaxValue = 90;
 
         public const int ItemCodeMinLength = 3;
         public const int ItemCodeMaxLength = 40;
+
+        public const int IdMinValue = 1;
+        public const int IdMaxValue = int.MaxValue;
     }
 }

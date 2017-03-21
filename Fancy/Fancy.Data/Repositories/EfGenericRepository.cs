@@ -43,6 +43,26 @@ namespace Fancy.Data.Repositories
             return this.DbSet.Find(id);
         }
 
+        public T GetSingle(Expression<Func<T, bool>> filterExpression)
+        {
+            return this.All.Single(filterExpression);
+        }
+
+        public T GetSingleOrDefault(Expression<Func<T, bool>> filterExpression)
+        {
+            return this.All.SingleOrDefault(filterExpression);
+        }
+
+        public T GetFirst(Expression<Func<T, bool>> filterExpression)
+        {
+            return this.All.First(filterExpression);
+        }
+
+        public T GetFirstOrDefault(Expression<Func<T, bool>> filterExpression)
+        {
+            return this.All.FirstOrDefault(filterExpression);
+        }
+
         public IEnumerable<T> GetAll()
         {
             return this.GetAll(null);
