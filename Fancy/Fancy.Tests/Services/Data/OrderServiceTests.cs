@@ -642,11 +642,10 @@ namespace Fancy.Tests.Services.Data
         }
 
         [TestMethod]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void PreviosOrders_ShouldCallOrdersRepoGetAll_WhenUserIdIsValid()
         {
             // Arange 
-            string userId = null;
+            string userId = "1111";
             var orders = new List<Order>();
 
             this.orderRepoMock.Setup(r => r.GetAll(It.IsAny<Expression<Func<Order, bool>>>())).Returns(orders);
@@ -657,8 +656,7 @@ namespace Fancy.Tests.Services.Data
             orderService.PreviousOrders(userId);
 
             // Assert
-            this.orderRepoMock.Verify(d => d.GetAll(), Times.Once);
-
+            this.orderRepoMock.Verify(r => r.GetAll(It.IsAny<Expression<Func<Order, bool>>>()), Times.Once);
         }
     }
 }

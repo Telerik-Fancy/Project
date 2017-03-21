@@ -8,13 +8,13 @@ namespace Fancy.Tests.Web.Controllers
     public class HomeControllerTests
     {
         [TestMethod]
-        public void Index_ShouldReturnViewNotNull()
+        public void HomePage_ShouldReturnViewNotNull()
         {
             //Arange
-            HomeController homeController = new HomeController();
+            var homeController = new HomeController();
 
             //Act
-            ViewResult viewResult = homeController.HomePage() as ViewResult;
+            var viewResult = homeController.HomePage() as ViewResult;
 
             //Assert
             Assert.IsNotNull(viewResult);

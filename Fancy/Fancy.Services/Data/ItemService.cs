@@ -119,7 +119,7 @@ namespace Fancy.Services.Data
 
         public int GetAllItemsCount()
         {
-            var items = this.data.Items.All;
+            var items = this.data.Items.GetAll();
 
             return items.Count();
         }

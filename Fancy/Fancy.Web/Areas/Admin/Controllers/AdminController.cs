@@ -12,19 +12,18 @@ namespace Fancy.Web.Areas.Admin.Controllers
 {
     public class AdminController : Controller
     {
-        private const string AdminPanelUrl = "AdminPanel";
         private readonly IImageProvider imageProvider;
         private readonly IMappingService mappingService;
         private readonly IItemService itemService;
 
-        public AdminController(IMappingService mappingService, IItemService itemService, IImageProvider imageProvider)
+        public AdminController(IItemService itemService, IMappingService mappingService, IImageProvider imageProvider)
         {
-            Validator.ValidateNullArgument(mappingService, "mappingService");
             Validator.ValidateNullArgument(itemService, "itemService");
+            Validator.ValidateNullArgument(mappingService, "mappingService");
             Validator.ValidateNullArgument(imageProvider, "imageProvider");
 
-            this.mappingService = mappingService;
             this.itemService = itemService;
+            this.mappingService = mappingService; 
             this.imageProvider = imageProvider;
         }
 
@@ -52,8 +51,8 @@ namespace Fancy.Web.Areas.Admin.Controllers
 
                 this.ModelState.Clear();
             }
-            
-            return View(AdminPanelUrl);
+
+            return this.Redirect(ServerConstants.AdminPanelRedirectUrl);
         }
     }
 }

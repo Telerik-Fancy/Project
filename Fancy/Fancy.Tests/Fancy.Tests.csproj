@@ -149,7 +149,13 @@
     <Compile Include="Services\Data\ItemServiceTests.cs" />
     <Compile Include="Services\Data\OrderServiceTests.cs" />
     <Compile Include="Services\Data\PromotionServiceTests.cs" />
+    <Compile Include="Web\Areas\Admin\Controllers\AdminControllerTests.cs" />
+    <Compile Include="Web\Areas\Items\Controllers\ItemControllerTests.cs" />
+    <Compile Include="Web\Areas\Items\Controllers\PromotionsControllerTests.cs" />
+    <Compile Include="Web\Areas\Profile\Controllers\ProfileControllerTests.cs" />
+    <Compile Include="Web\Controllers\AccountControllerTests.cs" />
     <Compile Include="Web\Controllers\HomeControllerTests.cs" />
+    <Compile Include="Web\Controllers\ManageControllerTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Fancy.Common\Fancy.Common.csproj">
@@ -173,9 +179,7 @@
       <Name>Fancy.Web</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Web\Areas\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />

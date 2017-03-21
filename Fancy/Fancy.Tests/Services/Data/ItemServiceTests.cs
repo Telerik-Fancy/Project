@@ -7,6 +7,8 @@ using Fancy.Data.Data;
 using Fancy.Services.Data;
 using Fancy.Common.Exceptions;
 using System.Linq.Expressions;
+using Fancy.Common.Enums;
+using System.Collections.Generic;
 
 namespace Fancy.Tests.Services.Data
 {
@@ -172,23 +174,59 @@ namespace Fancy.Tests.Services.Data
             Assert.IsFalse(result);
         }
 
-        //[TestMethod]
-        //public void GetItemsOfTypeCount_ShowdCallItemRepoGetAllWithCorrectExpression_WhenValidArgumentsArePassed()
-        //{
-        //    // Arrange
-        //    var itemType = ItemType.Necklace;
+        [TestMethod]
+        public void GetItemsOfTypeCount_ShouldCallItemRepoGetAllOnce_WhenValidArgumentsArePassed()
+        {
+            // Arrange
+            var itemType = ItemType.Necklace;
+            var itemCollection = new List<Item>();
 
-        //    Expression<Func<Item, bool>> ex = i => i.ItemType == itemType;
+            this.itemRepoMock.Setup(r => r.GetAll(It.IsAny<Expression<Func<Item, bool>>>())).Returns(itemCollection);
+            this.dataMock.SetupGet(d => d.Items).Returns(this.itemRepoMock.Object);
 
-        //    this.dataMock.SetupGet(d => d.Items).Returns(this.itemRepoMock.Object);
+            var itemService = new ItemService(this.dataMock.Object);
 
-        //    var itemService = new ItemService(this.dataMock.Object);
+            // Act
+            var count = itemService.GetItemsOfTypeCount(itemType);
 
-        //    // Act
-        //    var count = itemService.GetItemsOfTypeCount(itemType);
+            // Assert
+            this.itemRepoMock.Verify(r => r.GetAll(It.IsAny<Expression<Func<Item, bool>>>()), Times.Once);
+        }
 
-        //    // Assert
-        //    this.dataMock.Verify(d => d.Items.GetAll(ex), Times.Once);
-        //}
+        [TestMethod]
+        public void GetAllItemsCount_ShouldCallItemRepoGetAllOnce_WhenValidArgumentsArePassed()
+        {
+            // Arrange
+            var itemCollection = new List<Item>();
+
+            this.itemRepoMock.Setup(r => r.GetAll()).Returns(itemCollection);
+            this.dataMock.SetupGet(d => d.Items).Returns(this.itemRepoMock.Object);
+
+            var itemService = new ItemService(this.dataMock.Object);
+
+            // Act
+            var count = itemService.GetAllItemsCount();
+
+            // Assert
+            this.itemRepoMock.Verify(r => r.GetAll(), Times.Once);
+        }
+
+        [TestMethod]
+        public void GetAllItemsInPromotionCount_ShouldCallItemRepoGetAllOnce_WhenValidArgumentsArePassed()
+        {
+            // Arrange
+            var itemCollection = new List<Item>();
+
+            this.itemRepoMock.Setup(r => r.GetAll(It.IsAny<Expression<Func<Item, bool>>>())).Returns(itemCollection);
+            this.dataMock.SetupGet(d => d.Items).Returns(this.itemRepoMock.Object);
+
+            var itemService = new ItemService(this.dataMock.Object);
+
+            // Act
+            var count = itemService.GetAllItemsInPromotionCount();
+
+            // Assert
+            this.itemRepoMock.Verify(r => r.GetAll(It.IsAny<Expression<Func<Item, bool>>>()), Times.Once);
+        }
     }
 }

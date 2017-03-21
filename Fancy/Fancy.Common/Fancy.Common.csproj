@@ -40,7 +40,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Constants\ItemConstants.cs" />
     <Compile Include="Constants\ServerConstants.cs" />
     <Compile Include="Constants\UserConstants.cs" />
     <Compile Include="Enums\ItemType.cs" />

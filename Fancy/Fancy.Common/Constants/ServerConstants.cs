@@ -28,5 +28,7 @@ namespace Fancy.Common.Constants
 
         public const int IdMinValue = 1;
         public const int IdMaxValue = int.MaxValue;
+
+        public const string AdminPanelRedirectUrl = "AdminPanel";
     }
 }

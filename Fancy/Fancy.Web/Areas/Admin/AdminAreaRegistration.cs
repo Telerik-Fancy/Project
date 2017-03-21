@@ -2,7 +2,7 @@
 
 namespace Fancy.Web.Areas.Admin
 {
-    public class AdminRegistration : AreaRegistration 
+    public class AdminAreaRegistration : AreaRegistration 
     {
         public override string AreaName 
         {
