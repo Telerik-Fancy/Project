@@ -22,3 +22,4 @@ C:\Users\gvelikov\Desktop\MVC\Project\Fancy\Fancy.Services\bin\Release\Newtonsof
 C:\Users\gvelikov\Desktop\MVC\Project\Fancy\Fancy.Services\obj\Release\Fancy.Services.csprojResolveAssemblyReference.cache
 C:\Users\gvelikov\Desktop\MVC\Project\Fancy\Fancy.Services\obj\Release\Fancy.Services.dll
 C:\Users\gvelikov\Desktop\MVC\Project\Fancy\Fancy.Services\obj\Release\Fancy.Services.pdb
+C:\Users\gvelikov\Desktop\MVC\Project\Fancy\Fancy.Services\bin\Release\System.ValueTuple.dll
