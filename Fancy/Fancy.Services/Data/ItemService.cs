@@ -43,8 +43,9 @@ namespace Fancy.Services.Data
 
         public IEnumerable<Item> GetItemsOfType(int pageNumber, ItemType itemType, MainColourType colourType, MainMaterialType materialType)
         {
-            var itemsList = this.data.Items.All
-                .Where(i => i.ItemType == itemType && !i.IsDeleted && i.Quantity != 0);
+            Validator.ValidateRange(pageNumber, 1, int.MaxValue, "pageNumber");
+
+            var itemsList = this.data.Items.GetAll(i => i.ItemType == itemType && !i.IsDeleted && i.Quantity != 0);
 
             if(colourType != 0)
             {
@@ -65,8 +66,9 @@ namespace Fancy.Services.Data
 
         public IEnumerable<Item> GetItemsInPromotion(int pageNumber, MainColourType colourType, MainMaterialType materialType)
         {
-            var itemsList = this.data.Items.All
-                .Where(i => i.Discount != 0 && !i.IsDeleted && i.Quantity != 0);
+            Validator.ValidateRange(pageNumber, 1, int.MaxValue, "pageNumber");
+
+            var itemsList = this.data.Items.GetAll(i => i.Discount != 0 && !i.IsDeleted && i.Quantity != 0);
 
             if (colourType != 0)
             {
@@ -87,9 +89,9 @@ namespace Fancy.Services.Data
 
         public IEnumerable<Item> GetNewestItems(int pageNumber, MainColourType colourType, MainMaterialType materialType)
         {
-            var itemsList = this.data.Items.All
-                .Where(i => !i.IsDeleted && i.Quantity != 0)
-                .OrderByDescending(i => i.DateAdded);
+            Validator.ValidateRange(pageNumber, 1, int.MaxValue, "pageNumber");
+
+            var itemsList = this.data.Items.GetAll(i => !i.IsDeleted && i.Quantity != 0, i => i.DateAdded);
 
             if (colourType != 0)
             {
