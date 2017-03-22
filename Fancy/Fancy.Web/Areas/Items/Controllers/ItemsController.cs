@@ -21,7 +21,7 @@ namespace Fancy.Web.Areas.Items.Controllers
         public ItemsController(IItemService itemService, IMappingService mappingService, IImageProvider imageProvider)
         {
             Validator.ValidateNullArgument(itemService, "itemService");
-            Validator.ValidateNullArgument(itemService, "mappingService");
+            Validator.ValidateNullArgument(mappingService, "mappingService");
             Validator.ValidateNullArgument(imageProvider, "imageProvider");
 
             this.itemService = itemService;
@@ -31,6 +31,10 @@ namespace Fancy.Web.Areas.Items.Controllers
 
         public ActionResult GalleryItems(GalleryItemsViewModel model, int pageNumber, string type)
         {
+            Validator.ValidateNullArgument(model, "model");
+            Validator.ValidateRange(pageNumber, 1, int.MaxValue, "pageNumber");
+            Validator.ValidateNullArgument(type, "type");
+
             ItemType itemType = (ItemType)Enum.Parse(typeof(ItemType), type, true);
 
             var itemsOfTypeCount = this.itemService.GetItemsOfTypeCount(itemType);
@@ -47,6 +51,9 @@ namespace Fancy.Web.Areas.Items.Controllers
 
         public ActionResult GalleryItemsNew(GalleryItemsViewModel model, int pageNumber)
         {
+            Validator.ValidateNullArgument(model, "model");
+            Validator.ValidateRange(pageNumber, 1, int.MaxValue, "pageNumber");
+
             var itemsCount = this.itemService.GetAllItemsCount();
             var dbItemsList = this.itemService.GetNewestItems(pageNumber, model.Colour, model.Material);
             var viewItemsList = this.ConvertToViewItemList(dbItemsList);
@@ -60,6 +67,9 @@ namespace Fancy.Web.Areas.Items.Controllers
 
         public ActionResult GalleryItemsPromotions(GalleryItemsViewModel model, int pageNumber)
         {
+            Validator.ValidateNullArgument(model, "model");
+            Validator.ValidateRange(pageNumber, 1, int.MaxValue, "pageNumber");
+
             var itemsCount = this.itemService.GetAllItemsInPromotionCount();
             var dbItemsList = this.itemService.GetItemsInPromotion(pageNumber, model.Colour, model.Material);
             var viewItemsList = this.ConvertToViewItemList(dbItemsList);
@@ -74,6 +84,9 @@ namespace Fancy.Web.Areas.Items.Controllers
         [Authorize(Roles = UserConstants.AdministratorOrRegular)]
         public ActionResult SingleItem(SingleItemViewModel model, int itemId)
         {
+            Validator.ValidateNullArgument(model, "model");
+            Validator.ValidateRange(itemId, ServerConstants.IdMinValue, ServerConstants.IdMinValue, "pageNumber");
+
             var dbItem = this.itemService.GetItemById(itemId);
 
             model = this.mappingService.Map<Item, SingleItemViewModel>(dbItem);

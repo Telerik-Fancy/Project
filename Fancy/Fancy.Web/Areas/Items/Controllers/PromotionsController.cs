@@ -9,7 +9,6 @@ namespace Fancy.Web.Areas.Items.Controllers
 {
     public class PromotionsController : Controller
     {
-        private const string SingleItemPageUrl = "~/Items/Items/SingleItem/";
         private IPromotionService promotionService;
         private IMappingService mappingService;
 
@@ -27,21 +26,22 @@ namespace Fancy.Web.Areas.Items.Controllers
         [Authorize(Roles = UserConstants.AdministratorRole)]
         public ActionResult AddPromotion(int itemId, decimal discount)
         {
+            Validator.ValidateRange(itemId, ServerConstants.IdMinValue, ServerConstants.IdMaxValue, "itemId");
+            Validator.ValidateRange(discount, ServerConstants.DiscountMinValue, ServerConstants.DiscountMaxValue, "discount");
 
-             if(discount != 0)
-            {
-                this.promotionService.AddPromotion(itemId, discount);
-            }
+            this.promotionService.AddPromotion(itemId, discount);
 
-            return this.Redirect(SingleItemPageUrl + itemId);
+            return this.Redirect(ServerConstants.SingleItemRedirectUrl + itemId);
         }
 
         [Authorize(Roles = UserConstants.AdministratorRole)]
         public ActionResult RemovePromotion(int itemId)
         {
+            Validator.ValidateRange(itemId, ServerConstants.IdMinValue, ServerConstants.IdMaxValue, "itemId");
+
             this.promotionService.RemovePromotion(itemId);
 
-            return this.Redirect(SingleItemPageUrl + itemId);
+            return this.Redirect(ServerConstants.SingleItemRedirectUrl + itemId);
         }
     }
 }

@@ -150,7 +150,7 @@
     <Compile Include="Services\Data\OrderServiceTests.cs" />
     <Compile Include="Services\Data\PromotionServiceTests.cs" />
     <Compile Include="Web\Areas\Admin\Controllers\AdminControllerTests.cs" />
-    <Compile Include="Web\Areas\Items\Controllers\ItemControllerTests.cs" />
+    <Compile Include="Web\Areas\Items\Controllers\ItemsControllerTests.cs" />
     <Compile Include="Web\Areas\Items\Controllers\PromotionsControllerTests.cs" />
     <Compile Include="Web\Areas\Profile\Controllers\ProfileControllerTests.cs" />
     <Compile Include="Web\Controllers\AccountControllerTests.cs" />

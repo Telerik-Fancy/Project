@@ -12,10 +12,10 @@ namespace Fancy.Web.Areas.Admin.Controllers
 {
     public class AdminController : Controller
     {
-        private readonly IImageProvider imageProvider;
-        private readonly IMappingService mappingService;
         private readonly IItemService itemService;
-
+        private readonly IMappingService mappingService;
+        private readonly IImageProvider imageProvider;
+        
         public AdminController(IItemService itemService, IMappingService mappingService, IImageProvider imageProvider)
         {
             Validator.ValidateNullArgument(itemService, "itemService");
