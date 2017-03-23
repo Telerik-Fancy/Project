@@ -12,13 +12,10 @@ namespace Fancy.Web.Areas.Profile.Controllers
 {
     public class ProfileController : Controller
     {
-        private const string SingleItemPageUrl = "~/Items/Items/SingleItem/";
-        private const string ProfilePageUrl = "~/Profile/Profile/ProfilePage";
-
-        private IIdentityProvider identityProvider;
         private IOrderService orderService;
         private IMappingService mappingService;
         private IImageProvider imageProvider;
+        private IIdentityProvider identityProvider;
 
         public ProfileController(IOrderService orderService, IMappingService mappingService, IImageProvider imageProvider, IIdentityProvider identityProvider)
         {
@@ -39,7 +36,7 @@ namespace Fancy.Web.Areas.Profile.Controllers
             var userId = this.identityProvider.GetUserId();
 
             var dbOrderInBasket = this.orderService.GetOrderInBasket(userId);
-            var mvOrderInBasket = this.mappingService.Map<Order, OrderViewModel>((Order)dbOrderInBasket);
+            var mvOrderInBasket = this.mappingService.Map<Order, OrderViewModel>(dbOrderInBasket);
 
             model.OrderInBasket = mvOrderInBasket;
 
@@ -52,34 +49,42 @@ namespace Fancy.Web.Areas.Profile.Controllers
         [Authorize(Roles = UserConstants.AdministratorOrRegular)]
         public ActionResult AddItemToBasket(int itemId)
         {
+            Validator.ValidateRange(itemId, ServerConstants.IdMinValue, ServerConstants.IdMaxValue, "itemId");
+
             string userId = this.identityProvider.GetUserId();
 
             this.orderService.AddItemToBasket(itemId, userId);
 
-            return this.Redirect(SingleItemPageUrl + itemId);
+            return this.Redirect(ServerConstants.SingleItemRedirectUrl + itemId);
         }
 
         [Authorize(Roles = UserConstants.AdministratorOrRegular)]
         public ActionResult RemoveItemFromBasket(OrderViewModel model, int itemId)
         {
+            Validator.ValidateRange(itemId, ServerConstants.IdMinValue, ServerConstants.IdMaxValue, "itemId");
+
             string userId = this.identityProvider.GetUserId();
 
             this.orderService.RemoveItemFromBasket(itemId, userId);
 
-            return this.Redirect(ProfilePageUrl);
+            return this.Redirect(ServerConstants.ProfilePageRedirectUrl);
         }
 
         [Authorize(Roles = UserConstants.AdministratorOrRegular)]
         public ActionResult ExecuteOrder(int orderId, decimal totalPrice)
         {
+            Validator.ValidateRange(orderId, ServerConstants.IdMinValue, ServerConstants.IdMaxValue, "orderId");
+            Validator.ValidateRange(totalPrice, 0, int.MaxValue, "totalPrice");
+
             this.orderService.ExecuteOrder(orderId, totalPrice);
 
-            return this.Redirect(ProfilePageUrl);
+            return this.Redirect(ServerConstants.ProfilePageRedirectUrl);
         }
 
         private IEnumerable<OrderViewModel> ConvertToOrderViewModelList(IEnumerable<Order> dbPreviousOrders)
         {
             var orderViewModelList = new List<OrderViewModel>();
+
             foreach (var dbOrder in dbPreviousOrders)
             {
                 var mvOrder = this.mappingService.Map<Order, OrderViewModel>((Order) dbOrder);

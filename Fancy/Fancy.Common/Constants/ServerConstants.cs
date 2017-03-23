@@ -31,5 +31,6 @@ namespace Fancy.Common.Constants
 
         public const string AdminPanelRedirectUrl = "AdminPanel";
         public const string SingleItemRedirectUrl = "~/Items/Items/SingleItem/";
+        public const string ProfilePageRedirectUrl = "~/Profile/Profile/ProfilePage";
     }
 }
