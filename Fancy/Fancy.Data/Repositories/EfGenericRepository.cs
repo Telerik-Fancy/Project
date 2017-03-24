@@ -18,7 +18,7 @@ namespace Fancy.Data.Repositories
             Validator.ValidateNullArgument(context, "context");
 
             this.context = context;
-            this.DbSet = this.Context.Set<T>();
+            this.dbSet = this.context.Set<T>();
 
         }
         public IFancyDbContext Context
@@ -29,18 +29,16 @@ namespace Fancy.Data.Repositories
         protected IDbSet<T> DbSet
         {
             get  { return this.dbSet; }
-            
-            set { this.dbSet = value; }
         }
 
         public IQueryable<T> All
         {
-            get { return this.DbSet; }
+            get { return this.dbSet; }
         }
 
         public T GetById(object id)
         {
-            return this.DbSet.Find(id);
+            return this.dbSet.Find(id);
         }
 
         public T GetSingle(Expression<Func<T, bool>> filterExpression)
@@ -104,11 +102,15 @@ namespace Fancy.Data.Repositories
 
         public void Add(T entity)
         {
+            Validator.ValidateNullArgument(entity, "Entity");
+
             this.DbSet.Add(entity);
         }
 
         public void Delete(T entity)
         {
+            Validator.ValidateNullArgument(entity, "Entity");
+
             this.DbSet.Remove(entity);
         }
     }
