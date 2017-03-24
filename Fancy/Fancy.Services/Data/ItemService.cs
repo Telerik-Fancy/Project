@@ -168,7 +168,14 @@ namespace Fancy.Services.Data
 
             var result = this.data.Items.GetSingleOrDefault(i => i.ItemCode == itemCode);
 
-            return result == null;
+            if(result == null)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }

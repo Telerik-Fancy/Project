@@ -37,7 +37,10 @@ namespace Fancy.Web.Areas.Admin.Controllers
         [Authorize(Roles = UserConstants.AdministratorRole)]
         public ActionResult AddItem(AddItemViewModel model)
         {
-            if(this.ModelState.IsValid)
+            ViewBag.ItemCodeNotUnique = string.Empty;
+            bool isCodeUnique = this.itemService.CheckUniqueItemCode(model.ItemCode);
+
+            if(this.ModelState.IsValid && isCodeUnique)
             {
                 model.DateAdded = DateTime.Now;
                 model.IsDeleted = false;

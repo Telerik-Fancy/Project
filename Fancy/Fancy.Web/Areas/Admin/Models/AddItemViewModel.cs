@@ -40,6 +40,8 @@ namespace Fancy.Web.Areas.Admin.Models
 
         public bool IsDeleted { get; set; }
 
+        public bool IsItemCodeUnique { get; set; }
+
         public string ImageBase64String { get; set; }
     }
 }

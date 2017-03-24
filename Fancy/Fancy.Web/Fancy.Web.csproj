@@ -279,6 +279,7 @@
     <Compile Include="WebUtils\ImageProvider.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\images\background1.jpg" />
     <Content Include="Content\profile.css" />
     <Content Include="Content\gallery.css" />
     <Content Include="Content\home.css" />

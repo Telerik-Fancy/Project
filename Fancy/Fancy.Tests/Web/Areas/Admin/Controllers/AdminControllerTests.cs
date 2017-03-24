@@ -151,6 +151,7 @@ namespace Fancy.Tests.Web.Areas.Admin.Controllers
             string imageStringBase64 = "asdfasdf";
             byte[] array = new byte[5];
 
+            this.itemServiceMock.Setup(i => i.CheckUniqueItemCode(It.IsAny<string>())).Returns(true);
             this.imageProviderMock.Setup(i => i.ConvertByteArrayToImageString(It.IsAny<byte[]>())).Returns(imageStringBase64);
             this.imageProviderMock.Setup(i => i.ConvertFileToByteArray(It.IsAny<HttpPostedFileBase>())).Returns(array);
 
@@ -174,6 +175,7 @@ namespace Fancy.Tests.Web.Areas.Admin.Controllers
             var viewModel = new AddItemViewModel();
             var dbModel = new Item();
 
+            this.itemServiceMock.Setup(i => i.CheckUniqueItemCode(It.IsAny<string>())).Returns(true);
             this.imageProviderMock.Setup(i => i.ConvertByteArrayToImageString(It.IsAny<byte[]>())).Returns(imageStringBase64);
             this.imageProviderMock.Setup(i => i.ConvertFileToByteArray(It.IsAny<HttpPostedFileBase>())).Returns(array);
             this.mappingServiceMock.Setup(m => m.Map<AddItemViewModel, Item>(viewModel)).Returns(dbModel);
@@ -189,7 +191,7 @@ namespace Fancy.Tests.Web.Areas.Admin.Controllers
         }
 
         [TestMethod]
-        public void AddItem_ShouldCallItemServiceAddItemOnce_IfModelIsValid()
+        public void AddItem_ShouldCallItemService_AddItemOnce_IfModelIsValid()
         {
             // Arrange
             string imageStringBase64 = "asdfasdf";
@@ -197,6 +199,7 @@ namespace Fancy.Tests.Web.Areas.Admin.Controllers
             var viewModel = new AddItemViewModel();
             var dbModel = new Item();
 
+            this.itemServiceMock.Setup(i => i.CheckUniqueItemCode(It.IsAny<string>())).Returns(true);
             this.imageProviderMock.Setup(i => i.ConvertByteArrayToImageString(It.IsAny<byte[]>())).Returns(imageStringBase64);
             this.imageProviderMock.Setup(i => i.ConvertFileToByteArray(It.IsAny<HttpPostedFileBase>())).Returns(array);
             this.mappingServiceMock.Setup(m => m.Map<AddItemViewModel, Item>(viewModel)).Returns(dbModel);
@@ -208,7 +211,31 @@ namespace Fancy.Tests.Web.Areas.Admin.Controllers
             adminController.AddItem(viewModel);
 
             // Assert
-            this.itemServiceMock.Verify(m => m.AddItem(dbModel), Times.Once);
+            this.itemServiceMock.Verify(i => i.AddItem(dbModel), Times.Once);
+        }
+
+        [TestMethod]
+        public void AddItem_ShouldCallItemService_CheckUniqueItemCode()
+        {
+            // Arrange
+            string imageStringBase64 = "asdfasdf";
+            byte[] array = new byte[5];
+            var viewModel = new AddItemViewModel();
+            var dbModel = new Item();
+
+            this.itemServiceMock.Setup(i => i.CheckUniqueItemCode(It.IsAny<string>())).Returns(true);
+            this.imageProviderMock.Setup(i => i.ConvertByteArrayToImageString(It.IsAny<byte[]>())).Returns(imageStringBase64);
+            this.imageProviderMock.Setup(i => i.ConvertFileToByteArray(It.IsAny<HttpPostedFileBase>())).Returns(array);
+            this.mappingServiceMock.Setup(m => m.Map<AddItemViewModel, Item>(viewModel)).Returns(dbModel);
+            this.itemServiceMock.Setup(i => i.AddItem(dbModel));
+
+            var adminController = new AdminController(this.itemServiceMock.Object, this.mappingServiceMock.Object, this.imageProviderMock.Object);
+
+            // Act 
+            adminController.AddItem(viewModel);
+
+            // Assert
+            this.itemServiceMock.Verify(i => i.CheckUniqueItemCode(It.IsAny<string>()), Times.Once);
         }
     }
 }
