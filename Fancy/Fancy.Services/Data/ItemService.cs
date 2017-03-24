@@ -49,12 +49,12 @@ namespace Fancy.Services.Data
 
             if(colourType != 0)
             {
-                itemsList.Where(i => i.MainColour == colourType);
+                itemsList = itemsList.Where(i => i.MainColour == colourType);
             }
 
             if (materialType != 0)
             {
-                itemsList.Where(i => i.MainMaterial == materialType);
+                itemsList = itemsList.Where(i => i.MainMaterial == materialType);
             }
 
             return itemsList
@@ -72,12 +72,12 @@ namespace Fancy.Services.Data
 
             if (colourType != 0)
             {
-                itemsList.Where(i => i.MainColour == colourType);
+                itemsList = itemsList.Where(i => i.MainColour == colourType);
             }
 
             if (materialType != 0)
             {
-                itemsList.Where(i => i.MainMaterial == materialType);
+                itemsList = itemsList.Where(i => i.MainMaterial == materialType);
             }
 
             return itemsList
@@ -95,12 +95,12 @@ namespace Fancy.Services.Data
 
             if (colourType != 0)
             {
-                itemsList.Where(i => i.MainColour == colourType);
+                itemsList = itemsList.Where(i => i.MainColour == colourType);
             }
 
             if (materialType != 0)
             {
-                itemsList.Where(i => i.MainMaterial == materialType);
+                itemsList = itemsList.Where(i => i.MainMaterial == materialType);
             }
 
             return itemsList
@@ -110,25 +110,54 @@ namespace Fancy.Services.Data
                     .ToList();
         }
             
-        public int GetItemsOfTypeCount(ItemType itemType)
+        public int GetItemsOfTypeCount(ItemType itemType, MainColourType colour, MainMaterialType material)
         {
             Validator.ValidateNullArgument(itemType, "itemType");
 
             var items = this.data.Items.GetAll(i => i.ItemType == itemType);
+            if(colour != 0)
+            {
+                items = items.Where(i => i.MainColour == colour);
+            }
+
+            if (material != 0)
+            {
+                items = items.Where(i => i.MainMaterial == material);
+            }
 
             return items.Count();
         }
 
-        public int GetAllItemsCount()
+        public int GetAllItemsCount(MainColourType colour, MainMaterialType material)
         {
             var items = this.data.Items.GetAll();
 
+            if (colour != 0)
+            {
+                items = items.Where(i => i.MainColour == colour);
+            }
+
+            if (material != 0)
+            {
+                items = items.Where(i => i.MainMaterial == material);
+            }
+
             return items.Count();
         }
 
-        public int GetAllItemsInPromotionCount()
+        public int GetAllItemsInPromotionCount(MainColourType colour, MainMaterialType material)
         {
             var items = this.data.Items.GetAll(i => i.Discount != 0 && !i.IsDeleted && i.Quantity != 0);
+
+            if (colour != 0)
+            {
+                items = items.Where(i => i.MainColour == colour);
+            }
+
+            if (material != 0)
+            {
+                items = items.Where(i => i.MainMaterial == material);
+            }
 
             return items.Count();
         }

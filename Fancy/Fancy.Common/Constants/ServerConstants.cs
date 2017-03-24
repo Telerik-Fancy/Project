@@ -8,7 +8,7 @@ namespace Fancy.Common.Constants
 {
     public class ServerConstants
     {
-        public const int ItemsOnPage = 8;
+        public const int ItemsOnPage = 4;
 
         public const string GalleryNecklacesHeader = "Necklaces";
         public const string GalleryEaringsHeader = "Earings";

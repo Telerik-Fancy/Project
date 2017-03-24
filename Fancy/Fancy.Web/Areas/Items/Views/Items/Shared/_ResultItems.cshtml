@@ -2,7 +2,7 @@
 
 @model GalleryItemsViewModel
 
-<div class="gallery group">
+<div class="gallery group" id="result-items">
     @foreach (var item in Model.ItemsList)
     {
         <div class="item-holder left">
@@ -37,11 +37,3 @@
         </div>
     }
 </div>
-<ul class="pagination pagination-sm">
-    @for (int i = 1; i <= Model.PageButtonsCount; i += 1)
-    {
-        <li>
-            @Html.ActionLink(i.ToString(), ViewData["controllerName"].ToString(), "Items", new { area = "Items", pageNumber = i, type = Model.ItemType, colour = Model.Colour }, null)
-        </li>
-    }
-</ul>

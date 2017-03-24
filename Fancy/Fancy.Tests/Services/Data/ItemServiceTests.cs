@@ -179,6 +179,9 @@ namespace Fancy.Tests.Services.Data
         {
             // Arrange
             ItemType itemType = ItemType.Necklace;
+            MainColourType colour = MainColourType.Red;
+            MainMaterialType material = MainMaterialType.Swarovski;
+
             var itemCollection = new List<Item>();
             Expression<Func<Item, bool>> ex = i => i.ItemType == itemType;
 
@@ -188,7 +191,7 @@ namespace Fancy.Tests.Services.Data
             var itemService = new ItemService(this.dataMock.Object);
 
             // Act
-            var count = itemService.GetItemsOfTypeCount(itemType);
+            var count = itemService.GetItemsOfTypeCount(itemType, colour, material);
 
             // Assert
             this.itemRepoMock.Verify(r => r.GetAll(It.IsAny<Expression<Func<Item, bool>>>()), Times.Once);
@@ -199,6 +202,8 @@ namespace Fancy.Tests.Services.Data
         {
             // Arrange
             var itemCollection = new List<Item>();
+            MainColourType colour = MainColourType.Red;
+            MainMaterialType material = MainMaterialType.Swarovski;
 
             this.itemRepoMock.Setup(r => r.GetAll()).Returns(itemCollection);
             this.dataMock.SetupGet(d => d.Items).Returns(this.itemRepoMock.Object);
@@ -206,7 +211,7 @@ namespace Fancy.Tests.Services.Data
             var itemService = new ItemService(this.dataMock.Object);
 
             // Act
-            var count = itemService.GetAllItemsCount();
+            var count = itemService.GetAllItemsCount(colour, material);
 
             // Assert
             this.itemRepoMock.Verify(r => r.GetAll(), Times.Once);
@@ -217,6 +222,8 @@ namespace Fancy.Tests.Services.Data
         {
             // Arrange
             var itemCollection = new List<Item>();
+            MainColourType colour = MainColourType.Red;
+            MainMaterialType material = MainMaterialType.Swarovski;
 
             this.itemRepoMock.Setup(r => r.GetAll(It.IsAny<Expression<Func<Item, bool>>>())).Returns(itemCollection);
             this.dataMock.SetupGet(d => d.Items).Returns(this.itemRepoMock.Object);
@@ -224,7 +231,7 @@ namespace Fancy.Tests.Services.Data
             var itemService = new ItemService(this.dataMock.Object);
 
             // Act
-            var count = itemService.GetAllItemsInPromotionCount();
+            var count = itemService.GetAllItemsInPromotionCount(colour, material);
 
             // Assert
             this.itemRepoMock.Verify(r => r.GetAll(It.IsAny<Expression<Func<Item, bool>>>()), Times.Once);

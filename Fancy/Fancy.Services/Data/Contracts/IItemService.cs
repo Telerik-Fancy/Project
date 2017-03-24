@@ -16,11 +16,11 @@ namespace Fancy.Services.Data.Contracts
 
         Item GetItemById(int id);
 
-        int GetItemsOfTypeCount(ItemType itemType);
+        int GetItemsOfTypeCount(ItemType itemType, MainColourType colour, MainMaterialType material);
 
-        int GetAllItemsCount();
+        int GetAllItemsCount(MainColourType colour, MainMaterialType material);
 
-        int GetAllItemsInPromotionCount();
+        int GetAllItemsInPromotionCount(MainColourType colour, MainMaterialType material);
 
         bool CheckUniqueItemCode(string itemCode);
     }

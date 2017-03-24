@@ -37,7 +37,7 @@ namespace Fancy.Web.Areas.Items.Controllers
 
             ItemType itemType = (ItemType)Enum.Parse(typeof(ItemType), type, true);
 
-            var itemsOfTypeCount = this.itemService.GetItemsOfTypeCount(itemType);
+            var itemsOfTypeCount = this.itemService.GetItemsOfTypeCount(itemType, model.Colour, model.Material);
             var dbItemsList = this.itemService.GetItemsOfType(pageNumber, itemType, model.Colour, model.Material);
             var viewItemsList = this.ConvertToViewItemList(dbItemsList);
 
@@ -56,7 +56,7 @@ namespace Fancy.Web.Areas.Items.Controllers
             Validator.ValidateNullArgument(model, "model");
             Validator.ValidateRange(pageNumber, 1, int.MaxValue, "pageNumber");
 
-            var itemsCount = this.itemService.GetAllItemsCount();
+            var itemsCount = this.itemService.GetAllItemsCount(model.Colour, model.Material);
             var dbItemsList = this.itemService.GetNewestItems(pageNumber, model.Colour, model.Material);
             var viewItemsList = this.ConvertToViewItemList(dbItemsList);
 
@@ -65,7 +65,7 @@ namespace Fancy.Web.Areas.Items.Controllers
             model.ItemsList = viewItemsList;
 
             ViewData["controllerName"] = "GalleryItemsNew";
-
+            
             return View("GalleryItems", model);
         }
 
@@ -74,7 +74,7 @@ namespace Fancy.Web.Areas.Items.Controllers
             Validator.ValidateNullArgument(model, "model");
             Validator.ValidateRange(pageNumber, 1, int.MaxValue, "pageNumber");
 
-            var itemsCount = this.itemService.GetAllItemsInPromotionCount();
+            var itemsCount = this.itemService.GetAllItemsInPromotionCount(model.Colour, model.Material);
             var dbItemsList = this.itemService.GetItemsInPromotion(pageNumber, model.Colour, model.Material);
             var viewItemsList = this.ConvertToViewItemList(dbItemsList);
 
@@ -91,7 +91,7 @@ namespace Fancy.Web.Areas.Items.Controllers
         public ActionResult SingleItem(SingleItemViewModel model, int itemId)
         {
             Validator.ValidateNullArgument(model, "model");
-            Validator.ValidateRange(itemId, ServerConstants.IdMinValue, ServerConstants.IdMinValue, "pageNumber");
+            Validator.ValidateRange(itemId, ServerConstants.IdMinValue, ServerConstants.IdMaxValue, "itemId");
 
             var dbItem = this.itemService.GetItemById(itemId);
 

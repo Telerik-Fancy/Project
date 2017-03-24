@@ -8,10 +8,35 @@
 
 <div>
     <h1>@Model.GalleryTitle </h1>
-    <div class="filters-holder">
-        @Html.EnumDropDownListFor(m => m.Colour, "Select colour", new { @class = "form-control item-filter" })
-        @Html.EnumDropDownListFor(m => m.Material, "Select material", new { @class = "form-control item-filter" })
-    </div>
-
+    @using (Ajax.BeginForm(ViewData["controllerName"].ToString(), "Items", new { area = "Items", pageNumber = 1, type = Model.ItemType, colour = Model.Colour, material = Model.Material }, new AjaxOptions
+    {
+        HttpMethod = "Get",
+        UpdateTargetId = "result-items"
+    }))
+    {
+        @Html.AntiForgeryToken()
+        <div class="filters-holder">
+            @Html.EnumDropDownListFor(m => m.Colour, "Select colour", new { @class = "form-control item-filter" })
+            @Html.EnumDropDownListFor(m => m.Material, "Select material", new { @class = "form-control item-filter" })
+            <button type="submit" class="btn btn-primary">Filter</button>
+            @Html.ActionLink("Clear", ViewData["controllerName"].ToString(), "Items", new { area = "Items", pageNumber = 1, type = Model.ItemType, colour = 0, material = 0 }, new { @class = "btn btn-primary"})
+        </div>
+    }
+    
     @Html.Partial("Shared/_ResultItems", Model)
+
+    <ul class="pagination pagination-sm">
+        @for (int i = 1; i <= Model.PageButtonsCount; i += 1)
+        {
+            <li>
+                @Ajax.ActionLink(i.ToString(), ViewData["controllerName"].ToString(), "Items", new { area = "Items", pageNumber = i, type = Model.ItemType, colour = Model.Colour, material = Model.Material },
+                new AjaxOptions
+                {
+                    UpdateTargetId = "result-items",
+                    InsertionMode = InsertionMode.Replace,
+                    HttpMethod = "GET"
+                })
+            </li>
+        }
+    </ul>
 </div>

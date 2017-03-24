@@ -134,8 +134,12 @@ namespace Fancy.Tests.Web.Areas.Items.Controllers
             int pageNumber = 10;
             string type = "Necklace";
             var items = new List<Item>();
+            var colour = MainColourType.Red;
+            var material = MainMaterialType.Swarovski;
+            model.Colour = colour;
+            model.Material = material;
 
-            this.itemServiceMock.Setup(i => i.GetItemsOfTypeCount(It.IsAny<ItemType>())).Returns(It.Is<int>(c => c >= 0));
+            this.itemServiceMock.Setup(i => i.GetItemsOfTypeCount(It.IsAny<ItemType>(), colour, material)).Returns(It.Is<int>(c => c >= 0));
             this.itemServiceMock.Setup(i => i.GetItemsOfType(
                 pageNumber,
                 It.Is<ItemType>(t => t.ToString() == type),
@@ -148,7 +152,7 @@ namespace Fancy.Tests.Web.Areas.Items.Controllers
             var viewResult = itemsController.GalleryItems(model, pageNumber, type) as ViewResult;
 
             // Assert
-            this.itemServiceMock.Verify(i => i.GetItemsOfTypeCount(It.IsAny<ItemType>()), Times.Once);
+            this.itemServiceMock.Verify(i => i.GetItemsOfTypeCount(It.IsAny<ItemType>(), colour, material), Times.Once);
         }
 
         [TestMethod]
@@ -159,8 +163,10 @@ namespace Fancy.Tests.Web.Areas.Items.Controllers
             int pageNumber = 10;
             string type = "Necklace";
             var items = new List<Item>();
+            var colour = MainColourType.Red;
+            var material = MainMaterialType.Swarovski;
 
-            this.itemServiceMock.Setup(i => i.GetItemsOfTypeCount(It.IsAny<ItemType>())).Returns(It.Is<int>(c => c >= 0));
+            this.itemServiceMock.Setup(i => i.GetItemsOfTypeCount(It.IsAny<ItemType>(), colour, material)).Returns(It.Is<int>(c => c >= 0));
             this.itemServiceMock.Setup(i => i.GetItemsOfType(
                 pageNumber,
                 It.Is<ItemType>(t => t.ToString() == type),
@@ -228,8 +234,12 @@ namespace Fancy.Tests.Web.Areas.Items.Controllers
             GalleryItemsViewModel model = new GalleryItemsViewModel();
             int pageNumber = 10;
             var items = new List<Item>();
+            var colour = MainColourType.Red;
+            var material = MainMaterialType.Swarovski;
+            model.Colour = colour;
+            model.Material = material;
 
-            this.itemServiceMock.Setup(i => i.GetAllItemsCount()).Returns(It.Is<int>(c => c >= 0));
+            this.itemServiceMock.Setup(i => i.GetAllItemsCount(colour, material)).Returns(It.Is<int>(c => c >= 0));
             this.itemServiceMock.Setup(i => i.GetNewestItems(
                 pageNumber,
                 It.IsAny<MainColourType>(),
@@ -241,7 +251,7 @@ namespace Fancy.Tests.Web.Areas.Items.Controllers
             var viewResult = itemsController.GalleryItemsNew(model, pageNumber) as ViewResult;
 
             // Assert
-            this.itemServiceMock.Verify(i => i.GetAllItemsCount(), Times.Once);
+            this.itemServiceMock.Verify(i => i.GetAllItemsCount(colour, material), Times.Once);
         }
 
         [TestMethod]
@@ -251,8 +261,10 @@ namespace Fancy.Tests.Web.Areas.Items.Controllers
             GalleryItemsViewModel model = new GalleryItemsViewModel();
             int pageNumber = 10;
             var items = new List<Item>();
+            var colour = MainColourType.Red;
+            var material = MainMaterialType.Swarovski;
 
-            this.itemServiceMock.Setup(i => i.GetAllItemsCount()).Returns(It.Is<int>(c => c >= 0));
+            this.itemServiceMock.Setup(i => i.GetAllItemsCount(colour, material)).Returns(It.Is<int>(c => c >= 0));
             this.itemServiceMock.Setup(i => i.GetNewestItems(
                 pageNumber,
                 It.IsAny<MainColourType>(),
@@ -318,8 +330,12 @@ namespace Fancy.Tests.Web.Areas.Items.Controllers
             GalleryItemsViewModel model = new GalleryItemsViewModel();
             int pageNumber = 10;
             var items = new List<Item>();
+            var colour = MainColourType.Red;
+            var material = MainMaterialType.Swarovski;
+            model.Colour = colour;
+            model.Material = material;
 
-            this.itemServiceMock.Setup(i => i.GetAllItemsInPromotionCount()).Returns(It.Is<int>(c => c >= 0));
+            this.itemServiceMock.Setup(i => i.GetAllItemsInPromotionCount(colour, material)).Returns(It.Is<int>(c => c >= 0));
             this.itemServiceMock.Setup(i => i.GetItemsInPromotion(
                 pageNumber,
                 It.IsAny<MainColourType>(),
@@ -331,7 +347,7 @@ namespace Fancy.Tests.Web.Areas.Items.Controllers
             var viewResult = itemsController.GalleryItemsPromotions(model, pageNumber) as ViewResult;
 
             // Assert
-            this.itemServiceMock.Verify(i => i.GetAllItemsInPromotionCount(), Times.Once);
+            this.itemServiceMock.Verify(i => i.GetAllItemsInPromotionCount(colour, material), Times.Once);
         }
 
         [TestMethod]
@@ -341,8 +357,10 @@ namespace Fancy.Tests.Web.Areas.Items.Controllers
             GalleryItemsViewModel model = new GalleryItemsViewModel();
             int pageNumber = 10;
             var items = new List<Item>();
+            var colour = MainColourType.Red;
+            var material = MainMaterialType.Swarovski;
 
-            this.itemServiceMock.Setup(i => i.GetAllItemsInPromotionCount()).Returns(It.Is<int>(c => c >= 0));
+            this.itemServiceMock.Setup(i => i.GetAllItemsInPromotionCount(colour, material)).Returns(It.Is<int>(c => c >= 0));
             this.itemServiceMock.Setup(i => i.GetItemsInPromotion(
                 pageNumber,
                 It.IsAny<MainColourType>(),
