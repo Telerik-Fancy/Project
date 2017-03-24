@@ -13,5 +13,5 @@
         @Html.EnumDropDownListFor(m => m.Material, "Select material", new { @class = "form-control item-filter" })
     </div>
 
-    @Html.Partial("Shared/_ResultItems", Model, new ViewDataDictionary { { "controllerName", "GalleryItems" } })
+    @Html.Partial("Shared/_ResultItems", Model)
 </div>

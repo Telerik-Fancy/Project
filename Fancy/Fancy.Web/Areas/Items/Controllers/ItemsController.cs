@@ -46,6 +46,8 @@ namespace Fancy.Web.Areas.Items.Controllers
             model.ItemsList = viewItemsList;
             model.ItemType = type;
 
+            ViewData["controllerName"] = "GalleryItems";
+
             return View(model);
         }
 
@@ -62,7 +64,9 @@ namespace Fancy.Web.Areas.Items.Controllers
             model.PageButtonsCount = this.CalculatePageNumberButtonsCount(itemsCount);
             model.ItemsList = viewItemsList;
 
-            return View(model);
+            ViewData["controllerName"] = "GalleryItemsNew";
+
+            return View("GalleryItems", model);
         }
 
         public ActionResult GalleryItemsPromotions(GalleryItemsViewModel model, int pageNumber)
@@ -78,7 +82,9 @@ namespace Fancy.Web.Areas.Items.Controllers
             model.PageButtonsCount = this.CalculatePageNumberButtonsCount(itemsCount);
             model.ItemsList = viewItemsList;
 
-            return View(model);
+            ViewData["controllerName"] = "GalleryItemsPromotions";
+
+            return View("GalleryItems", model);
         }
 
         [Authorize(Roles = UserConstants.AdministratorOrRegular)]

@@ -304,8 +304,6 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Areas\Items\Views\Items\SingleItem.cshtml" />
     <Content Include="Areas\Items\Views\Items\GalleryItems.cshtml" />
-    <Content Include="Areas\Items\Views\Items\GalleryItemsPromotions.cshtml" />
-    <Content Include="Areas\Items\Views\Items\GalleryItemsNew.cshtml" />
     <Content Include="Areas\Profile\Views\Profile\ProfilePage.cshtml" />
     <Content Include="Areas\Items\Views\Items\Shared\_ResultItems.cshtml" />
     <None Include="Properties\PublishProfiles\telerik-fancy - FTP.pubxml" />
