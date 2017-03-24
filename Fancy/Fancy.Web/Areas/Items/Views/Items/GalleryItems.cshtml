@@ -1,6 +1,4 @@
-﻿@using Fancy.Common.Constants;
-
-@model GalleryItemsViewModel
+﻿@model GalleryItemsViewModel
 
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -15,47 +13,5 @@
         @Html.EnumDropDownListFor(m => m.Material, "Select material", new { @class = "form-control item-filter" })
     </div>
 
-    <div class="gallery group">
-        @foreach (var item in Model.ItemsList)
-        {
-            <div class="item-holder left">
-                <div class="card panel">
-                    <div class="card-content blue-text text-darken-2">
-                        <span class="bold">Item code:&nbsp</span> <span class="item-info">@item.ItemCode</span>
-                        <img src="@item.ImageBase64String" alt="Alternate Text" class="item-img-gallery" />
-                        <br />
-                        <span class="bold">Price:&nbsp</span>
-                        @if (item.Discount == 0)
-                        {
-                            <span class="item-info">
-                                @string.Format("{0:0.00}", item.Price) BGN
-                            </span>
-                        }
-                        else
-                        {
-                            <span class="item-info red">
-                                @string.Format("{0:0.00}", item.Price * ((100 - item.Discount)) / 100) BGN
-                            </span>
-                        }
-                        <br />
-                        <span class="bold">Quantity left:&nbsp</span> <span class="item-info">@item.Quantity</span>
-                    </div>
-                    @if (User.IsInRole(UserConstants.RegularRole) || User.IsInRole(UserConstants.AdministratorRole))
-                    {
-                        <div>
-                            @Html.ActionLink("View more", "SingleItem", "Items", new { area = "Items", itemId = item.Id }, new { @class = "btn btn-primary" })
-                        </div>
-                    }
-                </div>
-            </div>
-        }
-    </div>
-    <ul class="pagination pagination-sm">
-        @for (int i = 1; i <= Model.PageButtonsCount; i += 1)
-        {
-            <li>
-                @Html.ActionLink(i.ToString(), "GalleryItems", "Items", new { area = "Items", pageNumber = i, type = Model.ItemType, colour = Model.Colour }, null)
-            </li>
-        }
-    </ul>
+    @Html.Partial("Shared/_ResultItems", Model, new ViewDataDictionary { { "controllerName", "GalleryItems" } })
 </div>

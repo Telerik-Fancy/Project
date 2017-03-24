@@ -18,5 +18,7 @@ namespace Fancy.Web.Areas.Items.Models
         public MainMaterialType Material { get; set; }
 
         public string SelectedColour { get; set; }
+
+        public string SelectedMaterial { get; set; }
     }
 }
