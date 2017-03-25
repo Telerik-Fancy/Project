@@ -4,8 +4,6 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@Styles.Render("~/Content/gallery.css")
-
 <div>
     <h1>@Model.GalleryTitle </h1>
     @using (Ajax.BeginForm(ViewData["controllerName"].ToString(), "Items", new { area = "Items", pageNumber = 1, type = Model.ItemType, colour = Model.Colour, material = Model.Material }, new AjaxOptions
@@ -40,3 +38,7 @@
         }
     </ul>
 </div>
+
+@section styles {
+    @Styles.Render("~/Content/gallery.css")
+}

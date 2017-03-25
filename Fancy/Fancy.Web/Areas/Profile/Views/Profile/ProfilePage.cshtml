@@ -6,8 +6,6 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@Styles.Render("~/Content/profile.css")
-
 <div id="basket">
     <h3>
         BASKET
@@ -102,3 +100,6 @@
     }
 </div>
 
+@section styles {
+    @Styles.Render("~/Content/profile.css")
+}

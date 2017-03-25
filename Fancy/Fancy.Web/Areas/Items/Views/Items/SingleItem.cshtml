@@ -4,8 +4,6 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@Styles.Render("~/Content/single-item.css")
-
 <div class="single-item-holder">
     <div class="card panel">
         <span class="bold">Item code:&nbsp</span> <span class="item-info">@Model.ItemCode</span>
@@ -69,3 +67,7 @@
         }
     }
 </div>
+
+@section styles {
+    @Styles.Render("~/Content/single-item.css")
+}
