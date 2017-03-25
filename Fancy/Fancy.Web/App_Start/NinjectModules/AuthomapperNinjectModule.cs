@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
-using Fancy.Web.App_Start.AutomapperProfiles;
 using Ninject.Activation;
 using Ninject.Modules;
+using Fancy.Web.App_Start.AutomapperProfiles;
 
 namespace Fancy.Web.App_Start.NinjectModules
 {

@@ -1,9 +1,5 @@
 ﻿using Fancy.Data.Data;
 using Fancy.Services.Data.Contracts;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using Fancy.Data.Models.Models;
 using Fancy.Common.Validator;
 using Fancy.Common.Constants;
 

@@ -1,9 +1,7 @@
-﻿using Fancy.Common.Constants;
+﻿using System.ComponentModel.DataAnnotations;
+using Fancy.Common.Constants;
 using Fancy.Common.Enums;
 using Fancy.Common.Messages;
-using System.ComponentModel.DataAnnotations;
-using System.Drawing;
-using System.Web;
 
 namespace Fancy.Web.Areas.Items.Models
 {

@@ -1,10 +1,10 @@
-﻿using Fancy.Common.Constants;
-using Fancy.Common.Enums;
-using Fancy.Common.Messages;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Fancy.Common.Constants;
+using Fancy.Common.Enums;
+using Fancy.Common.Messages;
 
 namespace Fancy.Data.Models.Models
 {

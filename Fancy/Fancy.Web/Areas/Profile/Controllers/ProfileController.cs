@@ -1,12 +1,12 @@
-﻿using Fancy.Common.Constants;
-using Fancy.Common.Validator;
-using Fancy.Data.Models.Models;
+﻿using System.Collections.Generic;
+using System.Web.Mvc;
 using Fancy.Services.Common.Contracts;
 using Fancy.Services.Data.Contracts;
 using Fancy.Web.Areas.Profile.Models;
 using Fancy.Web.WebUtils.Contracts;
-using System.Collections.Generic;
-using System.Web.Mvc;
+using Fancy.Common.Constants;
+using Fancy.Common.Validator;
+using Fancy.Data.Models.Models;
 
 namespace Fancy.Web.Areas.Profile.Controllers
 {

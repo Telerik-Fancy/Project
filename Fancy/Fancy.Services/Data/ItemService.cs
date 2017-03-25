@@ -1,12 +1,11 @@
-﻿using Fancy.Services.Data.Contracts;
-using Fancy.Data.Models.Models;
-using Fancy.Data.Data;
-using Fancy.Common.Enums;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Collections.Generic;
-using System;
+using Fancy.Data.Data;
+using Fancy.Data.Models.Models;
+using Fancy.Services.Data.Contracts;
 using Fancy.Common.Constants;
 using Fancy.Common.Validator;
+using Fancy.Common.Enums;
 
 namespace Fancy.Services.Data
 {

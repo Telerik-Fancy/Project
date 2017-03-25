@@ -1,9 +1,8 @@
-﻿using Fancy.Common.Constants;
-using Fancy.Common.Validator;
+﻿using System.Web.Mvc;
 using Fancy.Services.Common.Contracts;
 using Fancy.Services.Data.Contracts;
-using Fancy.Web.Areas.Items.Models;
-using System.Web.Mvc;
+using Fancy.Common.Constants;
+using Fancy.Common.Validator;
 
 namespace Fancy.Web.Areas.Items.Controllers
 {

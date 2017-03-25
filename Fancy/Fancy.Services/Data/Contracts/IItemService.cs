@@ -1,6 +1,6 @@
-﻿using Fancy.Common.Enums;
+﻿using System.Collections.Generic;
+using Fancy.Common.Enums;
 using Fancy.Data.Models.Models;
-using System.Collections.Generic;
 
 namespace Fancy.Services.Data.Contracts
 {

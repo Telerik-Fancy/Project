@@ -1,11 +1,9 @@
 ﻿using System;
-using System.Text;
-using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
+using Fancy.Data.Data;
 using Fancy.Data.Repositories;
 using Fancy.Data.Models.Models;
-using Fancy.Data.Data;
 using Fancy.Data.Contexts;
 
 namespace Fancy.Tests.Data.Data

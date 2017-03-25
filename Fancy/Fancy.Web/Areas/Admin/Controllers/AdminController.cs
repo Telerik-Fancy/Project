@@ -1,10 +1,10 @@
-﻿using Fancy.Web.Areas.Admin.Models;
-using System;
+﻿using System;
 using System.Web.Mvc;
-using Fancy.Web.WebUtils.Contracts;
-using Fancy.Services.Common.Contracts;
 using Fancy.Data.Models.Models;
 using Fancy.Services.Data.Contracts;
+using Fancy.Services.Common.Contracts;
+using Fancy.Web.Areas.Admin.Models;
+using Fancy.Web.WebUtils.Contracts;
 using Fancy.Common.Constants;
 using Fancy.Common.Validator;
 

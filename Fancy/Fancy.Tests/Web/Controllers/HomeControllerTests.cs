@@ -1,6 +1,6 @@
-﻿using Fancy.Web.Controllers;
+﻿using System.Web.Mvc;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.Web.Mvc;
+using Fancy.Web.Controllers;
 
 namespace Fancy.Tests.Web.Controllers
 {

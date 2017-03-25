@@ -1,5 +1,5 @@
-﻿using Fancy.Common.Exceptions;
-using System;
+﻿using System;
+using Fancy.Common.Exceptions;
 
 namespace Fancy.Common.Validator
 {

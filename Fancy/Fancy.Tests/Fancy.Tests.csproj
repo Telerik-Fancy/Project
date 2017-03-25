@@ -155,7 +155,6 @@
     <Compile Include="Web\Areas\Profile\Controllers\ProfileControllerTests.cs" />
     <Compile Include="Web\Controllers\AccountControllerTests.cs" />
     <Compile Include="Web\Controllers\HomeControllerTests.cs" />
-    <Compile Include="Web\Controllers\ManageControllerTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Fancy.Common\Fancy.Common.csproj">

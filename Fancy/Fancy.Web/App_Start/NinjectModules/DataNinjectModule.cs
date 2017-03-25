@@ -1,10 +1,7 @@
-﻿using Fancy.Data.Contexts;
-using Fancy.Data.Models.Models;
-using Fancy.Data.Repositories;
+﻿using Ninject.Modules;
 using Ninject.Extensions.Conventions;
 using Ninject.Extensions.Conventions.Syntax;
-using Ninject.Modules;
-using Ninject.Web.Common;
+using Fancy.Data.Contexts;
 
 namespace Fancy.Web.App_Start.NinjectModules
 {

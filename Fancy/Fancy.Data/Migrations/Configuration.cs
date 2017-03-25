@@ -1,10 +1,10 @@
-﻿using Fancy.Common.Constants;
-using Fancy.Data.Contexts;
-using Fancy.Data.Models.Models;
+﻿using System.Linq;
+using System.Data.Entity.Migrations;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
-using System.Data.Entity.Migrations;
-using System.Linq;
+using Fancy.Common.Constants;
+using Fancy.Data.Contexts;
+using Fancy.Data.Models.Models;
 
 namespace Fancy.Data.Migrations
 {
@@ -12,8 +12,8 @@ namespace Fancy.Data.Migrations
     {
         public Configuration()
         {
-            this.AutomaticMigrationsEnabled = true;
-            this.AutomaticMigrationDataLossAllowed = true;
+            this.AutomaticMigrationsEnabled = false;
+            this.AutomaticMigrationDataLossAllowed = false;
         }
 
         protected override void Seed(FancyDbContext context)

@@ -1,9 +1,7 @@
-﻿using Fancy.Common.Messages;
-using Fancy.Common.Validator;
-using Fancy.Data.Contexts;
+﻿using Fancy.Data.Contexts;
 using Fancy.Data.Models.Models;
 using Fancy.Data.Repositories;
-using System;
+using Fancy.Common.Validator;
 
 namespace Fancy.Data.Data
 {

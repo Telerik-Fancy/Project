@@ -1,6 +1,6 @@
-﻿using Fancy.Data.Models.Models;
+﻿using System;
+using Fancy.Data.Models.Models;
 using Fancy.Data.Repositories;
-using System;
 
 namespace Fancy.Data.Data
 {

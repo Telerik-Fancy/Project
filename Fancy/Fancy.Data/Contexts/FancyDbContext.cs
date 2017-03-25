@@ -1,8 +1,8 @@
 ﻿using System.Data.Entity;
-using Fancy.Data.Models.Models;
-using Microsoft.AspNet.Identity.EntityFramework;
-using Fancy.Data.Migrations;
 using System.Data.Entity.ModelConfiguration.Conventions;
+using Microsoft.AspNet.Identity.EntityFramework;
+using Fancy.Data.Models.Models;
+using Fancy.Data.Migrations;
 
 namespace Fancy.Data.Contexts
 {

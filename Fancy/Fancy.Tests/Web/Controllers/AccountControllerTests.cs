@@ -1,16 +1,10 @@
-﻿using System;
-using System.Text;
-using System.Collections.Generic;
+﻿using System.Web.Mvc;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Fancy.Web.Controllers;
-using System.Web.Mvc;
 using Moq;
+using Fancy.Web.Controllers;
 
 namespace Fancy.Tests.Web.Controllers
 {
-    /// <summary>
-    /// Summary description for AccountControllerTests
-    /// </summary>
     [TestClass]
     public class AccountControllerTests
     {

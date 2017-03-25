@@ -1,13 +1,12 @@
 ﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Fancy.Data.Contexts;
-using Moq;
-using Fancy.Data.Repositories;
-using Fancy.Data.Models.Models;
-using System.Data.Entity;
 using System.Collections.Generic;
 using System.Linq;
-using System.Collections.ObjectModel;
+using System.Data.Entity;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Moq;
+using Fancy.Data.Models.Models;
+using Fancy.Data.Repositories;
+using Fancy.Data.Contexts;
 using Fancy.Common.Enums;
 
 namespace Fancy.Tests.Data.Repositories

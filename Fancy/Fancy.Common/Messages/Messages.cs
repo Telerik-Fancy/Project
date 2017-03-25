@@ -1,11 +1,4 @@
-﻿using Fancy.Common.Constants;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Fancy.Common.Messages
+﻿namespace Fancy.Common.Messages
 {
     public class Messages
     {

@@ -1,9 +1,9 @@
-﻿using System.Web;
-using Fancy.Common.Enums;
-using System;
+﻿using System;
 using System.ComponentModel.DataAnnotations;
+using System.Web;
 using Fancy.Common.Messages;
 using Fancy.Common.Constants;
+using Fancy.Common.Enums;
 
 namespace Fancy.Web.Areas.Admin.Models
 {

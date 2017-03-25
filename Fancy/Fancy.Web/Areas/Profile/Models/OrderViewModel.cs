@@ -1,10 +1,8 @@
-﻿using Fancy.Common.Enums;
+﻿using System;
+using System.Collections.Generic;
 using Fancy.Data.Models.Models;
 using Fancy.Web.Areas.Items.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+using Fancy.Common.Enums;
 
 namespace Fancy.Web.Areas.Profile.Models
 {

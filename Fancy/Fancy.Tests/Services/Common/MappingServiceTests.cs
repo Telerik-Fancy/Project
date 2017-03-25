@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Text;
-using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Fancy.Services.Common;
-using AutoMapper;
-using Moq;
 
 namespace Fancy.Tests.Services.Common
 {

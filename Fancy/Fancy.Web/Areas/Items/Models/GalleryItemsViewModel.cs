@@ -1,5 +1,5 @@
-﻿using Fancy.Common.Enums;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using Fancy.Common.Enums;
 
 namespace Fancy.Web.Areas.Items.Models
 {

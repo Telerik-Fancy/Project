@@ -1,8 +1,7 @@
-﻿using Fancy.Web.WebUtils.Contracts;
-using System;
-using System.Drawing;
+﻿using System;
 using System.IO;
 using System.Web;
+using Fancy.Web.WebUtils.Contracts;
 
 namespace Fancy.Web.WebUtils
 {

@@ -1,14 +1,10 @@
 ﻿using System;
-using System.Text;
-using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Fancy.Services.Data;
-using Fancy.Data.Data;
 using Moq;
-using Fancy.Data.Repositories;
+using Fancy.Data.Data;
 using Fancy.Data.Models.Models;
-using System.Linq.Expressions;
-using System.Linq;
+using Fancy.Data.Repositories;
+using Fancy.Services.Data;
 using Fancy.Common.Exceptions;
 
 namespace Fancy.Tests.Services.Data

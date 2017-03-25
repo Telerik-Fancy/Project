@@ -1,5 +1,5 @@
-﻿using Fancy.Data.Models.Models;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using Fancy.Data.Models.Models;
 
 namespace Fancy.Services.Data.Contracts
 {

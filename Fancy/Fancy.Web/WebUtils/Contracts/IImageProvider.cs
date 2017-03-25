@@ -1,5 +1,4 @@
-﻿using System.Drawing;
-using System.Web;
+﻿using System.Web;
 
 namespace Fancy.Web.WebUtils.Contracts
 {

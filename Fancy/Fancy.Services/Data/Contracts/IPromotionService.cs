@@ -1,7 +1,4 @@
-﻿using Fancy.Data.Models.Models;
-using System.Collections.Generic;
-
-namespace Fancy.Services.Data.Contracts
+﻿namespace Fancy.Services.Data.Contracts
 {
     public interface IPromotionService
     {

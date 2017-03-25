@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using Fancy.Common.Validator;
 using Fancy.Services.Common.Contracts;
-using System;
 
 namespace Fancy.Services.Common
 {

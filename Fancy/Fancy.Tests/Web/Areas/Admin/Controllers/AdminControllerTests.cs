@@ -1,19 +1,16 @@
 ﻿using System;
-using System.Text;
-using System.Collections.Generic;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Fancy.Services.Common.Contracts;
-using Fancy.Services.Data.Contracts;
-using Fancy.Web.WebUtils.Contracts;
-using Moq;
-using Fancy.Data.Repositories;
-using Fancy.Web.Areas.Admin.Controllers;
-using System.Web.Mvc;
-using Fancy.Web.Areas.Admin.Models;
-using Fancy.Common.Constants;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Moq;
 using Fancy.Data.Models.Models;
+using Fancy.Services.Common.Contracts;
+using Fancy.Services.Data.Contracts;
+using Fancy.Web.Areas.Admin.Controllers;
+using Fancy.Web.Areas.Admin.Models;
+using Fancy.Web.WebUtils.Contracts;
+using Fancy.Common.Constants;
 
 namespace Fancy.Tests.Web.Areas.Admin.Controllers
 {

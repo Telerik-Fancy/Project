@@ -1,5 +1,5 @@
-﻿using Fancy.Data.Models.Models;
-using System.Data.Entity;
+﻿using System.Data.Entity;
+using Fancy.Data.Models.Models;
 
 namespace Fancy.Data.Contexts
 {
