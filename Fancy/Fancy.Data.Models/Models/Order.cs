@@ -12,7 +12,7 @@ namespace Fancy.Data.Models.Models
 
         public Order()
         {
-            this.items = new HashSet<Item>();
+            this.items = new List<Item>();
         }
 
         [Key]

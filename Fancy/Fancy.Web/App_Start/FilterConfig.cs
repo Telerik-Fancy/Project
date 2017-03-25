@@ -8,11 +8,6 @@ namespace Fancy.Web
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
             filters.Add(new HandleErrorAttribute());
-
-            filters.Add(new OutputCacheAttribute()
-            {
-                Duration = 3600
-            });
         }
     }
 }
