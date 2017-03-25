@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Fancy.Common.Constants
+﻿namespace Fancy.Common.Constants
 {
     public class ServerConstants
     {
-        public const int ItemsOnPage = 4;
+        public const int ItemsOnPage = 8;
 
         public const string GalleryNecklacesHeader = "Necklaces";
         public const string GalleryEaringsHeader = "Earings";
