@@ -56,50 +56,57 @@
 </div>
 <br />
 <div id="previous-orders">
-    <h3>
+    <h3 id="previous-orders-title">
         Previous orders
     </h3>
-    @if (Model.PreviousOrders.Count() == 0)
-    {
-        <h4>Empty</h4>
-    }
-    else
-    {
-        foreach (var order in Model.PreviousOrders)
+    <div id="previous-orders-holder">
+        @if (Model.PreviousOrders.Count() == 0)
         {
-            <hr />
-            <span class="bold">
-                Purchased on:&nbsp
-            </span>
-            <span class="bold">
-                @string.Format("{0}.{1}.{2}", order.PurchaseDate.Day, order.PurchaseDate.Month, order.PurchaseDate.Year)
-            </span>
-            <div class="group">
-                @foreach (var item in order.Items)
-                {
-                    <div class="item-holder left">
-                        <div class="card panel">
-                            <div class="card-content blue-text text-darken-2">
-                                <span class="bold">
-                                    Item code:&nbsp
-                                </span> 
-                                <span class="item-info">
-                                    @item.ItemCode
-                                </span>
-                                <img src="@item.ImageBase64String" alt="Alternate Text" class="item-img-gallery" />
+            <h4>Empty</h4>
+        }
+        else
+        {
+            foreach (var order in Model.PreviousOrders)
+            {
+                <hr />
+                <span class="bold">
+                    Purchased on:&nbsp
+                </span>
+                <span class="bold">
+                    @string.Format("{0}.{1}.{2}", order.PurchaseDate.Day, order.PurchaseDate.Month, order.PurchaseDate.Year)
+                </span>
+                <div class="group">
+                    @foreach (var item in order.Items)
+                    {
+                        <div class="item-holder left">
+                            <div class="card panel">
+                                <div class="card-content blue-text text-darken-2">
+                                    <span class="bold">
+                                        Item code:&nbsp
+                                    </span>
+                                    <span class="item-info">
+                                        @item.ItemCode
+                                    </span>
+                                    <img src="@item.ImageBase64String" alt="Alternate Text" class="item-img-gallery" />
+                                </div>
                             </div>
                         </div>
-                    </div>
-                }
-            </div>
-            <span class="bold">Total price:&nbsp</span>
-            <span class="item-info">
-                @string.Format("{0:0.00}", order.TotalPrice) BGN
-            </span>
+                    }
+                </div>
+                <span class="bold">Total price:&nbsp</span>
+                <span class="item-info">
+                    @string.Format("{0:0.00}", order.TotalPrice) BGN
+                </span>
+            }
         }
-    }
+    </div>
 </div>
 
 @section styles {
     @Styles.Render("~/Content/profile.css")
+}
+
+
+@section scripts {
+    @Scripts.Render("~/Scripts/custom/previous-orders.js")
 }

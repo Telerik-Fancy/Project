@@ -33,3 +33,7 @@
 .red {
     color: red;
 }
+
+#previous-orders-title:hover {
+    cursor: pointer;
+}
