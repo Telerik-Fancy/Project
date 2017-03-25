@@ -167,7 +167,7 @@ namespace Fancy.Tests.Web.Areas.Admin.Controllers
         }
 
         [TestMethod]
-        public void AddItem_ShouldCallMappingServiceMapOnce_IfModelIsValid()
+        public void AddItem_ShouldCallMappingServiceMap_TimesOnce_IfModelIsValid()
         {
             // Arrange
             string imageStringBase64 = "asdfasdf";
@@ -191,7 +191,7 @@ namespace Fancy.Tests.Web.Areas.Admin.Controllers
         }
 
         [TestMethod]
-        public void AddItem_ShouldCallItemService_AddItemOnce_IfModelIsValid()
+        public void AddItem_ShouldCallItemService_AddItem_TimesOnce_IfModelIsValid()
         {
             // Arrange
             string imageStringBase64 = "asdfasdf";
@@ -215,7 +215,7 @@ namespace Fancy.Tests.Web.Areas.Admin.Controllers
         }
 
         [TestMethod]
-        public void AddItem_ShouldCallItemService_CheckUniqueItemCode()
+        public void AddItem_ShouldCallItemService_CheckUniqueItemCode_TimesOnce()
         {
             // Arrange
             string imageStringBase64 = "asdfasdf";

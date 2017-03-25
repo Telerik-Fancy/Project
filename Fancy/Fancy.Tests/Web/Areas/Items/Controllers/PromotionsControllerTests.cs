@@ -71,7 +71,7 @@ namespace Fancy.Tests.Web.Areas.Items.Controllers
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentOutOfRangeException))]
-        public void AddPromotion_ShouldThrowArgumentOutOfRangeException_WhenDiscountIsLessThanMinValue()
+        public void AddPromotion_ShouldThrowArgumentOutOfRangeException_WhenDiscountIsLessThanMinValue_CaseOne()
         {
             // Arrange
             var promotionsController = new PromotionsController(this.promotionServiceMock.Object, this.mappingServiceMock.Object);
@@ -84,7 +84,7 @@ namespace Fancy.Tests.Web.Areas.Items.Controllers
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentOutOfRangeException))]
-        public void AddPromotion_ShouldThrowArgumentOutOfRangeException_WhenDiscountIsLessThanMinValueNegative()
+        public void AddPromotion_ShouldThrowArgumentOutOfRangeException_WhenDiscountIsLessThanMinValue_CaseTwo()
         {
             // Arrange
             var promotionsController = new PromotionsController(this.promotionServiceMock.Object, this.mappingServiceMock.Object);
@@ -97,7 +97,7 @@ namespace Fancy.Tests.Web.Areas.Items.Controllers
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentOutOfRangeException))]
-        public void AddPromotion_ShouldThrowArgumentOutOfRangeException_WhenDiscountIsMoreThanMaxValue()
+        public void AddPromotion_ShouldThrowArgumentOutOfRangeException_WhenDiscountIsMoreThanMaxValue_CaseOne()
         {
             // Arrange
             var promotionsController = new PromotionsController(this.promotionServiceMock.Object, this.mappingServiceMock.Object);
@@ -110,7 +110,7 @@ namespace Fancy.Tests.Web.Areas.Items.Controllers
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentOutOfRangeException))]
-        public void AddPromotion_ShouldThrowArgumentOutOfRangeException_WhenDiscountIsMoreThanMaxValueAndMoreThanHundredPercent()
+        public void AddPromotion_ShouldThrowArgumentOutOfRangeException_WhenDiscountIsMoreThanMaxValue_CaseTwo()
         {
             // Arrange
             var promotionsController = new PromotionsController(this.promotionServiceMock.Object, this.mappingServiceMock.Object);

@@ -370,7 +370,7 @@ namespace Fancy.Tests.Web.Areas.Profile.Controllers
         }
 
         [TestMethod]
-        public void ExecuteOrder_ShouldCallOrderService_ExecuteOrder()
+        public void ExecuteOrder_ShouldCallOrderService_ExecuteOrder_TimesOnce()
         {
             // Arrange
             var orderId = 11;

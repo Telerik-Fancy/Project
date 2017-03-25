@@ -45,7 +45,7 @@ namespace Fancy.Tests.Services.Data
         }
 
         [TestMethod]
-        public void AddItem_ShowdCallItemRepoAdd_WhenValidItemIsPassed()
+        public void AddItem_ShouldCallItemRepoAdd_WhenValidItemIsPassed()
         {
             // Arrange
             var item = new Item();
@@ -62,7 +62,7 @@ namespace Fancy.Tests.Services.Data
         }
 
         [TestMethod]
-        public void AddItem_ShowdCallDataCommit_WhenValidItemIsPassed()
+        public void AddItem_ShouldCallDataCommit_WhenValidItemIsPassed()
         {
             // Arrange
             var item = new Item();
@@ -81,10 +81,22 @@ namespace Fancy.Tests.Services.Data
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentOutOfRangeException))]
-        public void GetItemById_ShowdThrowArgumentOutOfRangeException_WhenItemIdIsInvalid()
+        public void GetItemById_ShowdThrowArgumentOutOfRangeException_WhenItemIdIsNegative()
         {
             // Arrange
             var invalidItemId = -5;
+            var itemService = new ItemService(this.dataMock.Object);
+
+            // Act & Assert
+            itemService.GetItemById(invalidItemId);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentOutOfRangeException))]
+        public void GetItemById_ShowdThrowArgumentOutOfRangeException_WhenItemIdIsZero()
+        {
+            // Arrange
+            var invalidItemId = 0;
             var itemService = new ItemService(this.dataMock.Object);
 
             // Act & Assert
@@ -109,10 +121,48 @@ namespace Fancy.Tests.Services.Data
         }
 
         [TestMethod]
-        public void GetItemById_ShowdCallItemRepoGetById_WhenValidItemIdIsPassed()
+        public void GetItemById_ShowdCallItemRepoGetById_WhenValidItemIdIsPassed_CaseSmallNumberId()
         {
             // Arrange
-            var itemId = 132;
+            var itemId = 1;
+            var item = new Item();
+
+            this.itemRepoMock.Setup(r => r.GetById(itemId)).Returns(item);
+            this.dataMock.SetupGet(d => d.Items).Returns(this.itemRepoMock.Object);
+
+            var itemService = new ItemService(this.dataMock.Object);
+
+            // Act
+            itemService.GetItemById(itemId);
+
+            // Assert
+            this.itemRepoMock.Verify(r => r.GetById(itemId), Times.Once);
+        }
+
+        [TestMethod]
+        public void GetItemById_ShowdCallItemRepoGetById_WhenValidItemIdIsPassed_CaseAverageNumberId()
+        {
+            // Arrange
+            var itemId = 100;
+            var item = new Item();
+
+            this.itemRepoMock.Setup(r => r.GetById(itemId)).Returns(item);
+            this.dataMock.SetupGet(d => d.Items).Returns(this.itemRepoMock.Object);
+
+            var itemService = new ItemService(this.dataMock.Object);
+
+            // Act
+            itemService.GetItemById(itemId);
+
+            // Assert
+            this.itemRepoMock.Verify(r => r.GetById(itemId), Times.Once);
+        }
+
+        [TestMethod]
+        public void GetItemById_ShowdCallItemRepoGetById_WhenValidItemIdIsPassed_CaseLargeNumberId()
+        {
+            // Arrange
+            var itemId = 1000000;
             var item = new Item();
 
             this.itemRepoMock.Setup(r => r.GetById(itemId)).Returns(item);
@@ -129,7 +179,7 @@ namespace Fancy.Tests.Services.Data
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentNullException))]
-        public void CheckUniqueItemCode_ShouldThrowArgumentNullException_WhenInvalidItemCodeIsPassed()
+        public void CheckUniqueItemCode_ShouldThrowArgumentNullException_WhenNoItemCodeIsPassed()
         {
             // Arrange, Act & Assert 
             var itemService = new ItemService(this.dataMock.Object);
@@ -137,10 +187,10 @@ namespace Fancy.Tests.Services.Data
         }
 
         [TestMethod]
-        public void CheckUniqueItemCode_ShouldReturnTrue_WhenItemCodeIsUnique()
+        public void CheckUniqueItemCode_ShouldReturnTrue_WhenItemCodeIsUnique_CaseLettersOnlyId()
         {
             // Arrange
-            var itemCode = "someCode111";
+            var validItemCode = "asdfhsadfsdf";
             Item item = null;
 
             this.itemRepoMock.Setup(r => r.GetSingleOrDefault(It.IsAny<Expression<Func<Item, bool>>>())).Returns(item);
@@ -149,7 +199,45 @@ namespace Fancy.Tests.Services.Data
             var itemService = new ItemService(this.dataMock.Object);
 
             // Act
-            var result = itemService.CheckUniqueItemCode(itemCode);
+            var result = itemService.CheckUniqueItemCode(validItemCode);
+
+            // Assert
+            Assert.IsTrue(result);
+        }
+
+        [TestMethod]
+        public void CheckUniqueItemCode_ShouldReturnTrue_WhenItemCodeIsUnique_CaseNumbersOnlyId()
+        {
+            // Arrange
+            var validItemCode = "412949234";
+            Item item = null;
+
+            this.itemRepoMock.Setup(r => r.GetSingleOrDefault(It.IsAny<Expression<Func<Item, bool>>>())).Returns(item);
+
+            this.dataMock.SetupGet(d => d.Items).Returns(this.itemRepoMock.Object);
+            var itemService = new ItemService(this.dataMock.Object);
+
+            // Act
+            var result = itemService.CheckUniqueItemCode(validItemCode);
+
+            // Assert
+            Assert.IsTrue(result);
+        }
+
+        [TestMethod]
+        public void CheckUniqueItemCode_ShouldReturnTrue_WhenItemCodeIsUnique_CaseLettersAndNumbersId()
+        {
+            // Arrange
+            var validItemCode = "F8SD7F98SDF";
+            Item item = null;
+
+            this.itemRepoMock.Setup(r => r.GetSingleOrDefault(It.IsAny<Expression<Func<Item, bool>>>())).Returns(item);
+
+            this.dataMock.SetupGet(d => d.Items).Returns(this.itemRepoMock.Object);
+            var itemService = new ItemService(this.dataMock.Object);
+
+            // Act
+            var result = itemService.CheckUniqueItemCode(validItemCode);
 
             // Assert
             Assert.IsTrue(result);
@@ -175,7 +263,7 @@ namespace Fancy.Tests.Services.Data
         }
 
         [TestMethod]
-        public void GetItemsOfTypeCount_ShouldCallItemRepoGetAllOnce_WhenValidArgumentsArePassed()
+        public void GetItemsOfTypeCount_ShouldCallItemRepoGetAll_TimesOnce()
         {
             // Arrange
             ItemType itemType = ItemType.Necklace;
@@ -198,7 +286,7 @@ namespace Fancy.Tests.Services.Data
         }
 
         [TestMethod]
-        public void GetAllItemsCount_ShouldCallItemRepoGetAllOnce_WhenValidArgumentsArePassed()
+        public void GetAllItemsCount_ShouldCallItemRepoGetAll_TimesOnce()
         {
             // Arrange
             var itemCollection = new List<Item>();
@@ -218,7 +306,7 @@ namespace Fancy.Tests.Services.Data
         }
 
         [TestMethod]
-        public void GetAllItemsInPromotionCount_ShouldCallItemRepoGetAllOnce_WhenValidArgumentsArePassed()
+        public void GetAllItemsInPromotionCount_ShouldCallItemRepoGetAll_TimesOnce()
         {
             // Arrange
             var itemCollection = new List<Item>();
@@ -239,7 +327,7 @@ namespace Fancy.Tests.Services.Data
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentOutOfRangeException))]
-        public void GetItemsOfType_ShouldThrowArgumentOutOfRangeException_WhenInvalidPageNumberIsPassed()
+        public void GetItemsOfType_ShouldThrowArgumentOutOfRangeException_WhenZeroPageNumberIsPassed()
         {
             // Arrange, Act & Assert
             var itemCollection = new List<Item>();
@@ -252,11 +340,61 @@ namespace Fancy.Tests.Services.Data
         }
 
         [TestMethod]
-        public void GetItemsOfType_ShouldCallItemRepoGetAllOnce_WhenValidArgumentsArePassed()
+        [ExpectedException(typeof(ArgumentOutOfRangeException))]
+        public void GetItemsOfType_ShouldThrowArgumentOutOfRangeException_WhenNegativePageNumberIsPassed()
+        {
+            // Arrange, Act & Assert
+            var itemCollection = new List<Item>();
+            var invalidPageNumber = -100;
+            this.itemRepoMock.Setup(r => r.GetAll(It.IsAny<Expression<Func<Item, bool>>>())).Returns(itemCollection);
+            this.dataMock.SetupGet(d => d.Items).Returns(this.itemRepoMock.Object);
+
+            var itemService = new ItemService(this.dataMock.Object);
+            itemService.GetItemsOfType(invalidPageNumber, ItemType.Necklace, MainColourType.Black, MainMaterialType.Alloy);
+        }
+
+        [TestMethod]
+        public void GetItemsOfType_ShouldCallItemRepoGetAll_TimesOnce_WhenPageNumberIsValidSmallNumber()
         {
             // Arrange
             var itemCollection = new List<Item>();
             var validPageNumber = 4;
+            this.itemRepoMock.Setup(r => r.GetAll(It.IsAny<Expression<Func<Item, bool>>>())).Returns(itemCollection);
+            this.dataMock.SetupGet(d => d.Items).Returns(this.itemRepoMock.Object);
+
+            var itemService = new ItemService(this.dataMock.Object);
+
+            // Act
+            var count = itemService.GetItemsOfType(validPageNumber, ItemType.Necklace, MainColourType.Black, MainMaterialType.Alloy);
+
+            // Assert
+            this.itemRepoMock.Verify(r => r.GetAll(It.IsAny<Expression<Func<Item, bool>>>()), Times.Once);
+        }
+
+        [TestMethod]
+        public void GetItemsOfType_ShouldCallItemRepoGetAll_TimesOnce_WhenPageNumberIsValidAverageNumber()
+        {
+            // Arrange
+            var itemCollection = new List<Item>();
+            var validPageNumber = 1114;
+            this.itemRepoMock.Setup(r => r.GetAll(It.IsAny<Expression<Func<Item, bool>>>())).Returns(itemCollection);
+            this.dataMock.SetupGet(d => d.Items).Returns(this.itemRepoMock.Object);
+
+            var itemService = new ItemService(this.dataMock.Object);
+
+            // Act
+            var count = itemService.GetItemsOfType(validPageNumber, ItemType.Necklace, MainColourType.Black, MainMaterialType.Alloy);
+
+            // Assert
+            this.itemRepoMock.Verify(r => r.GetAll(It.IsAny<Expression<Func<Item, bool>>>()), Times.Once);
+        }
+
+        [TestMethod]
+        public void GetItemsOfType_ShouldCallItemRepoGetAll_TimesOnce_WhenPageNumberIsValidLargeNumber()
+        {
+            // Arrange
+            var itemCollection = new List<Item>();
+            var validPageNumber = 111000;
             this.itemRepoMock.Setup(r => r.GetAll(It.IsAny<Expression<Func<Item, bool>>>())).Returns(itemCollection);
             this.dataMock.SetupGet(d => d.Items).Returns(this.itemRepoMock.Object);
 
@@ -284,7 +422,7 @@ namespace Fancy.Tests.Services.Data
             // Act & Assert
             itemService.GetItemsInPromotion(invalidPageNumber, MainColourType.Black, MainMaterialType.Alloy);
         }
-
+        
         [TestMethod]
         [ExpectedException(typeof(ArgumentOutOfRangeException))]
         public void GetItemsInPromotion_ShouldThrowArgumentOutOfRangeException_WhenNegativePageNumberIsPassed()
@@ -302,7 +440,7 @@ namespace Fancy.Tests.Services.Data
         }
 
         [TestMethod]
-        public void GetItemsInPromotion_ShouldCallItemRepoGetAllOnce_WhenValidArgumentsArePassed()
+        public void GetItemsInPromotion_ShouldCallItemRepoGetAllOnce_WhenValidArgumentsArePassed_()
         {
             // Arrange
             var itemCollection = new List<Item>();
@@ -353,26 +491,5 @@ namespace Fancy.Tests.Services.Data
             // Act & Assert
             itemService.GetNewestItems(invalidPageNumber, MainColourType.Black, MainMaterialType.Alloy);
         }
-
-        //[TestMethod]
-        //public void GetNewestItems_ShouldCallItemRepoGetAllOnce_WhenValidArgumentsArePassed()
-        //{
-        //    // Arrange
-        //    var itemCollection = new List<Item>();
-        //    var validPageNumber = 4;
-
-        //    this.itemRepoMock.Setup(r => r.GetAll(It.IsAny<Expression<Func<Item, bool>>>(), 
-        //                                            It.IsAny<Expression<Func<Item, Item>>>())).Returns(itemCollection);
-        //    this.dataMock.SetupGet(d => d.Items).Returns(this.itemRepoMock.Object);
-
-        //    var itemService = new ItemService(this.dataMock.Object);
-
-        //    // Act
-        //    var count = itemService.GetNewestItems(validPageNumber, MainColourType.Black, MainMaterialType.Alloy);
-
-        //    // Assert
-        //    this.itemRepoMock.Verify(r => r.GetAll(It.IsAny<Expression<Func<Item, bool>>>(),
-        //                                            It.IsAny<Expression<Func<Item, Item>>>()), Times.Once);
-        //}
     }
 }

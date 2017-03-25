@@ -109,7 +109,7 @@ namespace Fancy.Tests.Data.Repositories
         }
 
         [TestMethod]
-        public void Add_ShouldAddItemToDbSet_CaseOneObject()
+        public void Add_ShouldAddItemToCollection_CaseOneObject()
         {
             // Arrange
             var item1 = new Item();
@@ -130,7 +130,7 @@ namespace Fancy.Tests.Data.Repositories
         }
 
         [TestMethod]
-        public void Add_ShouldAddItemToDbSet_CaseManyObject()
+        public void Add_ShouldAddItemToCollection_CaseManyObjects()
         {
             // Arrange
             var item1 = new Item();
@@ -157,7 +157,7 @@ namespace Fancy.Tests.Data.Repositories
         }
 
         [TestMethod]
-        public void Delete_ShouldAddItemToDbSet()
+        public void Delete_ShouldDeleteItemFromCollection()
         {
             // Arrange
             var item1 = new Item();
@@ -188,7 +188,7 @@ namespace Fancy.Tests.Data.Repositories
         }
 
         [TestMethod]
-        public void All_ShouldReturnAllItemsInDbSet()
+        public void All_ShouldReturnAllItemsInCollection()
         {
             // Arrange
             var item1 = new Item() { Id = 1 };
@@ -213,16 +213,16 @@ namespace Fancy.Tests.Data.Repositories
             this.repo.Add(item1);
             this.repo.Add(item2);
             this.repo.Add(item3);
-            var all = this.repo.All;
+ 
             var expectedCount = 3;
-            var actualCount = all.Count();
+            var actualCount = this.repo.All.Count();
             
             // Assert
             Assert.AreEqual(expectedCount, actualCount);
         }
 
         [TestMethod]
-        public void GetById_ShouldReturnItemWithTheGivenId_CaseSmallId()
+        public void GetById_ShouldReturnItemWithTheGivenId_CaseSmallNumberId()
         {
             // Arrange
             var id1 = 1;
@@ -254,7 +254,7 @@ namespace Fancy.Tests.Data.Repositories
         }
 
         [TestMethod]
-        public void GetById_ShouldReturnItemWithTheGivenId_CaseLargeId()
+        public void GetById_ShouldReturnItemWithTheGivenId_CaseLargeNumberId()
         {
             // Arrange
             var id1 = 1;
@@ -319,7 +319,7 @@ namespace Fancy.Tests.Data.Repositories
 
         [TestMethod]
         [ExpectedException(typeof(InvalidOperationException))]
-        public void GetSingle_ShouldThrowInvalidOperationException_IfMoreThanONeItemThatSatisfyTheConditionIsPresentInDatabase()
+        public void GetSingle_ShouldThrowInvalidOperationException_IfMoreThanONeItemThatSatisfyTheConditionArePresentInDatabase()
         {
             // Arrange
             var id1 = 1;
@@ -420,7 +420,7 @@ namespace Fancy.Tests.Data.Repositories
 
         [TestMethod]
         [ExpectedException(typeof(InvalidOperationException))]
-        public void GetSingle_ShouldReturnNull_IfMoreThanONeItemThatSatisfyTheConditionIsPresentInDatabase()
+        public void GetSingle_ShouldReturnNull_IfMoreThanONeItemThatSatisfyTheConditionArePresentInDatabase()
         {
             // Arrange
             var id1 = 1;
@@ -544,10 +544,44 @@ namespace Fancy.Tests.Data.Repositories
             this.repo = new EfGenericRepository<Item>(this.context.Object);
 
             // Act
-            var item = this.repo.GetFirstOrDefault(i => i.Id == id1);
+            var item = this.repo.GetFirstOrDefault(i => i.Id == id2);
 
             // Assert
-            Assert.AreEqual(item, item1);
+            Assert.AreEqual(item, item2);
+        }
+
+        [TestMethod]
+        public void GetFirstOrDefault_ShouldReturnFirstResult_IfManyItemsArePresentInDatabase()
+        {
+            // Arrange
+            var id1 = 1;
+            var id2 = 2;
+            var id3 = 3;
+
+            var item1 = new Item() { Id = id1 };
+            var item2 = new Item() { Id = id2 };
+            var item3 = new Item() { Id = id3 };
+            var item4 = new Item() { Id = id2 };
+            var item5 = new Item() { Id = id2 };
+
+            var itemsCollection = new List<Item>() { item1, item2, item3, item4, item5 };
+
+            var queryData = itemsCollection.AsQueryable();
+
+            this.itemsDbSet.As<IQueryable<Item>>().Setup(m => m.Provider).Returns(queryData.Provider);
+            this.itemsDbSet.As<IQueryable<Item>>().Setup(m => m.Expression).Returns(queryData.Expression);
+            this.itemsDbSet.As<IQueryable<Item>>().Setup(m => m.ElementType).Returns(queryData.ElementType);
+            this.itemsDbSet.As<IQueryable<Item>>().Setup(m => m.GetEnumerator()).Returns(queryData.GetEnumerator());
+
+            this.context.Setup(c => c.Set<Item>()).Returns(this.itemsDbSet.Object);
+
+            this.repo = new EfGenericRepository<Item>(this.context.Object);
+
+            // Act
+            var item = this.repo.GetFirstOrDefault(i => i.Id == id2);
+
+            // Assert
+            Assert.AreEqual(item, item2);
         }
 
         [TestMethod]

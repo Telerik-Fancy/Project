@@ -127,7 +127,7 @@ namespace Fancy.Tests.Web.Areas.Items.Controllers
         }
 
         [TestMethod]
-        public void GalleryItems_ShouldCallIteServiceGetItemsOfTypeCount_WhenAllParametersAreValid()
+        public void GalleryItems_ShouldCallIteServiceGetItemsOfTypeCount_TimesOnce_WhenAllParametersAreValid()
         {
             //Arange
             GalleryItemsViewModel model = new GalleryItemsViewModel();
@@ -156,7 +156,7 @@ namespace Fancy.Tests.Web.Areas.Items.Controllers
         }
 
         [TestMethod]
-        public void GalleryItems_ShouldCallIteServiceGetItemsOfType_WhenTypeIsNull()
+        public void GalleryItems_ShouldCallIteServiceGetItemsOfType_TimesOnce_WhenTypeIsNull()
         {
             //Arange
             GalleryItemsViewModel model = new GalleryItemsViewModel();

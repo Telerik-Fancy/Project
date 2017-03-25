@@ -49,7 +49,7 @@ namespace Fancy.Tests.Services.Data
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentOutOfRangeException))]
-        public void AddPromotion_ShouldThrowArgumentOutOfRangeException_WhenItemIdParameterIsLessZero()
+        public void AddPromotion_ShouldThrowArgumentOutOfRangeException_WhenItemIdParameterIsNegative()
         {
             // Arrange
             var invalidItemId = -5;
@@ -62,7 +62,7 @@ namespace Fancy.Tests.Services.Data
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentOutOfRangeException))]
-        public void AddPromotion_ShouldThrowArgumentOutOfRangeException_WhenDiscountParameterIsLessThanMinimumAllowed()
+        public void AddPromotion_ShouldThrowArgumentOutOfRangeException_WhenDiscountParameterIsLessThanMinimumAllowed_CaseOne()
         {
             // Arrange
             var validItemId = 5;
@@ -75,13 +75,39 @@ namespace Fancy.Tests.Services.Data
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentOutOfRangeException))]
-        public void AddPromotion_ShouldThrowArgumentOutOfRangeException_WhenDiscountParameterIsMoreThanMaximumAllowed()
+        public void AddPromotion_ShouldThrowArgumentOutOfRangeException_WhenDiscountParameterIsLessThanMinimumAllowed_CaseTwo()
+        {
+            // Arrange
+            var validItemId = 5;
+            var invalidDiscount = -13;
+            var promotionService = new PromotionService(this.dataMock.Object);
+
+            // Act & Assert
+            promotionService.AddPromotion(validItemId, invalidDiscount);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentOutOfRangeException))]
+        public void AddPromotion_ShouldThrowArgumentOutOfRangeException_WhenDiscountParameterIsMoreThanMaximumAllowed_CaseOne()
         {
             // Arrange
             var validItemId = 1;
             var invalidDiscount = 93;
             var promotionService = new PromotionService(this.dataMock.Object);
             
+            // Act & Assert
+            promotionService.AddPromotion(validItemId, invalidDiscount);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentOutOfRangeException))]
+        public void AddPromotion_ShouldThrowArgumentOutOfRangeException_WhenDiscountParameterIsMoreThanMaximumAllowed_CaseTwo()
+        {
+            // Arrange
+            var validItemId = 1;
+            var invalidDiscount = 12213;
+            var promotionService = new PromotionService(this.dataMock.Object);
+
             // Act & Assert
             promotionService.AddPromotion(validItemId, invalidDiscount);
         }
@@ -125,11 +151,11 @@ namespace Fancy.Tests.Services.Data
         }
 
         [TestMethod]
-        public void AddPromotion_ShouldCallDataCommit_WhenAllParametersAreValid()
+        public void AddPromotion_ShouldCallDataCommit_WhenAllParametersAreValid_CaseOne()
         {
             // Arrange
             var itemId = 15;
-            var discount = 15;
+            var discount = 5;
             var item = new Item();
 
             this.itemRepoMock.Setup(r => r.GetById(It.IsAny<int>())).Returns(item);
@@ -145,11 +171,91 @@ namespace Fancy.Tests.Services.Data
         }
 
         [TestMethod]
-        public void AddPromotion_ShouldIncreaseItemDiscount_WhenAllParametersAreValid()
+        public void AddPromotion_ShouldCallDataCommit_WhenAllParametersAreValid_CaseTwo()
+        {
+            // Arrange
+            var itemId = 5;
+            var discount = 90;
+            var item = new Item();
+
+            this.itemRepoMock.Setup(r => r.GetById(It.IsAny<int>())).Returns(item);
+            this.dataMock.SetupGet(d => d.Items).Returns(this.itemRepoMock.Object);
+
+            var promotionService = new PromotionService(this.dataMock.Object);
+
+            // Act
+            promotionService.AddPromotion(itemId, discount);
+
+            // Assert
+            dataMock.Verify(d => d.Commit(), Times.Once);
+        }
+
+        [TestMethod]
+        public void AddPromotion_ShouldCallDataCommit_WhenAllParametersAreValid_CaseThree()
+        {
+            // Arrange
+            var itemId = 12;
+            var discount = 33;
+            var item = new Item();
+
+            this.itemRepoMock.Setup(r => r.GetById(It.IsAny<int>())).Returns(item);
+            this.dataMock.SetupGet(d => d.Items).Returns(this.itemRepoMock.Object);
+
+            var promotionService = new PromotionService(this.dataMock.Object);
+
+            // Act
+            promotionService.AddPromotion(itemId, discount);
+
+            // Assert
+            dataMock.Verify(d => d.Commit(), Times.Once);
+        }
+
+        [TestMethod]
+        public void AddPromotion_ShouldIncreaseItemDiscount_WhenAllParametersAreValid_CaseOne()
         {
             // Arrange
             var itemId = 53;
-            var discount = 15;
+            var discount = 5;
+            var item = new Item();
+
+            this.itemRepoMock.Setup(r => r.GetById(It.IsAny<int>())).Returns(item);
+            this.dataMock.SetupGet(d => d.Items).Returns(this.itemRepoMock.Object);
+
+            var promotionService = new PromotionService(this.dataMock.Object);
+
+            // Act
+            promotionService.AddPromotion(itemId, discount);
+
+            // Assert
+            Assert.AreEqual(discount, item.Discount);
+        }
+
+        [TestMethod]
+        public void AddPromotion_ShouldIncreaseItemDiscount_WhenAllParametersAreValid_CaseTwo()
+        {
+            // Arrange
+            var itemId = 53;
+            var discount = 90;
+            var item = new Item();
+
+            this.itemRepoMock.Setup(r => r.GetById(It.IsAny<int>())).Returns(item);
+            this.dataMock.SetupGet(d => d.Items).Returns(this.itemRepoMock.Object);
+
+            var promotionService = new PromotionService(this.dataMock.Object);
+
+            // Act
+            promotionService.AddPromotion(itemId, discount);
+
+            // Assert
+            Assert.AreEqual(discount, item.Discount);
+        }
+
+        [TestMethod]
+        public void AddPromotion_ShouldIncreaseItemDiscount_WhenAllParametersAreValid_CaseThree()
+        {
+            // Arrange
+            var itemId = 53;
+            var discount = 32;
             var item = new Item();
 
             this.itemRepoMock.Setup(r => r.GetById(It.IsAny<int>())).Returns(item);
@@ -178,7 +284,7 @@ namespace Fancy.Tests.Services.Data
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentOutOfRangeException))]
-        public void RemovePromotion_ShouldThrowArgumentOutOfRangeException_WhenItemIdParameterIsLessZero()
+        public void RemovePromotion_ShouldThrowArgumentOutOfRangeException_WhenItemIdParameterIsNegative()
         {
             // Arrange
             var invalidItemId = -5;
